@@ -1,0 +1,520 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ba",
+				"background-repeat"
+			],
+			[
+				"back",
+				"background-size"
+			],
+			[
+				"min-",
+				"min-width"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"td",
+				"text-decoration"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"ma",
+				"margin-left"
+			],
+			[
+				"margin-",
+				"margin-left"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"list-styl",
+				"list-style-type"
+			],
+			[
+				"font-",
+				"font-family"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 3608,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/SASS Build/SASS.sublime-build",
+	"command_palette":
+	{
+		"height": 137.0,
+		"selected_items":
+		[
+			[
+				":0",
+				":0 - BOF"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"",
+				":w - Save"
+			],
+			[
+				"emm",
+				"Emmet: Toggle Comment"
+			],
+			[
+				"emmet",
+				"Emmet: Toggle Comment"
+			],
+			[
+				"tid",
+				"Tidy HTML"
+			],
+			[
+				"read",
+				"ReadmePlease"
+			],
+			[
+				"tidy",
+				"Tidy HTML"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"sftp",
+				"SFTP: Browse Server…"
+			],
+			[
+				"Package Contro",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"copy",
+				"File: Copy Path From Project"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"sjava",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				":n",
+				"File: New View into File"
+			],
+			[
+				"packin",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"synsass",
+				"Set Syntax: Sass"
+			],
+			[
+				":4",
+				"Set Syntax: camlp4"
+			],
+			[
+				"setsass",
+				"Set Syntax: Sass"
+			],
+			[
+				"syntaxsas",
+				"Set Syntax: Sass"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"sidebar",
+				"View: Toggle Side Bar"
+			]
+		],
+		"width": 579.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/thomas/dev/thomasdvm/File dependencies",
+		"/Users/thomas/dev/thomasdvm/gulpfile.js",
+		"/Users/thomas/dev/thomasdvm/builds/development/navbar.html",
+		"/Users/thomas/dev/thomasdvm/builds/development/test.html",
+		"/Users/thomas/dev/thomasdvm/builds/development/footer.html",
+		"/Users/thomas/dev/thomasdvm/builds/development/index.html",
+		"/Users/thomas/dev/thomasdvm/builds/development/header.html",
+		"/Users/thomas/dev/thomasdvm/components/scripts/scripts.js",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/thomas/dev/thomasdvm/.gitignore",
+		"/Users/thomas/dev/thomasdvm/gulp.js",
+		"/Users/thomas/dev/thomasdvm/package.json",
+		"/Users/thomas/dev/thomasdvm/builds/development/assets/less/_ReadMe.txt",
+		"/Users/thomas/dev/thomasdvm/README.md",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/HtmlTidy/README.md",
+		"/Users/thomas/dev/thomasdvm/index.html",
+		"/Users/thomas/dev/thomasdvm/development/index.html",
+		"/Users/thomas/dev/thomasdvm/get-started/shortcodes/buttons.php",
+		"/Users/thomas/dev/thomasdvm/sftp-config.json",
+		"/var/folders/hr/v3tp8y49771cy6c8xyk8ztx00000gn/T/sublime-sftp-browse-1419209069/webfaction455/home/tchen/webapps/thomasdvm/index.html",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/User/sftp_servers/webfaction455",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/AdvancedNewFile/README.md",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/Alignment/readme.creole",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/Users/thomas/dev/thomasdvm/_layouts/default.html",
+		"/Users/thomas/dev/thomasdvm/_layouts/homepage.html",
+		"/Users/thomas/dev/thomasdvm/css/sb-admin.css",
+		"/Users/thomas/dev/thomasdvm/css/bootstrap.css",
+		"/Users/thomas/dev/thomasdvm/css/post.scss",
+		"/Users/thomas/dev/thomasdvm/css/style.scss",
+		"/Users/thomas/dev/thomasdvm/_posts/2013-08-30-first-post.md",
+		"/Users/thomas/dev/thomasdvm/_layouts/post.html",
+		"/Users/thomas/dev/thomasdvm/css/post.css",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/thomas/dev/thomasdvm/_posts/2013-08-29-blah-blah.md",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
+		"/Users/thomas/dev/thomasdvm/_posts/2013-08-29-blah.md",
+		"/Users/thomas/dev/thomasdvm/_posts/2013-08-28-welcome-to-jekyll.markdown",
+		"/Users/thomas/dev/thomasdvm/thomasdvm.sublime-project",
+		"/Users/thomas/dev/thomasdvm/blah.html",
+		"/Users/thomas/dev/thomasdvm/stylesheets/style.scss",
+		"/Users/thomas/dev/thomasdvm/stylesheets/style.css",
+		"/Users/thomas/dev/thomasdvm/stylesheets/test.scss",
+		"/Users/thomas/dev/thomasdvm/test.html",
+		"/tmp/subl stdin vrphSN.txt",
+		"/tmp/subl stdin rcy2SD.txt"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"source",
+			"hover-dropdown",
+			"hover",
+			"tab",
+			"spaces",
+			"4",
+			"space",
+			".css",
+			".js",
+			".css",
+			"a",
+			".css",
+			".js",
+			"position",
+			".nav",
+			"jumbotron",
+			"225",
+			"hover",
+			"nav",
+			".navbar",
+			"border",
+			"ctrl",
+			"group",
+			"background",
+			"stack",
+			"border",
+			"li",
+			"border",
+			"-->",
+			"life forms",
+			"</li>",
+			"font",
+			"background",
+			"ren­der­ing",
+			"optimizeLegibility"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/index.html",
+					"settings":
+					{
+						"buffer_size": 3608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2170,
+								2170
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"incomplete_sync": null,
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"remote_loading": false,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"style",
+				"css/style.scss"
+			],
+			[
+				"ind",
+				"index.html"
+			],
+			[
+				"",
+				"stylesheets/style.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 292.0,
+	"status_bar_visible": true
+}
