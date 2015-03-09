@@ -1,24 +1,44 @@
 'use strict';
 
-app.controller('CaseLogCtrl', function($scope, Cases, Students) {
+app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
+
+
+  $scope.netId = undefined;
 
   $scope.newUser = false;
 
-  $scope.login = function() {
+  $scope.login = function () {
     console.log('in login!');
     // Check if netID (student) exists
-    if(Students.checkIfUserExists($scope.selectedStudent) !== null) {
+    if (Students.checkIfUserExists($scope.netId) !== null) {
       console.log('NetID exists!');
     } else {
       console.log('No such user! Creating...');
-      $scope.newUser = true;
-      // Students.create($scope.selectedStudent, {name: 'me'});
+      // $scope.newUser = true;
+      var modalInstance = $modal.open({
+        templateUrl: 'newUser.html',
+        controller: 'ModalInstanceCtrl',
+        resolve: {
+          netId: function() {
+            return $scope.netId;
+          } 
+        }
+      });
+
+      modalInstance.result.then(function (newStudent) {
+        // $scope.selected = selectedItem;
+        console.log('Net ID & Student Name: ' + newStudent.netId + " " + newStudent.name);
+        Students.create(newStudent.netId, newStudent);
+      }, function () {
+        console.log('Modal dismissed at: ' + new Date());
+      });
+      // Students.create($scope.netId, {name: 'me'});
     }
 
   };
 
   $scope.cases = Cases.all;
-
+ 
   $scope.case =  {
     studentName : '',
     date: '',
@@ -35,7 +55,6 @@ app.controller('CaseLogCtrl', function($scope, Cases, Students) {
     clinicians : []
   };
 
-  $scope.selectedStudent = undefined;
   $scope.newStudentFlag = true;
 
   $scope.snames = Students.all;
@@ -59,7 +78,7 @@ app.controller('CaseLogCtrl', function($scope, Cases, Students) {
     // Else set case student to entered student name
     if($scope.newStudentFlag) {
       var student = {
-        studentName: $scope.selectedStudent
+        studentName: $scope.netId
         // studentID: ''
       };
 
@@ -70,7 +89,7 @@ app.controller('CaseLogCtrl', function($scope, Cases, Students) {
       });
       $scope.case.studentName = student.studentName;
     } else {
-      $scope.case.studentName = $scope.selectedStudent;
+      $scope.case.studentName = $scope.netId;
     }
 
     // $scope.case.studentID = student.studentID;
@@ -95,7 +114,7 @@ app.controller('CaseLogCtrl', function($scope, Cases, Students) {
       // console.log('hi');
       // console.log($scope.case.diagnoses);
       $scope.newStudentFlag = true;
-      $scope.selectedStudent = '';
+      $scope.netId = '';
     });
   }; // end submitCase()
 
@@ -106,10 +125,27 @@ app.controller('CaseLogCtrl', function($scope, Cases, Students) {
   $scope.debug = function() {
     // var stu = Students.all.$getRecord($scope.case.studentName);
     // console.log('Number of students is: ' + $scope.snames.length);
-    for(var j=0; j < $scope.snames.length; j++) {
-      console.log($scope.snames[j]);
-    }
-    console.log($scope.snames);
+    // for(var j=0; j < $scope.snames.length; j++) {
+    //   console.log($scope.snames[j]);
+    // }
+    // console.log($scope.snames);
+    
+    // var modalInstance = $modal.open({
+    //   templateUrl: 'newUser.html',
+    //   controller: 'ModalInstanceCtrl',
+    //   resolve: {
+    //     items: function() {
+    //       return $scope.items;
+    //     }
+    //   }
+    // });
+
+    // modalInstance.result.then(function(selectedItem) {
+    //   $scope.selected = selectedItem;
+    //   console.log('Selected item: ' + selectedItem);
+    // }, function() {
+    //   console.log('Modal dismissed at: ' + new Date());
+    // });
   };
 
   $scope.existingStudentSelected = function() {
@@ -140,7 +176,6 @@ app.controller('CaseLogCtrl', function($scope, Cases, Students) {
 
 }); // end controller
 
-
 app.filter('diagnoses', function() {
   return function(input) {
     var output = [];
@@ -148,5 +183,22 @@ app.filter('diagnoses', function() {
       output[i] = input[i].value;
     }
     return output.join(', ');
+  };
+});
+
+app.controller('ModalInstanceCtrl', function($scope, $modalInstance, netId) {
+  $scope.netId = netId;
+  $scope.newStudentName = '';
+
+  $scope.ok = function() {
+    var newStudent = {
+      netId: $scope.netId,
+      name: $scope.newStudentName
+    };
+    $modalInstance.close(newStudent);
+  };
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
   };
 });

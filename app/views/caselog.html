@@ -1,8 +1,21 @@
+<script type="text/ng-template" id="newUser.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Create a new user!</h3>
+  </div> 
+  <div class="modal-body">
+  NetID: {{netId}}
+  <input type="text" class="form-control form-inline" placeholder="What's your name?" ng-model="newStudentName">
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</script>
 <div class="row">
   <div class="col-md-4">
     <div class="row">
       <div class="col-sm-8 form-group form-inline">
-        <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="selectedStudent" style="width:200px" typeahead="student.studentName for student in snames | filter:$viewValue" typeahead-on-select="existingStudentSelected()">
+        <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" typeahead="student.studentName for student in snames | filter:$viewValue" typeahead-on-select="existingStudentSelected()">
         <input type="submit" class="form-control" ng-hide="newUser" value="Login" ng-click="login()">
       </div>
     </div>
@@ -109,4 +122,5 @@
     </table> 
     <button ng-click="debug()"></button>
   </div> <!-- End second column -->
+  {{netId}}
 </div> <!-- end row -->
