@@ -28,6 +28,10 @@ app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
       modalInstance.result.then(function (newStudent) {
         // $scope.selected = selectedItem;
         console.log('Net ID & Student Name: ' + newStudent.netId + " " + newStudent.name);
+        newStudent.numNewCases = 0;
+        newStudent.numRechecks = 0;
+        newStudent.numEmergency = 0;
+        newStudent.numProcedures = 0;
         Students.create(newStudent.netId, newStudent);
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
