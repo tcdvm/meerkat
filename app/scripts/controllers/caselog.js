@@ -61,7 +61,7 @@ app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
 
   $scope.newStudentFlag = true;
 
-  $scope.snames = Students.all;
+  $scope.snames = Students.netIds();
 
   $scope.submitCase = function () {
     // Delete all empty diagnoses

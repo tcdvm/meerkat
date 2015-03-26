@@ -18,12 +18,11 @@ app.factory('Students', function($firebase, FIREBASE_URL) {
     delete: function(student) {
       return studentList.$remove(student);
     },
-    names: function() {
+    netIds: function() {
       var studentNamesArray = [];
 
       for(var k = 0; k < studentList.length; k++) {
-        studentNamesArray.push(studentList[k].studentName);
-        console.log('hi');
+        studentNamesArray.push(studentList[k].netId);
       }
 
       return studentNamesArray;
