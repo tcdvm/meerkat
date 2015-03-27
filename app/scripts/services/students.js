@@ -10,10 +10,10 @@ app.factory('Students', function($firebase, FIREBASE_URL) {
       var newStudentRef = studentsRef.child(netId);
       var sync = $firebase(newStudentRef);
       sync.$set(newstudent);
-      return true;
+      return sync.$asObject();
     },
-    get: function(studentId) {
-      return $firebase(studentsRef.child(studentId)).$asObject();
+    get: function(netId) {
+      return $firebase(studentsRef.child(netId)).$asObject();
     },
     delete: function(student) {
       return studentList.$remove(student);

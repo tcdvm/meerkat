@@ -95,8 +95,14 @@
     <br>
     <input type="submit" value="Add case" ng-click="submitCase()">
   </div> <!-- End first column --> 
-  <h2></h2>
   <div class="col-md-8">
+    <div ng-show="user">
+      <h1>{{user.name}}</h1>
+      <h3>Number of cases seen: {{user.numNewCases + user.numRechecks + numEmergency }}</h3>
+      <h4>New: {{user.numNewCases}}</h4>
+      <h4>Rechecks: {{user.numRechecks}}</h4>
+      <h4>Emergencies: {{user.numEmergencies}}</h4>
+    </div>
     <div class="form-group form-inline">
       <input type="text" class="form-control" placeholder="Filter by clinician" style="width:200px" ng-model="search.clinicians">
       <input type="text" class="form-control" placeholder="Filter by diagnosis" style="width:200px" ng-model="search.diagnoses">
