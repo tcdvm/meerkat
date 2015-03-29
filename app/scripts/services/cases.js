@@ -1,8 +1,9 @@
 'use strict';
 
-app.factory('Cases', function($firebase, FIREBASE_URL) {
-  var ref = new Firebase(FIREBASE_URL);
-  var cases = $firebase(ref.child('studentcases')).$asArray();
+app.factory('Cases', function($firebase, $firebaseArray, FIREBASE_URL) {
+  var ref = new Firebase(FIREBASE_URL + 'studentcases');
+  // var cases = $firebase(ref.child('studentcases')).$asArray();
+  var cases = $firebaseArray(ref);
 
   var Case = {
     all: cases,
