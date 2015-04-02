@@ -28,16 +28,15 @@ app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
         }
       });
 
-      modalInstance.result.then(function (newStudent) {
+      modalInstance.result.then(function (newStudent, $scope) {
         // $scope.selected = selectedItem;
         console.log('Net ID & Student Name: ' + newStudent.netId + " " + newStudent.name);
         newStudent.numNewCases = 0;
         newStudent.numRechecks = 0;
-        newStudent.numEmergencies = 0;
-        newStudent.numProcedures = 0;
+        // newStudent.numProcedures = 0;
         studentObject = Students.create(newStudent.netId, newStudent);
         studentObject.$bindTo($scope, "user");
-        console.log("student name: " + $scope.user.name);
+        // console.log("student name: " + $scope.user.name);
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
       });
@@ -81,45 +80,16 @@ app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
       }
     }
 
-    // var stu = Students.all.$getRecord($scope.case.studentName);
-    // console.log('Student is: ' + Students.all.length);
-    // for(var j=0; j < Students.all.length; j++) {
-    //   console.log(Students.all[j]);
-    // }
-
-    // If not an existing student, create a new one, add to database, set
-    // case student to new student name
-    // Else set case student to entered student name
-    // if($scope.newStudentFlag) {
-    //   var student = {
-    //     studentName: $scope.netId
-    //     // studentID: ''
-    //   };
-
-    //   Students.create(student).then(function(ref) {
-    //     var blah = ref.name();
-    //     console.log('Created student: ' + blah);
-    //     // console.log(ref);
-    //   });
-    //   $scope.case.studentName = student.studentName;
-    // } else {
-    //   $scope.case.studentName = $scope.netId;
-    // }
-
-    // $scope.case.studentID = student.studentID;
     $scope.case.date = $scope.dt.getTime();
     // console.log($scope.dt.getTime());
 
-    Cases.create($scope.case).then(function() {
+    Cases.create($scope.case, $scope.user.netId).then(function() {
       switch($scope.case.caseType) {
         case "new":
           $scope.user.numNewCases += 1;
           break;
         case "recheck":
           $scope.user.numRechecks += 1;
-          break;
-        case "emergency":
-          $scope.user.numEmergencies += 1;
           break;
       }
       $scope.case =  {
@@ -138,10 +108,6 @@ app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
         followup : '',
         clinicians : []
       };
-      // console.log('hi');
-      // console.log($scope.case.diagnoses);
-      // $scope.newStudentFlag = true;
-      // $scope.netId = '';
     });
   }; // end submitCase()
 

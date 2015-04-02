@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Students', function($firebase, $firebaseArray, $firebaseObject, FIREBASE_URL) {
+app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIREBASE_URL) {
   var studentsRef = new Firebase(FIREBASE_URL + 'students');
   var studentList = $firebaseArray(studentsRef);
 
@@ -8,9 +8,9 @@ app.factory('Students', function($firebase, $firebaseArray, $firebaseObject, FIR
     all: studentList,
     create: function(netId, newstudent) {
       var newStudentRef = studentsRef.child(netId);
-      var sync = $firebase(newStudentRef);
-      sync.$set(newstudent);
-      return sync.$asObject();
+      var newStudentObj = $firebaseObject(newStudentRef);
+      newStudentRef.set(newstudent);
+      return newStudentObj;
     },
     get: function(netId) {
       return $firebaseObject(studentsRef.child(netId));
