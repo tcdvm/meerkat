@@ -85,7 +85,6 @@ app.controller('CaseLogCtrl',
     Cases.create($scope.case, $scope.user.netId).then(function(ref) {
       var id = ref.key();
       console.log('added record with id ' + id);
-      $scope.userCases.$add(id);
       switch($scope.case.caseType) {
       case 'new':
         $scope.user.numNewCases += 1;
@@ -96,7 +95,8 @@ app.controller('CaseLogCtrl',
         $scope.user.$save();
         break;
       }
-
+      $scope.userCases.$add(id);
+      
       $scope.case =  {
         studentId: '',
         studentName: '',
