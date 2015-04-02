@@ -7,13 +7,13 @@ app.factory('Cases', function($firebase, $firebaseArray, FIREBASE_URL) {
 
   var Case = {
     all: cases,
-    create: function(studentcase, studentNetId) {
+    create: function(studentcase) {
       // console.log(studentcase);
-      cases.$add(studentcase).then(function(ref) {
-        var id = ref.key();
-        console.log("added record with id " + id);
-        Students.addCase(studentNetId, id);
-      });
+      // cases.$add(studentcase).then(function(ref) {
+      //   var id = ref.key();
+      //   console.log('added record with id ' + id);
+      //   // Students.addCase(studentNetId, id);
+      // });
       return cases.$add(studentcase);
     },
     get: function(caseId) {

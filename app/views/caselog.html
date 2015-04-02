@@ -91,17 +91,22 @@
   </div> <!-- End first column --> 
   <div class="col-md-8">
     <div ng-show="user">
-        <input type="text" class="form-control form-inline" placeholder="Test name binding" ng-model="user.name" style="width:200px">
       <h1>{{user.name}}</h1>
       <h3>Number of cases seen: {{user.numNewCases + user.numRechecks}}</h3>
       <h4>New: {{user.numNewCases}}</h4>
       <h4>Rechecks: {{user.numRechecks}}</h4>
     </div>
-    <div class="form-group form-inline">
+<!--     <div class="form-group form-inline">
       <input type="text" class="form-control" placeholder="Filter by clinician" style="width:200px" ng-model="search.clinicians">
       <input type="text" class="form-control" placeholder="Filter by diagnosis" style="width:200px" ng-model="search.diagnoses">
     </div>
-      <table class="table table-condensed table-hover">
+ -->     
+    <div>
+      <h3 ng-hide="user">Please enter your NetId to the left to add cases to your case log</h3>
+      <br>  
+    </div>
+  <!-- <input type="text" class="form-control form-inline" placeholder="name" ng-model="user.name"> -->
+     <table class="table table-condensed table-hover">
         <tr>
           <th>PatientID</th>
           <th>Name</th>

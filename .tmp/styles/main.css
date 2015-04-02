@@ -95,3 +95,7 @@ select[multiple],
 select[size] {
   height: 100px;
 }
+
+h3 {
+  margin-top: 0;
+}

@@ -1,11 +1,12 @@
 'use strict';
 
-app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
+app.controller('CaseLogCtrl',
+  function ($scope, $modal, $firebaseObject, $firebaseArray, Cases, Students) {
 
-
-  $scope.netId = undefined;
+  $scope.netId = '';
   $scope.user = undefined;
-  var studentObject;
+  // var userObject;
+  $scope.userCases = undefined;
 
   // $scope.newUser = false;
 
@@ -14,29 +15,31 @@ app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
     // Check if netID (student) exists
     if (Students.checkIfUserExists($scope.netId) !== null) {
       console.log('NetID exists!');
-      $scope.user = Students.get($scope.netId);
+      $scope.user = $firebaseObject(Students.getRef($scope.netId));
+      // userObject = $firebaseObject(Students.getRef($scope.netId));
+      // userObject.$bindTo($scope, 'user');
+      $scope.userCases = $firebaseArray(Students.getCasesRef($scope.netId));
     } else {
       console.log('No such user! Creating...');
-      // $scope.newUser = true;
       var modalInstance = $modal.open({
         templateUrl: 'newUser.html',
         controller: 'ModalInstanceCtrl',
         resolve: {
           netId: function() {
             return $scope.netId;
-          } 
+          }
         }
       });
 
-      modalInstance.result.then(function (newStudent, $scope) {
+      modalInstance.result.then(function (newStudent) {
         // $scope.selected = selectedItem;
-        console.log('Net ID & Student Name: ' + newStudent.netId + " " + newStudent.name);
+        console.log('Net ID & Student Name: ' + newStudent.netId + ' ' + newStudent.name);
         newStudent.numNewCases = 0;
         newStudent.numRechecks = 0;
-        // newStudent.numProcedures = 0;
-        studentObject = Students.create(newStudent.netId, newStudent);
-        studentObject.$bindTo($scope, "user");
-        // console.log("student name: " + $scope.user.name);
+        $scope.user = $firebaseObject(Students.create(newStudent.netId, newStudent));
+        // userObject = $firebaseObject(Students.create(newStudent.netId, newStudent));
+        // userObject.$bindTo($scope, 'user');
+        $scope.userCases = $firebaseArray(Students.getCasesRef($scope.netId));
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
       });
@@ -64,10 +67,6 @@ app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
     clinicians : []
   };
 
-  // $scope.newStudentFlag = true;
-
-  // $scope.snames = Students.netIds();
-
   $scope.submitCase = function () {
 
     $scope.case.studentId = $scope.user.netId;
@@ -83,15 +82,21 @@ app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
     $scope.case.date = $scope.dt.getTime();
     // console.log($scope.dt.getTime());
 
-    Cases.create($scope.case, $scope.user.netId).then(function() {
+    Cases.create($scope.case, $scope.user.netId).then(function(ref) {
+      var id = ref.key();
+      console.log('added record with id ' + id);
+      $scope.userCases.$add(id);
       switch($scope.case.caseType) {
-        case "new":
-          $scope.user.numNewCases += 1;
-          break;
-        case "recheck":
-          $scope.user.numRechecks += 1;
-          break;
+      case 'new':
+        $scope.user.numNewCases += 1;
+        $scope.user.$save();
+        break;
+      case 'recheck':
+        $scope.user.numRechecks += 1;
+        $scope.user.$save();
+        break;
       }
+
       $scope.case =  {
         studentId: '',
         studentName: '',
@@ -113,15 +118,12 @@ app.controller('CaseLogCtrl', function ($scope, $modal, Cases, Students) {
 
   $scope.deleteCase = function(scase) {
     switch(scase.caseType) {
-      case "new":
-        $scope.user.numNewCases -= 1;
-        break;
-      case "recheck":
-        $scope.user.numRechecks -= 1;
-        break;
-      case "emergency":
-        $scope.user.numEmergencies -= 1;
-        break;
+    case 'new':
+      $scope.user.numNewCases -= 1;
+      break;
+    case 'recheck':
+      $scope.user.numRechecks -= 1;
+      break;
     }
     Cases.delete(scase);
   };

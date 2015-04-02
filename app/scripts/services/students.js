@@ -8,12 +8,11 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
     all: studentList,
     create: function(netId, newstudent) {
       var newStudentRef = studentsRef.child(netId);
-      var newStudentObj = $firebaseObject(newStudentRef);
       newStudentRef.set(newstudent);
-      return newStudentObj;
+      return newStudentRef;
     },
-    get: function(netId) {
-      return $firebaseObject(studentsRef.child(netId));
+    getRef: function(netId) {
+      return studentsRef.child(netId);
     },
     delete: function(student) {
       return studentList.$remove(student);
@@ -31,6 +30,9 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
       console.log('Checking if ' + studentId + ' exists...');
       console.log(studentList.$getRecord(studentId));
       return studentList.$getRecord(studentId);
+    },
+    getCasesRef: function(studentId) {
+      return studentsRef.child(studentId).child('cases');
     }
   };
 
