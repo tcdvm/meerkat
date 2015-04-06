@@ -33,6 +33,11 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
     },
     getCasesRef: function(studentId) {
       return studentsRef.child(studentId).child('cases');
+    },
+    addCase: function(studentId, caseId, patientId) {
+      var c = {};
+      c[caseId] = patientId;
+      studentsRef.child(studentId).child('cases').update(c);
     }
   };
 

@@ -1,39 +1,40 @@
 'use strict';
 
-app.factory('Patients', function($firebase, FIREBASE_URL) {
-  var patientsRef = new Firebase(FIREBASE_URL + '/patients');
-  var patientList = $firebase(studentsRef).$asArray();
+app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, FIREBASE_URL) {
+  var patientsRef = new Firebase(FIREBASE_URL + 'patients');
+  var patientsList = $firebaseArray(patientsRef);
 
   var Patient = {
-    all: studentList,
-    create: function(netId, newstudent) {
-      var newStudentRef = studentsRef.child(netId);
-      var sync = $firebase(newStudentRef);
-      sync.$set(newstudent);
-      return true;
+    all: patientsList,
+    create: function(patientId, patientInfo) {
+      var newPatientRef = patientsRef.child(patientId);
+      newPatientRef.set(patientInfo);
+      return newPatientRef;
     },
-    get: function(studentId) {
-      return $firebase(studentsRef.child(studentId)).$asObject();
+    getRef: function(patientId) {
+      return patientsRef.child(patientId);
     },
-    delete: function(student) {
-      return studentList.$remove(student);
-    },
-    names: function() {
-      var studentNamesArray = [];
+    // delete: function(patientId) {
+    //   return patientsList.$remove(patientId);
+    // },
+    // netIds: function() {
+    //   var studentNamesArray = [];
 
-      for(var k = 0; k < studentList.length; k++) {
-        studentNamesArray.push(studentList[k].studentName);
-        console.log('hi');
-      }
+    //   for(var k = 0; k < studentList.length; k++) {
+    //     studentNamesArray.push(studentList[k].netId);
+    //   }
 
-      return studentNamesArray;
+    //   return studentNamesArray;
+    // },
+    checkIfPatientExists: function(patientId) {
+      console.log('Checking if ' + patientId + ' exists...');
+      console.log(patientsList.$getRecord(patientId));
+      return patientsList.$getRecord(patientId);
     },
-    checkIfUserExists: function(studentId) {
-      console.log('Checking if ' + studentId + ' exists...');
-      console.log(studentList.$getRecord(studentId));
-      return studentList.$getRecord(studentId);
+    getCasesRef: function(patientId) {
+      return patientsRef.child(patientId).child('cases');
     }
   };
 
-  return Student;
+  return Patient;
 });

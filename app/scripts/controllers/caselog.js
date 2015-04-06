@@ -1,14 +1,12 @@
 'use strict';
 
 app.controller('CaseLogCtrl',
-  function ($scope, $modal, $firebaseObject, $firebaseArray, Cases, Students) {
+  function ($scope, $modal, $firebaseObject, $firebaseArray, Cases, Students, Patients) {
 
-  $scope.netId = '';
+  // $scope.netId = '';
+  $scope.netId = 'tchen';
   $scope.user = undefined;
-  // var userObject;
   $scope.userCases = undefined;
-
-  // $scope.newUser = false;
 
   $scope.login = function () {
     console.log('in login!');
@@ -54,17 +52,17 @@ app.controller('CaseLogCtrl',
     studentId : '',
     studentName : '',
     date: '',
-    patientId : '',
-    patientName : '',
-    patientSurname : '',
-    patientSpecies : '',
-    caseType: '',
+    patientId : '1234' + Math.floor(Math.random()*100),
+    patientName : 'Fluffy' + Math.floor(Math.random()*10),
+    patientSurname : 'Smith' + Math.floor(Math.random()*10),
+    patientSpecies : 'Canine',
+    caseType: 'new',
     surgeryProcedure: '',
-    diagnoses : ['', '', ''],
-    treatment : '',
-    outcome : '',
-    followup : '',
-    clinicians : []
+    diagnoses : ['Glaucoma', 'Cataracts', ''],
+    treatment : 'Enucleation',
+    outcome : 'No more issues',
+    followup : 'None',
+    clinicians : ['chen']
   };
 
   $scope.submitCase = function () {
@@ -82,9 +80,12 @@ app.controller('CaseLogCtrl',
     $scope.case.date = $scope.dt.getTime();
     // console.log($scope.dt.getTime());
 
+    // Create the case
     Cases.create($scope.case, $scope.user.netId).then(function(ref) {
       var id = ref.key();
       console.log('added record with id ' + id);
+
+      // Update counts for user
       switch($scope.case.caseType) {
       case 'new':
         $scope.user.numNewCases += 1;
@@ -95,35 +96,54 @@ app.controller('CaseLogCtrl',
         $scope.user.$save();
         break;
       }
-      $scope.userCases.$add(id);
+      // $scope.userCases.$add({id:$scope.case.patientId});
+      
+      console.log('StudentId: ' + $scope.case.studentId + ' caseId: ' + id + ' patientId: ' + $scope.case.patientId);
+      Students.addCase($scope.case.studentId, id, $scope.case.patientId);
       
       $scope.case =  {
-        studentId: '',
-        studentName: '',
+        studentId : '',
+        studentName : '',
         date: '',
-        patientId : '',
-        patientName : '',
-        patientSurname : '',
-        patientSpecies : '',
-        caseType: '',
+        patientId : '1234' + Math.floor(Math.random()*100),
+        patientName : 'Fluffy' + Math.floor(Math.random()*10),
+        patientSurname : 'Smith' + Math.floor(Math.random()*10),
+        patientSpecies : 'Canine',
+        caseType: 'new',
         surgeryProcedure: '',
-        diagnoses : ['', '', ''],
-        treatment : '',
-        outcome : '',
-        followup : '',
-        clinicians : []
+        diagnoses : ['Glaucoma', 'Cataracts', ''],
+        treatment : 'Enucleation',
+        outcome : 'No more issues',
+        followup : 'None',
+        clinicians : ['chen']
+        // studentId: '',
+        // studentName: '',
+        // date: '',
+        // patientId : '',
+        // patientName : '',
+        // patientSurname : '',
+        // patientSpecies : '',
+        // caseType: '',
+        // surgeryProcedure: '',
+        // diagnoses : ['', '', ''],
+        // treatment : '',
+        // outcome : '',
+        // followup : '',
+        // clinicians : []
       };
     });
   }; // end submitCase()
 
   $scope.deleteCase = function(scase) {
-    switch(scase.caseType) {
-    case 'new':
-      $scope.user.numNewCases -= 1;
-      break;
-    case 'recheck':
-      $scope.user.numRechecks -= 1;
-      break;
+    if($scope.user) {
+      switch(scase.caseType) {
+      case 'new':
+        $scope.user.numNewCases -= 1;
+        break;
+      case 'recheck':
+        $scope.user.numRechecks -= 1;
+        break;
+      }
     }
     Cases.delete(scase);
   };
