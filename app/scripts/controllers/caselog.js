@@ -96,11 +96,11 @@ app.controller('CaseLogCtrl',
         $scope.user.$save();
         break;
       }
-      // $scope.userCases.$add({id:$scope.case.patientId});
       
-      console.log('StudentId: ' + $scope.case.studentId + ' caseId: ' + id + ' patientId: ' + $scope.case.patientId);
+      // Add case to student's cases array & patient's
       Students.addCase($scope.case.studentId, id, $scope.case.patientId);
-      
+      Patients.addCase($scope.case.patientId, id, $scope.case);
+
       $scope.case =  {
         studentId : '',
         studentName : '',
