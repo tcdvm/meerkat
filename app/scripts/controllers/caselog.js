@@ -7,6 +7,7 @@ app.controller('CaseLogCtrl',
   $scope.netId = 'tchen';
   $scope.user = undefined;
   $scope.userCases = undefined;
+  $scope.cases = Cases.all;
 
   $scope.login = function () {
     console.log('in login!');
@@ -17,6 +18,7 @@ app.controller('CaseLogCtrl',
       // userObject = $firebaseObject(Students.getRef($scope.netId));
       // userObject.$bindTo($scope, 'user');
       $scope.userCases = $firebaseArray(Students.getCasesRef($scope.netId));
+      $scope.cases = $scope.userCases;
     } else {
       console.log('No such user! Creating...');
       var modalInstance = $modal.open({
@@ -38,15 +40,15 @@ app.controller('CaseLogCtrl',
         // userObject = $firebaseObject(Students.create(newStudent.netId, newStudent));
         // userObject.$bindTo($scope, 'user');
         $scope.userCases = $firebaseArray(Students.getCasesRef($scope.netId));
+        $scope.cases = $scope.userCases;
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
       });
       // Students.create($scope.netId, {name: 'me'});
     }
 
-  };
+  }; // end login
 
-  $scope.cases = Cases.all;
  
   $scope.case =  {
     studentId : '',
@@ -98,7 +100,7 @@ app.controller('CaseLogCtrl',
       }
       
       // Add case to student's cases array & patient's
-      Students.addCase($scope.case.studentId, id, $scope.case.patientId);
+      Students.addCase($scope.case.studentId, id, $scope.case);
       Patients.addCase($scope.case.patientId, id, $scope.case);
 
       $scope.case =  {
