@@ -36,7 +36,7 @@ app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, FIR
     // },
     addCase: function(patientId, id, scase) {
       var c = {};
-      c[id] = true;
+      c[id] = scase;
       console.log("In addcase");
       console.log(patientId);
       // patientsRef.child(patientId).child('cases').update(c);
