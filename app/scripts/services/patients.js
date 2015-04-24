@@ -37,25 +37,25 @@ app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, FIR
     addCase: function(patientId, id, scase) {
       var c = {};
       c[id] = scase;
-      console.log("In addcase");
+      console.log('In addcase');
       console.log(patientId);
       // patientsRef.child(patientId).child('cases').update(c);
-      patientsRef.child(patientId).on("value", function(snapshot) {
+      patientsRef.child(patientId).on('value', function(snapshot) {
         if(snapshot.val()) {
           console.log('PatientId ' + patientId + ' exists!');
         } else {
           console.log('PatientId ' + patientId + ' does NOT exist! Creating...');
           var newPatient =  {};
-          newPatient['patientId'] = scase.patientId;
-          newPatient['name'] = scase.patientName;
-          newPatient['surname'] = scase.patientSurname;
-          newPatient['species'] = scase.patientSpecies;
+          newPatient.patientId = scase.patientId;
+          newPatient.name = scase.patientName;
+          newPatient.surname = scase.patientSurname;
+          newPatient.species = scase.patientSpecies;
 
           patientsRef.child(patientId).update(newPatient);
         }
         patientsRef.child(patientId).child('cases').update(c);
       }, function(errorObject) {
-        console.log('The read failed: ' + errorOjbect.code);
+        console.log('The read failed: ' + errorObject.code);
       });
     }
   };
