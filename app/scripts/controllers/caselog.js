@@ -49,6 +49,29 @@ app.controller('CaseLogCtrl',
 
   }; // end login
 
+  $scope.logout = function() {
+    // Free event listener & memory
+    $scope.user.$destroy();
+    $scope.user = undefined;
+    $scope.userCases.$destroy();
+    $scope.cases = Cases.all;
+    $scope.case =  {
+      studentId : '',
+      studentName : '',
+      date: '',
+      patientId : '1234' + Math.floor(Math.random()*100),
+      patientName : 'Fluffy' + Math.floor(Math.random()*10),
+      patientSurname : 'Smith' + Math.floor(Math.random()*10),
+      patientSpecies : 'Equine',
+      caseType: 'new',
+      surgeryProcedure: '',
+      diagnoses : ['Glaucoma', 'Cataracts', ''],
+      treatment : 'Enucleation',
+      outcome : 'No more issues',
+      followup : 'None',
+      clinicians : ['chen']
+    };
+  }; // end logout
  
   $scope.case =  {
     studentId : '',
@@ -57,7 +80,7 @@ app.controller('CaseLogCtrl',
     patientId : '1234' + Math.floor(Math.random()*100),
     patientName : 'Fluffy' + Math.floor(Math.random()*10),
     patientSurname : 'Smith' + Math.floor(Math.random()*10),
-    patientSpecies : 'Canine',
+    patientSpecies : 'Equine',
     caseType: 'new',
     surgeryProcedure: '',
     diagnoses : ['Glaucoma', 'Cataracts', ''],

@@ -16,8 +16,9 @@
     <div class="row">
       <div class="col-sm-8 form-group form-inline">
         <!-- <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" typeahead="student.studentName for student in snames | filter:$viewValue" typeahead-on-select="existingStudentSelected()"> -->
-        <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px">
-        <input type="submit" class="form-control" ng-hide="newUser" value="Login" ng-click="login()">
+        <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" ng-disabled="user">
+        <input type="submit" class="btn-success form-control" value="Login" ng-click="login()" ng-hide="user">
+        <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()" ng-show="user">
       </div>
     </div>
     <div class="row" ng-show="newUser">
@@ -30,9 +31,9 @@
     <div class="row">
         <div class="col-md-7">
             <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-disabled="!user"   />
               <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                <button type="button" class="btn btn-default" ng-click="open($event)" ng-disabled="!user"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
             </p>
         </div>
@@ -41,11 +42,11 @@
   <form class="form-group form-inline">
     <div class="form-group">
         <label for="patientID" class="sr-only">Patient ID</label>
-        <input type="text" class="form-control" placeholder="Patient ID" ng-model="case.patientId">
+        <input type="text" class="form-control" placeholder="Patient ID" ng-model="case.patientId" ng-disabled="!user">
       </div>
-    <select class="form-control" ng-model="patientSpecies"> 
+    <select class="form-control" ng-model="case.patientSpecies" ng-disabled="!user"> 
       <option value="" >Pick a species</option>
-      <option value="Canine" selected>Canine</option>
+      <option value="Canine">Canine</option>
       <option value="Feline">Feline</option>
       <option value="Equine">Equine </option>
       <option value="Other">Other</option>
@@ -53,33 +54,33 @@
     <br>
       <div class="form-group">
         <label for="Patient Name" class="sr-only">Patient name</label>
-        <input type="text" class="form-control" placeholder="Patient name" ng-model="case.patientName" value="Fluffy">
+        <input type="text" class="form-control" placeholder="Patient name" ng-model="case.patientName" value="Fluffy" ng-disabled="!user">
       </div>
       <div class="form-group">
         <label for="Patient Surname" class="sr-only">Patient last name</label>
-        <input type="text" class="form-control" placeholder="Patient last name" ng-model="case.patientSurname" value="Smith">
+        <input type="text" class="form-control" placeholder="Patient last name" ng-model="case.patientSurname" value="Smith" ng-disabled="!user">
       </div>
     </form>
 
     <h4>Case info</h4>
     <form class="form-group">
       <label class="radio-inline">
-        <input type="radio" name="case-type" ng-model="case.caseType" value="new" checked>New case
+        <input type="radio" name="case-type" ng-model="case.caseType" value="new" ng-disabled="!user">New case
       </label>
       <label class="radio-inline">
-        <input type="radio" name="case-type" ng-model="case.caseType" value="recheck">Recheck
+        <input type="radio" name="case-type" ng-model="case.caseType" value="recheck" ng-disabled="!user">Recheck
       </label>
     </form>
     <div class="form-group">
       <div ng-repeat="diagnosis in case.diagnoses track by $index">
-        <input type="text" class="form-control" ng-model="case.diagnoses[$index]" placeholder="Diagnosis">
+        <input type="text" class="form-control" ng-model="case.diagnoses[$index]" placeholder="Diagnosis" ng-disabled="!user">
       </div>
     </div>
-    <textarea class="form-control" placeholder="Treatment" ng-model="case.treatment" rows="3"></textarea>
-    <textarea class="form-control" placeholder="Outcome" rows="2" ng-model="case.outcome"></textarea>
-    <textarea class="form-control" placeholder="Followup" rows="2" ng-model="case.followup"></textarea>
+    <textarea class="form-control" placeholder="Treatment" ng-model="case.treatment" rows="3" ng-disabled="!user"></textarea>
+    <textarea class="form-control" placeholder="Outcome" rows="2" ng-model="case.outcome" ng-disabled="!user"></textarea>
+    <textarea class="form-control" placeholder="Followup" rows="2" ng-model="case.followup" ng-disabled="!user"></textarea>
     <h4>Clinician (hold Ctrl to select more than 1)</h4>
-    <select multiple class="form-control" ng-model="case.clinicians" ng-change="changedClinicians()"> 
+    <select multiple class="form-control" ng-model="case.clinicians" ng-change="changedClinicians()" ng-disabled="!user"> 
       <option value="ward">Dr. Ward</option>
       <option value="hendrix">Dr. Hendrix</option>
       <option value="chen">Dr. Chen</option>
@@ -87,10 +88,10 @@
       <option value="other">Other</option>
     </select>
     <br>
-    <input type="submit" value="Add case" ng-click="submitCase()">
+    <input type="submit" value="Add case" ng-click="submitCase()" ng-disabled="!user">
   </div> <!-- End first column --> 
   <div class="col-md-8">
-    <div ng-show="user">
+    <div class="animate-show" ng-show="user">
       <h1>{{user.name}}</h1>
       <h3>Number of cases seen: {{user.numNewCases + user.numRechecks}}</h3>
       <h4>New: {{user.numNewCases}}</h4>
@@ -102,7 +103,7 @@
     </div>
  -->     
     <div>
-      <h3 ng-hide="user">Please enter your NetId to the left to add cases to your case log</h3>
+      <h3 class="animate-show" ng-hide="user">Please enter your NetId to the left to add cases to your case log</h3>
       <br>  
     </div>
   <!-- <input type="text" class="form-control form-inline" placeholder="name" ng-model="user.name"> -->
