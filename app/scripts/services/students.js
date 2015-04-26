@@ -40,6 +40,17 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
       // c[caseId] = newCase.patientId;
       c[caseId] = caseDetails;
       studentsRef.child(studentId).child('cases').update(c);
+    },
+    deleteCase: function(studentId, scase) {
+      var onComplete = function(error) {
+        if (error) {
+          console.log('Student deleteCase synchronization failed');
+        } else {
+          console.log('Student deleteCase synchronization succeeded');
+        }
+      };
+      var caseRef = studentsRef.child(studentId).child('cases').child(scase.$id);
+      caseRef.remove(onComplete);
     }
   };
 

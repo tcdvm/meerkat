@@ -40,7 +40,7 @@ app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, FIR
       console.log('In addcase');
       console.log(patientId);
       // patientsRef.child(patientId).child('cases').update(c);
-      patientsRef.child(patientId).on('value', function(snapshot) {
+      patientsRef.child(patientId).once('value', function(snapshot) {
         if(snapshot.val()) {
           console.log('PatientId ' + patientId + ' exists!');
         } else {
@@ -54,6 +54,26 @@ app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, FIR
           patientsRef.child(patientId).update(newPatient);
         }
         patientsRef.child(patientId).child('cases').update(c);
+      }, function(errorObject) {
+        console.log('The read failed: ' + errorObject.code);
+      });
+    },
+    deleteCase: function(patientId, scase) {
+      var onComplete = function(error) {
+        if (error) {
+          console.log('Patient deleteCase synchronization failed');
+        } else {
+          console.log('Patient deleteCase synchronization succeeded');
+        }
+      };
+      var caseRef = patientsRef.child(patientId).child('cases').child(scase.$id);
+      caseRef.remove(onComplete);
+      // If no cases associated with patient, delete patient
+      caseRef.parent().once('value', function(snapshot) {
+        if(!snapshot.val()) {
+          console.log('Patient has no cases, deleting...');
+          caseRef.parent().parent().remove(onComplete);
+        }
       }, function(errorObject) {
         console.log('The read failed: ' + errorObject.code);
       });

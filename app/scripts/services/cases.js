@@ -21,6 +21,18 @@ app.factory('Cases', function($firebase, $firebaseArray, FIREBASE_URL) {
     },
     delete: function(studentcase) {
       return cases.$remove(studentcase);
+    },
+    deleteCase: function(caseId) {
+      var onComplete = function(error) {
+        if (error) {
+          console.log('Case deleteCase synchronization failed');
+        } else {
+          console.log('Case deleteCase synchronization succeeded');
+        }
+      };
+      var caseRef = ref.child(caseId);
+      console.log('case Id: ' + caseId);
+      caseRef.remove(onComplete);
     }
   };
 

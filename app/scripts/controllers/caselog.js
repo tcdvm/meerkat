@@ -138,16 +138,21 @@ app.controller('CaseLogCtrl',
 
   $scope.deleteCase = function(scase) {
     if($scope.user) {
+      console.log('going to decrement');
       switch(scase.caseType) {
       case 'new':
         $scope.user.numNewCases -= 1;
+        $scope.user.$save();
         break;
       case 'recheck':
         $scope.user.numRechecks -= 1;
+        $scope.user.$save();
         break;
       }
     }
-    Cases.delete(scase);
+    Cases.deleteCase(scase.$id);
+    Patients.deleteCase(scase.patientId, scase);
+    Students.deleteCase(scase.studentId, scase);
   };
 
   $scope.debug = function() {
