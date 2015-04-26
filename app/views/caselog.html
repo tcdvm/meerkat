@@ -73,7 +73,7 @@
     </form>
     <div class="form-group">
       <div ng-repeat="diagnosis in case.diagnoses track by $index">
-        <input type="text" class="form-control" ng-model="case.diagnoses[$index]" placeholder="Diagnosis" ng-disabled="!user">
+        <input type="text" typeahead="diagnosis for diagnosis in diagnoses | filter:$viewValue | limitTo:8"" class="form-control" ng-model="case.diagnoses[$index]" placeholder="Diagnosis" ng-disabled="!user">
       </div>
     </div>
     <textarea class="form-control" placeholder="Treatment" ng-model="case.treatment" rows="3" ng-disabled="!user"></textarea>
@@ -103,7 +103,8 @@
     </div>
  -->     
     <div>
-      <h3 class="animate-show" ng-hide="user">Please enter your NetId to the left to add cases to your case log</h3>
+      <h3 class="animate-show" ng-hide="user"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> 
+        Please enter your NetId to the left to add cases to your caselog!</h3>
       <br>  
     </div>
   <!-- <input type="text" class="form-control form-inline" placeholder="name" ng-model="user.name"> -->
@@ -112,8 +113,8 @@
           <th>PatientID</th>
           <th>Name</th>
           <th>Last Name</th>
+          <th>Species</th>
           <th>Diagnoses</th>
-          <th>Student</th>
           <th>Clinicians</th>
           <th></th>
         </tr> 
@@ -121,8 +122,8 @@
           <td>{{studentcase.patientId}}</td>
           <td>{{studentcase.patientName}}</td>
           <td>{{studentcase.patientSurname}}</td>
+          <td>{{studentcase.patientSpecies}}</td> 
           <td>{{studentcase.diagnoses}}</td> 
-          <td>{{studentcase.studentName}}</td> 
           <td>{{studentcase.clinicians }}</td> 
           <td><button type="button" class="btn btn-default btn-xs" ng-click="deleteCase(studentcase)">
           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete </button></td>

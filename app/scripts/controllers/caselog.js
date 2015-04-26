@@ -3,6 +3,9 @@
 app.controller('CaseLogCtrl',
   function ($scope, $modal, $firebaseObject, $firebaseArray, Cases, Students, Patients) {
 
+  $scope.diagnoses = ['Glaucoma', 'Cataracts', 'Uveitis', 'Keratoconjunctivitis sicca/KCS/Dry eye',
+  'Indolent ulcer', 'Deep corneal ulcer', 'Post-op cataract sx'];
+
   // $scope.netId = '';
   $scope.netId = 'tchen';
   $scope.user = undefined;
