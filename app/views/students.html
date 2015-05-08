@@ -1,0 +1,21 @@
+<input type="text" class="form-control" placeholder="Search student name" ng-model="search.name">
+<accordion close-others="true">
+	<accordion-group heading="{{student.name}} ({{student.netId}}) - Cases seen: {{student.numNewCases + student.numRechecks}} (New: {{student.numNewCases}} Rechecks: {{student.numRechecks}})" ng-repeat="student in students | filter:search">
+	<h4>Cases seen:</h4>
+	<table class="table table-condensed table-hover">
+		<tr>
+			<tr>
+				<th>Patient ID</th>
+				<th>Name</th>
+				<th>Species</th>
+				<th>Diagnoses</th>
+			</tr>
+		</tr>
+		<tr ng-repeat="case in student.cases">
+			<td>{{case.patientId}}</td>
+			<td>{{case.patientName}} {{case.patientSurname}}</td>
+			<td>{{case.patientSpecies}}</td>
+			<td>{{case.diagnoses}}</td>
+		</tr>
+	</table>
+</accordion>

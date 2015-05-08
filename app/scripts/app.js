@@ -21,16 +21,20 @@ var app = angular
     'firebase',
     'ui.bootstrap'
   ])
-  .constant('FIREBASE_URL', 'https://meerkat.firebaseio.com/')
+  .constant('FIREBASE_URL', 'https://meerkat-test.firebaseio.com/')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/caselog.html',
-        controller: 'CaseLogCtrl'
+        templateUrl: 'views/students.html',
+        controller: 'StudentsCtrl'
       })
       .when('/caselog/', {
         templateUrl: 'views/caselog.html',
         controller: 'CaseLogCtrl'
+      })
+      .when('/students/', {
+        templateUrl: 'views/students.html',
+        controller: 'StudentsCtrl'
       })
       .otherwise({
         redirectTo: '/'

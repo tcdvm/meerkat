@@ -17,8 +17,8 @@
       <div class="col-sm-8 form-group form-inline">
         <!-- <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" typeahead="student.studentName for student in snames | filter:$viewValue" typeahead-on-select="existingStudentSelected()"> -->
         <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" ng-disabled="user">
-        <input type="submit" class="btn-success form-control" value="Login" ng-click="login()" ng-hide="user">
-        <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()" ng-show="user">
+        <input type="submit" class="btn-success form-control" value="Login" ng-click="login()" ng-hide="user" ng-cloak>
+        <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()" ng-show="user" ng-cloak>
       </div>
     </div>
     <div class="row" ng-show="newUser">
@@ -73,7 +73,7 @@
     </form>
     <div class="form-group">
       <div ng-repeat="diagnosis in case.diagnoses track by $index">
-        <input type="text" typeahead="diagnosis for diagnosis in diagnoses | filter:$viewValue | limitTo:8"" class="form-control" ng-model="case.diagnoses[$index]" placeholder="Diagnosis" ng-disabled="!user">
+        <input type="text" typeahead="diagnosis for diagnosis in diagnoses | filter:$viewValue | limitTo:8" class="form-control" ng-model="case.diagnoses[$index]" placeholder="Diagnosis" ng-disabled="!user">
       </div>
     </div>
     <textarea class="form-control" placeholder="Treatment" ng-model="case.treatment" rows="3" ng-disabled="!user"></textarea>
