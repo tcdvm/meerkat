@@ -1,42 +1,20 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#/">Ophtho Student Caselogs</a>
+    <a class="navbar-brand" href="#/">Ophtho Case Logs</a>
   </div>
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <form class="navbar-form navbar-left" role="search" ng-submit="submitPost()" ng-show="signedIn()">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Title" ng-model="post.title">
-      </div>
-      <div class="form-group">
-      <input type="text" class="form-control" placeholder="Link" ng-model="post.url">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-<!--     <ul class="nav navbar-nav navbar-right">
-      <li ng-show="signedIn()">
-        <a ng-href="#/users/{{user.profile.username}}">
-        <img ng-src="http://www.gravatar.com/avatar/{{ user.profile.md5_hash}}" class="nav-pic" />
-        {{user.profile.username}}
-      </a>
-      </li>
-      <li ng-show="signedIn()">
-        <a href="#/" ng-click="logout()">Logout</a>
-      </li>
-      <li ng-hide="signedIn()">
-        <a href="#/login">Login</a>
-      </li>
-      <li ng-hide="signedIn()">
-        <a href="#/register">Register</a>
-      </li>
+  <div id="navbar" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li><a class="active" href="#/caselog/">Case Logs</a> </li>
+      <li><a class="" href="#/students/">Students</a></li>
     </ul>
- -->  </div><!-- /.navbar-collapse -->
+  </div>
+  </div>
 </nav>

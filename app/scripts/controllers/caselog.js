@@ -232,6 +232,9 @@ app.controller('CaseLogCtrl',
 
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'MMMM dd, yyyy'];
   $scope.format = $scope.formats[4];
+  
+  $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+  $scope.data = [300, 500, 100];
 
 }); // end controller
 

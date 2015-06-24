@@ -19,7 +19,8 @@ var app = angular
     'ngSanitize',
     'ngTouch',
     'firebase',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'chart.js'
   ])
   .constant('FIREBASE_URL', 'https://meerkat-test.firebaseio.com/')
   .config(function ($routeProvider) {
