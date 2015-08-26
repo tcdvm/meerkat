@@ -1,21 +1,47 @@
-<input type="text" class="form-control" placeholder="Search student name" ng-model="search.name">
-<accordion close-others="true">
-	<accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks}} (New: {{student.numNewCases}} Rechecks: {{student.numRechecks}})" ng-repeat="student in students | filter:search| orderBy:'name'">
-	<h4>Cases seen:</h4>
-	<table class="table table-condensed table-hover">
-		<tr>
-			<tr>
-				<th>Patient ID</th>
-				<th>Name</th>
-				<th>Species</th>
-				<th>Diagnoses</th>
-			</tr>
-		</tr>
-		<tr ng-repeat="case in student.cases | orderBy:'patientName'">
-			<td>{{case.patientId}}</td>
-			<td>{{case.patientName}} {{case.patientSurname}}</td>
-			<td>{{case.patientSpecies}}</td>
-			<td>{{case.diagnoses}}</td>
-		</tr>
-	</table>
-</accordion>
+<div class="row">
+	<div class="col-lg-3">
+		<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">26</div>
+                                    <div>New Comments!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+	</div> <!-- End first column -->
+	<div class="col-lg-9">
+		<input type="text" class="form-control" placeholder="Search student name" ng-model="search.name">
+		<accordion close-others="true">
+			<accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks}} (New: {{student.numNewCases}} Rechecks: {{student.numRechecks}})" ng-repeat="student in students | filter:search| orderBy:'name'">
+			<h4>Cases seen:</h4>
+			<table class="table table-condensed table-hover">
+				<tr>
+					<tr>
+						<th>Patient ID</th>
+						<th>Name</th>
+						<th>Species</th>
+						<th>Diagnoses</th>
+					</tr>
+				</tr>
+				<tr ng-repeat="case in student.cases | orderBy:'patientName'">
+					<td>{{case.patientId}}</td>
+					<td>{{case.patientName}} {{case.patientSurname}}</td>
+					<td>{{case.patientSpecies}}</td>
+					<td>{{case.diagnoses}}</td>
+				</tr>
+			</table>
+		</accordion>
+	</div> <!-- End second column -->
+</div> <!-- End row -->

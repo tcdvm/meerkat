@@ -20,7 +20,7 @@ var app = angular
     'ngTouch',
     'firebase',
     'ui.bootstrap',
-    'chart.js'
+    'highcharts-ng'
   ])
   .constant('FIREBASE_URL', 'https://meerkat-test.firebaseio.com/')
   .config(function ($routeProvider) {

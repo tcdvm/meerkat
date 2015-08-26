@@ -31,8 +31,10 @@ module.exports = function(config) {
       'bower_components/firebase/firebase.js',
       'bower_components/angularfire/dist/angularfire.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'bower_components/Chart.js/Chart.js',
-      'bower_components/angular-chart.js/dist/angular-chart.js',
+      'bower_components/highcharts-release/highcharts.js',
+      'bower_components/highcharts-release/highcharts-more.js',
+      'bower_components/highcharts-release/modules/exporting.js',
+      'bower_components/highcharts-ng/dist/highcharts-ng.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

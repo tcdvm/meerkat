@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-lg-7">
             <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-disabled="!user"   />
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-disabled="!user"   />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)" ng-disabled="!user"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -70,35 +70,89 @@
       <label class="radio-inline">
         <input type="radio" name="case-type" ng-model="case.caseType" value="recheck" ng-disabled="!user">Recheck
       </label>
+      <label class="radio-inline">
+        <input type="radio" name="case-type" ng-model="case.caseType" value="procedure" ng-disabled="!user">Procedure/Surgery
+      </label>
     </form>
+    <form class="form-group" ng-show="case.caseType == 'procedure'">
+      <h5>What was your level of involvement?</h5>
+      <label class="radio-inline">
+        <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="all" ng-disabled="!user">Did all of it!
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="some" ng-disabled="!user">Did some of the procedure!
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="none" ng-disabled="!user">Mostly just a paperwork monkey...
+      </label>
+    </form>
+    <h5>Diagnoses</h5>
     <div class="form-group">
       <div ng-repeat="diagnosis in case.diagnoses track by $index">
         <input type="text" typeahead="diagnosis for diagnosis in diagnoses | filter:$viewValue | limitTo:8" class="form-control" ng-model="case.diagnoses[$index]" placeholder="Diagnosis" ng-disabled="!user">
       </div>
+      <button ng-disabled="!user" ng-click="addDiagnosis()" type="button" class="btn btn-default" aria-label="Left Align">
+  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>  Add diagnosis
+</button>
     </div>
-    <textarea class="form-control" placeholder="Treatment" ng-model="case.treatment" rows="3" ng-disabled="!user"></textarea>
-    <textarea class="form-control" placeholder="Outcome" rows="2" ng-model="case.outcome" ng-disabled="!user"></textarea>
+    <h5>Case Summary</h5>
+    <textarea class="form-control" placeholder="" ng-model="case.summary" rows="4" ng-disabled="!user"></textarea>
+<!--     <textarea class="form-control" placeholder="Outcome" rows="2" ng-model="case.outcome" ng-disabled="!user"></textarea>
     <textarea class="form-control" placeholder="Followup" rows="2" ng-model="case.followup" ng-disabled="!user"></textarea>
-    <h4>Clinician (hold Ctrl to select more than 1)</h4>
+ -->    <h4>Clinician (hold Ctrl to select more than 1)</h4>
     <select multiple class="form-control" ng-model="case.clinicians" ng-change="changedClinicians()" ng-disabled="!user"> 
       <option value="ward">Dr. Ward</option>
       <option value="hendrix">Dr. Hendrix</option>
       <option value="chen">Dr. Chen</option>
       <option value="best">Dr. Best</option>
+      <option value="newbold">Dr. Newbold</option>
       <option value="other">Other</option>
     </select>
     <br>
-    <input type="submit" value="Add case" ng-click="submitCase()" ng-disabled="!user">
+    <button class="btn btn-success" ng-click="submitCase()" ng-disabled="!user">Add case</button>
   </div> <!-- End first column --> 
   <div class="col-lg-8">
     <div class="row" ng-show="user">
-      <div class="col-lg-12">
-        <h1>{{user.name}}</h1>
-        <h3>Number of cases seen: {{user.numNewCases + user.numRechecks}}</h3>
-        <h4>New: {{user.numNewCases}}</h4>
-        <h4>Rechecks: {{user.numRechecks}}</h4>
+      <div class="panel panel-default">
+        <div class="panel-body">
+      <div class="col-lg-4">
+        <!-- <div class="panel panel-default"> -->
+          <!-- <div class="panel-body"> -->
+            <h1>{{user.name}}</h1>
+<!--             <h3>Number of cases seen: {{user.numNewCases + user.numRechecks}}</h3>
+            <h4>New: {{user.numNewCases}}</h4>
+            <h4>Rechecks: {{user.numRechecks}}</h4>
+ -->            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="badge">{{user.numNewCases}}</span>
+                New cases seen:
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{user.numRechecks}}</span>
+                Rechecks seen:
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{user.numProcedures}}</span>
+                Surgeries/Procedures: 
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{user.numNewCases + user.numRechecks + user.numProcedures}}</span>
+                <b>Total cases:</b>
+              </li>
+            </ul>
+          <!-- </div> -->
+        <!-- </div> -->
+      </div>
+      <div class="col-lg-5">
+        <!-- <div class="panel panel-default"> -->
+          <!-- <div class="panel-body"> -->
+            <highchart id="chart1" config="chartConfig"></highchart>
+          <!-- </div> -->
+        <!-- </div> -->
       </div>
     </div>
+    </div>
+    </div> <!-- End row for user -->
 <!--     <div class="form-group form-inline">
       <input type="text" class="form-control" placeholder="Filter by clinician" style="width:200px" ng-model="search.clinicians">
       <input type="text" class="form-control" placeholder="Filter by diagnosis" style="width:200px" ng-model="search.diagnoses">
@@ -115,6 +169,7 @@
        <table class="table table-condensed table-hover">
           <tr>
             <th>Student</th>
+            <th>Date</th>
             <th>PatientID</th>
             <th>Name</th>
             <th>Species</th>
@@ -124,6 +179,7 @@
           </tr> 
           <tr ng-repeat="studentcase in cases | limitTo:20">
             <td>{{studentcase.studentName}}</td>
+            <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
             <td>{{studentcase.patientId}}</td>
             <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>
             <td>{{studentcase.patientSpecies}}</td> 

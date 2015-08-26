@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIREBASE_URL) {
+app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIREBASE_URL, Diagnoses) {
   var studentsRef = new Firebase(FIREBASE_URL + 'students');
   var studentList = $firebaseArray(studentsRef);
 
@@ -51,7 +51,83 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
       };
       var caseRef = studentsRef.child(studentId).child('cases').child(scase.$id);
       caseRef.remove(onComplete);
-    }
+    },
+    getCaseStats: function(studentId) {
+      var caseTypes = {};
+      studentsRef.child(studentId).on('value', function(snapshot) {
+        var studentStats = snapshot.val();
+        // console.log('student stats:' + studentStats);
+        caseTypes.numNewCases = studentStats.numNewCases;
+        caseTypes.numRechecks = studentStats.numRechecks;
+        var caseStatsObj = studentStats.caseStats;
+        // Order of array: KCS', 'Corneal Ulcers', 'Glaucoma', 'Cataracts', 'Anterior Uveitis', 'Retinal Disease'
+        var caseStatsArray = [caseStatsObj.KCS, caseStatsObj.CornealUlcers, caseStatsObj.Glaucoma,
+          caseStatsObj.Cataracts, caseStatsObj.AnteriorUveitis, caseStatsObj.RetinalDisease];
+        caseTypes.caseStats = caseStatsArray;
+      }, function(errorObject) {
+        console.log('Error in getting stats' + errorObject.code);
+      });
+      return caseTypes;
+    },
+    refreshCaseStats: function(studentId) {
+      var newCaseCount = 0;
+      var recheckCaseCount = 0;
+      var procedureCount = 0;
+      var diagnosisCount = {
+        KCS: 0,
+        CornealUlcers: 0,
+        Glaucoma: 0,
+        Cataracts: 0,
+        AnteriorUveitis: 0,
+        RetinalDisease: 0
+      };
+      // var diagnosisStats = [];
+
+      // Go through each case - get if new or recheck, compile case types (if compiled)
+      studentsRef.child(studentId).child('cases').once('value', function(snapshot) {
+        snapshot.forEach(function(caseSnapshot) {
+          // Compile case type stats
+          var scase = caseSnapshot.val();
+          switch(scase.caseType) {
+          case 'new':
+            newCaseCount += 1;
+            break;
+          case 'recheck':
+            recheckCaseCount += 1;
+            break;
+          case 'procedure':
+            procedureCount += 1;
+            break;
+          }
+
+          // Compile case type stats
+          scase.diagnoses.forEach(function(diagnosis) {
+            var category = Diagnoses.category(diagnosis);
+            if(category !== '') {
+              diagnosisCount[category] += 1;
+            } else {
+              console.log('Diagnosis: ' + diagnosis + ' not found.');
+            }
+          });
+
+        }); // end forEach
+
+        console.log('refreshing cases - new, rechecks, procedures:' + newCaseCount + recheckCaseCount + procedureCount);
+        studentsRef.child(studentId).child('numNewCases').set(newCaseCount);
+        studentsRef.child(studentId).child('numRechecks').set(recheckCaseCount);
+        studentsRef.child(studentId).child('numProcedures').set(procedureCount);
+        studentsRef.child(studentId).child('caseStats').set(diagnosisCount);
+        // for(var index in diagnosisCount) {
+        //   diagnosisStats.push(diagnosisCount[index]);
+        //   // console.log(index + diagnosisCount[index]);
+        // }
+        // diagnosisCount.forEach(function(diagnosis) {
+        //   diagnosisStats.push(diagnosisCount[diagnosis]);
+        // });
+        // console.log(diagnosisStats);
+      });
+      // return diagnosisStats;
+    } // end refreshCaseStats
   };
 
   return Student;

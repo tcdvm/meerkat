@@ -30,6 +30,10 @@ body {
   padding-bottom: 19px;
 }
 
+.navbar {
+  border-radius: 0px;
+}
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;
@@ -96,6 +100,15 @@ select[size] {
   height: 100px;
 }
 
-h3 {
+h1, h3 {
   margin-top: 0;
+}
+
+.list-group-item {
+  font-size: large;
+}
+
+.badge {
+  padding: 7px 7px;
+  border-radius: 7px;
 }
