@@ -73,6 +73,10 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
       var newCaseCount = 0;
       var recheckCaseCount = 0;
       var procedureCount = 0;
+      var dogCount = 0;
+      var catCount = 0;
+      var horseCount = 0;
+      var otherCount = 0;
       var diagnosisCount = {
         KCS: 0,
         CornealUlcers: 0,
@@ -110,12 +114,31 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
             }
           });
 
+          switch(scase.patientSpecies) {
+          case 'Canine':
+            dogCount += 1;
+            break;
+          case 'Feline':
+            catCount += 1;
+            break;
+          case 'Equine':
+            horseCount += 1;
+            break;
+          case 'Other':
+            otherCount += 1;
+            break;
+          }
+
         }); // end forEach
 
         console.log('refreshing cases - new, rechecks, procedures:' + newCaseCount + recheckCaseCount + procedureCount);
         studentsRef.child(studentId).child('numNewCases').set(newCaseCount);
         studentsRef.child(studentId).child('numRechecks').set(recheckCaseCount);
         studentsRef.child(studentId).child('numProcedures').set(procedureCount);
+        studentsRef.child(studentId).child('numDogs').set(dogCount);
+        studentsRef.child(studentId).child('numCats').set(catCount);
+        studentsRef.child(studentId).child('numHorses').set(horseCount);
+        studentsRef.child(studentId).child('numOther').set(otherCount);
         studentsRef.child(studentId).child('caseStats').set(diagnosisCount);
         // for(var index in diagnosisCount) {
         //   diagnosisStats.push(diagnosisCount[index]);

@@ -115,14 +115,11 @@
     <div class="row" ng-show="user">
       <div class="panel panel-default">
         <div class="panel-body">
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <!-- <div class="panel panel-default"> -->
           <!-- <div class="panel-body"> -->
             <h1>{{user.name}}</h1>
-<!--             <h3>Number of cases seen: {{user.numNewCases + user.numRechecks}}</h3>
-            <h4>New: {{user.numNewCases}}</h4>
-            <h4>Rechecks: {{user.numRechecks}}</h4>
- -->            <ul class="list-group">
+            <ul class="list-group">
               <li class="list-group-item">
                 <span class="badge">{{user.numNewCases}}</span>
                 New cases seen:
@@ -135,9 +132,20 @@
                 <span class="badge">{{user.numProcedures}}</span>
                 Surgeries/Procedures: 
               </li>
+            </ul>
+
+            <ul class="list-group">
               <li class="list-group-item">
-                <span class="badge">{{user.numNewCases + user.numRechecks + user.numProcedures}}</span>
-                <b>Total cases:</b>
+                <span class="badge">{{user.numDogs}}</span>
+                Dogs:
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{user.numCats}}</span>
+                Cats:
+              </li>
+              <li class="list-group-item">
+                <span class="badge">{{user.numHorses}}</span>
+                Horses:
               </li>
             </ul>
           <!-- </div> -->
