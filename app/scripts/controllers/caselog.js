@@ -46,7 +46,11 @@ app.controller('CaseLogCtrl',
         console.log('Net ID & Student Name: ' + newStudent.netId + ' ' + newStudent.name);
         newStudent.numNewCases = 0;
         newStudent.numRechecks = 0;
-        newStudent.numSurgeries = 0;
+        newStudent.numProcedures = 0;
+        newStudent.numDogs = 0;
+        newStudent.numCats = 0;
+        newStudent.numHorses = 0;
+        newStudent.numOther = 0;
         $scope.user = $firebaseObject(Students.create(newStudent.netId, newStudent));
         // userObject = $firebaseObject(Students.create(newStudent.netId, newStudent));
         // userObject.$bindTo($scope, 'user');
