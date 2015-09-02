@@ -14,12 +14,21 @@
         font-size: 20px;
 font-style: normal;
 margin-left: 0px;
-}.flaticon-black200:before {
+}.flaticon-badges1:before {
 	content: "\e000";
 }
-.flaticon-cat19:before {
+.flaticon-black200:before {
 	content: "\e001";
 }
-.flaticon-dog77:before {
+.flaticon-cat19:before {
 	content: "\e002";
+}
+.flaticon-checked21:before {
+	content: "\e003";
+}
+.flaticon-dog77:before {
+	content: "\e004";
+}
+.flaticon-scalpel1:before {
+	content: "\e005";
 }
