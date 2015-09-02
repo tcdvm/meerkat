@@ -1,27 +1,33 @@
 <div class="row">
-	<div class="col-lg-3">
+	<div class="col-lg-2">
 		<div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-      </div>
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-users fa-5x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="huge">{{students.length}}</div>
+                    <div>Student caselogs!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+		<div class="panel panel-green">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-users fa-5x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="huge">{{students.length}}</div>
+                    <div>Student caselogs!</div>
+                </div>
+            </div>
+        </div>
+    </div>
 	</div> <!-- End first column -->
-	<div class="col-lg-9">
+	<div class="col-lg-8">
 		<input type="text" class="form-control" placeholder="Search student name" ng-model="search.name">
 		<accordion close-others="true">
 			<accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks}} (New: {{student.numNewCases}} Rechecks: {{student.numRechecks}})" ng-repeat="student in students | filter:search| orderBy:'name'">
