@@ -1,36 +1,102 @@
+<!-- <div class="row">
+		<div class="panel panel-primary col-lg-3">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-users fa-5x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="huge">{{students.length}}</div>
+                    <div>Student caselogs!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+		<div class="panel panel-green col-lg-3">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-users fa-5x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="huge">{{students.length}}</div>
+                    <div>Student caselogs!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+ -->
 <div class="row">
-	<div class="col-lg-2">
-		<div class="panel panel-primary">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-xs-3">
-                    <i class="fa fa-users fa-5x"></i>
-                </div>
-                <div class="col-xs-9 text-right">
-                    <div class="huge">{{students.length}}</div>
-                    <div>Student caselogs!</div>
-                </div>
-            </div>
-        </div>
-    </div>
-		<div class="panel panel-green">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-xs-3">
-                    <i class="fa fa-users fa-5x"></i>
-                </div>
-                <div class="col-xs-9 text-right">
-                    <div class="huge">{{students.length}}</div>
-                    <div>Student caselogs!</div>
-                </div>
-            </div>
-        </div>
-    </div>
-	</div> <!-- End first column -->
-	<div class="col-lg-8">
-		<input type="text" class="form-control" placeholder="Search student name" ng-model="search.name">
+  <div class="col-lg-2 col-lg-offset-2">
+      <div class="panel panel-black">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <i class="fa fa-users fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">{{numStudents}}</div>
+                      <div>Students</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-2">
+      <div class="panel panel-dkblue">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <!-- <i class="fa fa-tasks fa-5x"></i> -->
+                      <i class="flaticon-badges1-dashboard"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">{{avgNewCases}}</div>
+                      <div>Avg new cases/student</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-2">
+      <div class="panel panel-aqua">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <!-- <i class="fa fa-shopping-cart fa-5x"></i> -->
+                      <i class="flaticon-checked21-dashboard"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">{{avgRechecks}}</div>
+                      <div>Avg rechecks/student</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-2 col-md-6">
+      <div class="panel panel-ltblue">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <!-- <i class="fa fa-support fa-5x"></i> -->
+                      <i class="flaticon-scalpel1-dashboard"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">{{avgProcedures}}</div>
+                      <div>Avg procedures/student</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		<input type="text" class="form-control" placeholder="Search student name" ng-model="search.name"><br>
 		<accordion close-others="true">
-			<accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks}} (New: {{student.numNewCases}} Rechecks: {{student.numRechecks}})" ng-repeat="student in students | filter:search| orderBy:'name'">
+			<accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks}} (New: {{student.numNewCases}} Rechecks: {{student.numRechecks}})" ng-animate="'animate'" ng-repeat="student in students | filter:search| orderBy:'name'">
 			<h4>Cases seen:</h4>
 			<table class="table table-condensed table-hover">
 				<tr>
@@ -41,7 +107,7 @@
 						<th>Diagnoses</th>
 					</tr>
 				</tr>
-				<tr ng-repeat="case in student.cases | orderBy:'patientName'">
+				<tr tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{case.summary}}" tooltip-append-to-body="true"  ng-repeat="case in student.cases | orderBy:'patientName'">
 					<td>{{case.patientId}}</td>
 					<td>{{case.patientName}} {{case.patientSurname}}</td>
 					<td>{{case.patientSpecies}}</td>
@@ -49,5 +115,6 @@
 				</tr>
 			</table>
 		</accordion>
-	</div> <!-- End second column -->
-</div> <!-- End row -->
+		</div> <!-- End second column -->
+	</div> <!-- End row -->
+</div>

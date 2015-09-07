@@ -11,9 +11,9 @@
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
 	font-family: Flaticon;
-        font-size: 20px;
-font-style: normal;
-margin-left: 0px;
+  font-size: 20px;
+	font-style: normal;
+	margin-left: 0px;
 }.flaticon-badges1:before {
 	content: "\e000";
 }
@@ -30,5 +30,27 @@ margin-left: 0px;
 	content: "\e004";
 }
 .flaticon-scalpel1:before {
+	content: "\e005";
+}
+/*
+.flaticon-badges1-panel {
+	font-family: Flaticon;
+	font-size: 40px;
+	font-style: normal;
+	margin-left: 0px;
+}
+*/
+.flaticon-badges1-dashboard:before {
+	font-size: 50px;
+	content: "\e000";
+}
+
+.flaticon-checked21-dashboard:before {
+	font-size: 50px;
+	content: "\e003";
+}
+
+.flaticon-scalpel1-dashboard:before {
+	font-size: 50px;
 	content: "\e005";
 }

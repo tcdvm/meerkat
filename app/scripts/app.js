@@ -26,8 +26,8 @@ var app = angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/students.html',
-        controller: 'StudentsCtrl'
+        templateUrl: 'views/caselog.html',
+        controller: 'CaseLogCtrl'
       })
       .when('/caselog/', {
         templateUrl: 'views/caselog.html',
@@ -37,10 +37,17 @@ var app = angular
         templateUrl: 'views/students.html',
         controller: 'StudentsCtrl'
       })
+      .when('/cases/', {
+        templateUrl: 'views/cases.html',
+        controller: 'CaseViewerCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .config(['$animateProvider', function($animateProvider) {
+    $animateProvider.classNameFilter(/animate/);
+  }]);
 
 app.directive('datepickerPopup', ['datepickerPopupConfig', 'dateParser', 'dateFilter', function (datepickerPopupConfig, dateParser, dateFilter) {
     return {

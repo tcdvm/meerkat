@@ -14,11 +14,11 @@
 <div class="row">
   <div class="col-lg-4">
     <div class="row">
-      <div class="col-sm-8 form-group form-inline">
+      <div class="col-sm-9 form-group form-inline">
         <!-- <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" typeahead="student.studentName for student in snames | filter:$viewValue" typeahead-on-select="existingStudentSelected()"> -->
         <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" ng-disabled="user">
-        <input type="submit" class="btn-success form-control" value="Login" ng-click="login()" ng-hide="user" ng-cloak>
-        <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()" ng-show="user" ng-cloak>
+        <input type="submit" class="btn-success form-control" value="Login" ng-click="login()" ng-hide="user" >
+        <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()" ng-show="user" >
       </div>
     </div>
     <div class="row" ng-show="newUser">
@@ -112,7 +112,7 @@
     <button class="btn btn-success" ng-click="submitCase()" ng-disabled="!user">Add case</button>
   </div> <!-- End first column --> 
   <div class="col-lg-8">
-    <div class="row" ng-show="user">
+    <div class="row animate-show" ng-show="user">
       <div class="panel panel-default">
         <div class="panel-body">
       <div class="col-lg-3">
@@ -185,7 +185,7 @@
             <th>Clinicians</th>
             <th></th>
           </tr> 
-          <tr ng-repeat="studentcase in cases | limitTo:20">
+          <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | limitTo:20">
             <td>{{studentcase.studentName}}</td>
             <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
             <td>{{studentcase.patientId}}</td>

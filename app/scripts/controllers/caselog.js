@@ -211,6 +211,7 @@ app.controller('CaseLogCtrl',
     Cases.deleteCase(scase.$id);
     Patients.deleteCase(scase.patientId, scase);
     Students.deleteCase(scase.studentId, scase);
+    Students.refreshCaseStats($scope.netId);
     var caseStats = Students.getCaseStats($scope.netId);
     $scope.chartConfig.series[0].data = caseStats.caseStats;
   };

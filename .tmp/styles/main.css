@@ -117,8 +117,48 @@ h1, h3 {
   font-size: 40px;
 }
 
-.panel-green {
+/*.panel-green {
   border-color: #5cb85c;
   color: #fff;
   background-color: #5cb85c;
 }
+*/
+.panel-black {
+  border-color: #00171F;
+  color: #efefef;
+  background-color: #00171F;
+}
+
+.panel-aqua {
+  border-color: #007EA7;
+  color: #efefef;
+  background-color: #007EA7;
+}
+
+.panel-ltblue {
+  border-color: #008EC6;
+  color: #ededed;
+  background-color: #008EC6;
+}
+
+.panel-dkblue {
+  border-color: #003459;
+  color: #ededed;
+  background-color: #003459;
+}
+/*.panel-primary {
+  background-color: #337ab7;
+}
+
+*/.navbar-inverse {
+  background-color: #00171F;
+  border-color: #00171F;
+}
+
+
+/**
+
+Color Scheme
+
+https://coolors.co/ffffff-007ea7-00a8e8-003459-00171f
+**/ 
