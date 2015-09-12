@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-lg-2 col-lg-offset-2">
+      <div class="panel panel-black">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <i class="fa fa-users fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">23</div>
+                      <div>Students</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-2">
+      <div class="panel panel-dkblue">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <!-- <i class="fa fa-tasks fa-5x"></i> -->
+                      <i class="flaticon-badges1-dashboard"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">34</div>
+                      <div>Avg new cases/student</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-2">
+      <div class="panel panel-aqua">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <!-- <i class="fa fa-shopping-cart fa-5x"></i> -->
+                      <i class="flaticon-checked21-dashboard"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">21</div>
+                      <div>Avg rechecks/student</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-2 col-md-6">
+      <div class="panel panel-ltblue">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <!-- <i class="fa fa-support fa-5x"></i> -->
+                      <i class="flaticon-scalpel1-dashboard"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">56</div>
+                      <div>Avg procedures/student</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+ <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+          <input type="text" class="form-control" placeholder="Search by anything" ng-model="search"><br>
+       <table class="table table-condensed table-hover">
+          <tr>
+            <!-- <th>Student</th> -->
+            <th>Date</th>
+            <th>PatientID</th>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Diagnoses</th>
+            <th>Clinicians</th>
+            <!-- <th></th> -->
+          </tr> 
+          <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" dir-paginate="studentcase in caseArray | filter:search | itemsPerPage: 20">
+            <!-- <td>{{studentcase.studentName}}</td> -->
+            <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
+            <td>{{studentcase.patientId}}</td>
+            <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>
+            <td>{{studentcase.patientSpecies}}</td> 
+            <td>{{studentcase.diagnoses}}</td> 
+            <td>{{studentcase.clinicians }}</td> 
+            <!-- <td><button type="button" class="btn btn-default btn-xs" ng-click="deleteCase(studentcase)"> -->
+            <!-- <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete </button></td> -->
+          </tr>
+      </table> 
+
+      <dir-pagination-controls></dir-pagination-controls>
+    </div>
+  </div>
+    <!-- <button ng-click="debug()"></button> -->
+  </div> <!-- End second column -->
+</div> <!-- end row -->
+<!--           <div class="panel panel-default">
+            <div class="panel-body">
+
+              <ul>
+                <li dir-paginate="t in tests | itemsPerPage: 3">{{ t }}</li>
+                
+              </ul>
+            </div>
+            <dir-pagination-controls></dir-pagination-controls>
+          </div> -->
