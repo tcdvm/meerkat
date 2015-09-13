@@ -219,6 +219,7 @@ app.controller('CaseLogCtrl',
 
   $scope.today = function() {
     $scope.dt = new Date();
+    $scope.dt.setHours(0,0,0,0);
   };
   $scope.today();
 

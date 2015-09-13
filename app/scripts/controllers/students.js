@@ -3,17 +3,17 @@
 app.controller('StudentsCtrl',
 	function ($scope, $firebaseObject, $firebaseArray, Students) {
 		$scope.students = Students.all;
-		$scope.students.$loaded().then(function(students) {
+		$scope.students.$loaded().then(function() {
 			$scope.numStudents = $scope.students.length;
 			var totalNewCases = 0;
 			var totalRechecks = 0;
 			var totalProcedures = 0;
-		  console.log(students.length); // data is loaded here
+		  // console.log(students.length); // data is loaded here
 		  angular.forEach($scope.students, function(student) {
 				totalNewCases += student.numNewCases;
 				totalRechecks += student.numRechecks;
 				totalProcedures += student.numProcedures;
-        console.log(student);
+        // console.log(student);
 	    });
 	    $scope.avgNewCases = totalNewCases/$scope.numStudents;
 	    $scope.avgRechecks = totalRechecks/$scope.numStudents;
