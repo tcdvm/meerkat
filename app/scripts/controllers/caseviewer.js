@@ -14,8 +14,8 @@ app.controller('CaseViewerCtrl',
 		$scope.cases = Cases.all;
 		$scope.cases.$loaded().then(function() {
 			for (var i = 0; i < $scope.cases.length; i++) {
-			  $scope.caseArray.push($scope.cases[i]);
-			  // console.log(new Date($scope.cases[i].date).setHours(0,0,0,0));
+			  $scope.caseArray.push($scope.cases[i]); // used for pagination
+
 			  var dateKey = new Date($scope.cases[i].date).setHours(0,0,0,0);
 			  switch($scope.cases[i].caseType) {
         case 'new':
@@ -28,11 +28,7 @@ app.controller('CaseViewerCtrl',
 					procedureCases[dateKey] = (procedureCases[dateKey] || 0) + 1;
           break;
 			  }
-			  // console.log(Object.keys(newCases));
 			}
-		  console.log(recheckCases);
-		  // console.log(recheckCases);
-		  // console.log(procedureCases);
 		  for (var date in newCases) {
 				newCasesArray.push([parseInt(date, 10), newCases[date]]);
 		  }

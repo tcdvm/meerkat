@@ -67,11 +67,12 @@
 	<div class="col-lg-8 col-lg-offset-2">
 		<input type="text" class="form-control" placeholder="Search student name" ng-model="search.name"><br>
 		<accordion close-others="true">
-			<accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks}} (New: {{student.numNewCases}} Rechecks: {{student.numRechecks}})" ng-animate="'animate'" ng-repeat="student in students | filter:search| orderBy:'name'">
+			<accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks}} (New: {{student.numNewCases}} Rechecks: {{student.numRechecks}})" ng-animate="'animate'" ng-repeat="student in students | filter:search| orderBy:'date'">
 			<h4>Cases seen:</h4>
 			<table class="table table-condensed table-hover">
 				<tr>
 					<tr>
+            <th>Date</th>
 						<th>Patient ID</th>
 						<th>Name</th>
 						<th>Species</th>
@@ -79,6 +80,7 @@
 					</tr>
 				</tr>
 				<tr tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{case.summary}}" tooltip-append-to-body="true"  ng-repeat="case in student.cases | orderBy:'patientName'">
+          <td>{{case.date | date:'MMM dd, yyyy'}}</td>
 					<td>{{case.patientId}}</td>
 					<td>{{case.patientName}} {{case.patientSurname}}</td>
 					<td>{{case.patientSpecies}}</td>

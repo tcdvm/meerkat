@@ -19,7 +19,7 @@
             <th>Clinicians</th>
             <!-- <th></th> -->
           </tr> 
-          <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" dir-paginate="studentcase in caseArray | filter:search | itemsPerPage: 20">
+          <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" dir-paginate="studentcase in caseArray | filter:search | orderBy:'date' |itemsPerPage: 25">
             <!-- <td>{{studentcase.studentName}}</td> -->
             <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
             <td>{{studentcase.patientId}}</td>
