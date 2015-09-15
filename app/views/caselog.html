@@ -3,7 +3,6 @@
     <h3 class="modal-title">Create a new user!</h3>
   </div> 
   <div class="modal-body">
-  NetID: {{netId}}
   <input type="text" class="form-control form-inline" placeholder="What's your name?" ng-model="newStudentName">
   </div>
   <div class="modal-footer">
@@ -15,7 +14,6 @@
   <div class="col-lg-4">
     <div class="row">
       <div class="col-sm-9 form-group form-inline">
-        <!-- <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" typeahead="student.studentName for student in snames | filter:$viewValue" typeahead-on-select="existingStudentSelected()"> -->
         <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" ng-disabled="user">
         <input type="submit" class="btn-success form-control" value="Login" ng-click="login()" ng-hide="user" >
         <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()" ng-show="user" >
@@ -97,9 +95,7 @@
     </div>
     <h5>Case Summary</h5>
     <textarea class="form-control" placeholder="" ng-model="case.summary" rows="4" ng-disabled="!user"></textarea>
-<!--     <textarea class="form-control" placeholder="Outcome" rows="2" ng-model="case.outcome" ng-disabled="!user"></textarea>
-    <textarea class="form-control" placeholder="Followup" rows="2" ng-model="case.followup" ng-disabled="!user"></textarea>
- -->    <h4>Clinician (hold Ctrl to select more than 1)</h4>
+    <h4>Clinician (hold Ctrl to select more than 1)</h4>
     <select multiple class="form-control" ng-model="case.clinicians" ng-change="changedClinicians()" ng-disabled="!user"> 
       <option value="ward">Dr. Ward</option>
       <option value="hendrix">Dr. Hendrix</option>
@@ -115,9 +111,7 @@
     <div class="row animate-show" ng-show="user">
       <div class="panel panel-default">
         <div class="panel-body">
-      <div class="col-lg-3">
-        <!-- <div class="panel panel-default"> -->
-          <!-- <div class="panel-body"> -->
+          <div class="col-lg-3">
             <h1>{{user.name}}</h1>
             <ul class="list-group">
               <li class="list-group-item">
@@ -148,30 +142,18 @@
                 <i class="flaticon-black200"></i> Horses:
               </li>
             </ul>
-          <!-- </div> -->
-        <!-- </div> -->
-      </div>
-      <div class="col-lg-5">
-        <!-- <div class="panel panel-default"> -->
-          <!-- <div class="panel-body"> -->
+          </div>
+          <div class="col-lg-5">
             <highchart id="chart1" config="chartConfig"></highchart>
-          <!-- </div> -->
-        <!-- </div> -->
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
     </div> <!-- End row for user -->
-<!--     <div class="form-group form-inline">
-      <input type="text" class="form-control" placeholder="Filter by clinician" style="width:200px" ng-model="search.clinicians">
-      <input type="text" class="form-control" placeholder="Filter by diagnosis" style="width:200px" ng-model="search.diagnoses">
-    </div>
- -->     
     <div>
       <h3 ng-hide="user"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> 
         Please enter your NetId to the left to add cases to your caselog!</h3>
       <br>  
     </div>
-  <!-- <input type="text" class="form-control form-inline" placeholder="name" ng-model="user.name"> -->
   <div class="row">
     <div class="col-lg-12">
        <table class="table table-condensed table-hover">
@@ -199,6 +181,5 @@
       </table> 
     </div>
   </div>
-    <!-- <button ng-click="debug()"></button> -->
   </div> <!-- End second column -->
 </div> <!-- end row -->
