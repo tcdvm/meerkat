@@ -10,11 +10,28 @@ app.controller('CaseViewerCtrl',
 		var recheckCasesArray = [];
 		var procedureCasesArray = [];
 
+		var speciesArray = [0, 0, 0, 0];
+
 		$scope.caseArray = []; // used for pagination
 		$scope.cases = Cases.all;
 		$scope.cases.$loaded().then(function() {
 			for (var i = 0; i < $scope.cases.length; i++) {
 			  $scope.caseArray.push($scope.cases[i]); // used for pagination
+
+			  switch($scope.cases[i].patientSpecies) {
+			  case 'Canine':
+					speciesArray[0]++;
+					break;
+			  case 'Feline':
+					speciesArray[1]++;
+					break;
+			  case 'Equine':
+					speciesArray[2]++;
+					break;
+			  case 'Other':
+					speciesArray[3]++;
+					break;
+			  }
 
 			  var dateKey = new Date($scope.cases[i].date).setHours(0,0,0,0);
 			  switch($scope.cases[i].caseType) {
@@ -46,7 +63,7 @@ app.controller('CaseViewerCtrl',
 
     });
 
-    $scope.chartConfig = {
+    $scope.caseDistChartConfig = {
 	    options: {
         chart: {
           type: 'spline'
@@ -75,7 +92,7 @@ app.controller('CaseViewerCtrl',
 		    }
 	    ],
 	    title: {
-        text: 'Hello'
+        text: 'Case distribution'
 	    },
 	    xAxis: {
 				type: 'datetime',
@@ -89,22 +106,33 @@ app.controller('CaseViewerCtrl',
 	    },
 	    loading: false
     };
+
+    $scope.speciesChartConfig = {
+	    options: {
+        chart: {
+          type: 'bar'
+        },
+        exporting: {
+          enabled: false
+        }
+	    }, // end options
+	    series: [
+		    {
+					name: 'Species',
+					data: speciesArray
+		    }
+	    ],
+	    title: {
+        text: 'Species seen'
+	    },
+	    xAxis: {
+				categories: ['Canine', 'Feline', 'Equine', 'Other']
+	    },
+	    yAxis: {
+				title: {text: 'Cases (#)'}
+	    },
+	    loading: false
+    };
 	}); // end controller
 
 
-		// $scope.students.$loaded().then(function(students) {
-		// 	$scope.numStudents = $scope.students.length;
-		// 	var totalNewCases = 0;
-		// 	var totalRechecks = 0;
-		// 	var totalProcedures = 0;
-		//   console.log(students.length); // data is loaded here
-		//   angular.forEach($scope.students, function(student) {
-		// 		totalNewCases += student.numNewCases;
-		// 		totalRechecks += student.numRechecks;
-		// 		totalProcedures += student.numProcedures;
-  //       console.log(student);
-	 //    });
-	 //    $scope.avgNewCases = totalNewCases/$scope.numStudents;
-	 //    $scope.avgRechecks = totalRechecks/$scope.numStudents;
-	 //    $scope.avgProcedures = totalProcedures/$scope.numStudents;
-		// });
