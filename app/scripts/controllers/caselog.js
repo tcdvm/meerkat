@@ -7,7 +7,7 @@ app.controller('CaseLogCtrl',
   'Anterior uveitis', 'Keratoconjunctivitis sicca', 'Indolent ulcer', 'Ulcerative keratitis',
   'Post-op cataract sx', 'Anterior lens luxation', 'Progressive retinal atrophy',
   'Sudden acquired retinal degeneration', 'Corneal dystrophy', 'Lipid keratopathy',
-  'Calcific keratopathy'];
+  'Calcific keratopathy', 'Uveal dermatologic syndrome'];
 
   // $scope.netId = '';
   $scope.netId = 'tchen';
