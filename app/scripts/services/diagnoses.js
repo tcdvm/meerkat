@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('Diagnoses', function() {
-	var kcs = /(keratoconjunctivitis sicca) |kcs/i;
+	var kcs = /(keratoconjunctivitis sicca)|kcs/i;
 	var cornealulcer = /(ulcerative\s+keratitis)|(indolent\s+ulcer)|\sulcer/i;
 	var glaucoma = /glaucoma/i;
 	var cataracts = /cataract/i;

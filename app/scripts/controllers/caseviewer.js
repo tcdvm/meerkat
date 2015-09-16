@@ -98,7 +98,7 @@ app.controller('CaseViewerCtrl',
 				type: 'datetime',
 				title: {text:'Date'},
         dateTimeLabelFormats: { // don't display the dummy year
-          day: '%e of %b'
+          day: '%e %b'
         }
 	    },
 	    yAxis: {

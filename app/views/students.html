@@ -77,6 +77,8 @@
 						<th>Name</th>
 						<th>Species</th>
 						<th>Diagnoses</th>
+            <th>Clinician</th>
+            <th>Case Type</th>
 					</tr>
 				</tr>
 				<tr tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{case.summary}}" tooltip-append-to-body="true"  ng-repeat="case in student.cases | orderBy:'patientName'">
@@ -84,7 +86,9 @@
 					<td>{{case.patientId}}</td>
 					<td>{{case.patientName}} {{case.patientSurname}}</td>
 					<td>{{case.patientSpecies}}</td>
-					<td>{{case.diagnoses}}</td>
+					<td>{{case.diagnoses | prettyArrayOutput}}</td>
+          <td>{{case.clinicians | prettyArrayOutput }}</td>
+          <td>{{case.caseType | capitalize}}</td>
 				</tr>
 			</table>
 		</accordion>

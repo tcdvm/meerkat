@@ -97,12 +97,12 @@
     <textarea class="form-control" placeholder="" ng-model="case.summary" rows="6" ng-disabled="!user"></textarea>
     <h4>Clinician (hold Ctrl to select more than 1)</h4>
     <select multiple class="form-control" ng-model="case.clinicians" ng-change="changedClinicians()" ng-disabled="!user"> 
-      <option value="ward">Dr. Ward</option>
-      <option value="hendrix">Dr. Hendrix</option>
-      <option value="chen">Dr. Chen</option>
-      <option value="best">Dr. Best</option>
-      <option value="newbold">Dr. Newbold</option>
-      <option value="other">Other</option>
+      <option value="Ward">Dr. Ward</option>
+      <option value="Hendrix">Dr. Hendrix</option>
+      <option value="Chen">Dr. Chen</option>
+      <option value="Best">Dr. Best</option>
+      <option value="Newbold">Dr. Newbold</option>
+      <option value="Other">Other</option>
     </select>
     <br>
     <button class="btn btn-success" ng-click="submitCase()" ng-disabled="!user">Add case</button>
@@ -182,7 +182,7 @@
                 <div class="radio">
                   <label>
                     <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                    Ophthalmology is why I wake up in the morning.
+                    I would marry it if it were legal.
                   </label>
                 </div>
               </div>
@@ -207,7 +207,8 @@
             <th>Species</th>
             <th>Diagnoses</th>
             <th>Clinicians</th>
-            <th></th>
+            <th>Case Type</th>
+            <th ng-show="user"></th>
           </tr> 
           <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date' |limitTo:20">
             <td>{{studentcase.studentName}}</td>
@@ -215,9 +216,10 @@
             <td>{{studentcase.patientId}}</td>
             <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>
             <td>{{studentcase.patientSpecies}}</td> 
-            <td>{{studentcase.diagnoses}}</td> 
-            <td>{{studentcase.clinicians }}</td> 
-            <td><button type="button" class="btn btn-default btn-xs" ng-click="deleteCase(studentcase)">
+            <td>{{studentcase.diagnoses | prettyArrayOutput}}</td> 
+            <td>{{studentcase.clinicians | prettyArrayOutput }}</td> 
+            <td>{{studentcase.caseType | capitalize}}</td>
+            <td ng-show="user"><button type="button" class="btn btn-default btn-xs" ng-click="deleteCase(studentcase)">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete </button></td>
           </tr>
       </table> 

@@ -293,13 +293,19 @@ app.controller('CaseLogCtrl',
 
 }); // end controller
 
-app.filter('diagnoses', function() {
+app.filter('prettyArrayOutput', function() {
   return function(input) {
-    var output = [];
-    for (var i=0; i < input.length; i++) {
-      output[i] = input[i].value;
+    var output = input.join(', ');
+    return output;
+  };
+});
+
+app.filter('capitalize', function() {
+  return function(input) {
+    if (input !== null) {
+      input = input.toLowerCase();
+      return input.substring(0,1).toUpperCase()+input.substring(1);
     }
-    return output.join(', ');
   };
 });
 
