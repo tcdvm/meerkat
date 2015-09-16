@@ -155,6 +155,11 @@ h1, h3 {
   border-color: #00171F;
 }
 
+.tooltip-inner {
+  color: #FFFFFF;
+  background: #000000;
+  text-align: left;
+}
 
 /**
 

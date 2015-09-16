@@ -29,6 +29,13 @@ app.controller('CaseLogCtrl',
       // userObject.$bindTo($scope, 'user');
       $scope.userCases = $firebaseArray(Students.getCasesRef($scope.netId));
       $scope.cases = $scope.userCases;
+      var caseTypes = Students.getCaseStats($scope.netId);
+      console.log(caseTypes);
+      // $scope.chartConfig.series[0].data = [caseTypes.numNewCases, caseTypes.numRechecks, 6, 6, 6, 6];
+      console.log('diagnosis stats array');
+      Students.refreshCaseStats($scope.netId);
+      var caseStats = Students.getCaseStats($scope.netId);
+      $scope.chartConfig.series[0].data = caseStats.caseStats;
     } else {
       console.log('No such user! Creating...');
       var modalInstance = $modal.open({
@@ -61,13 +68,6 @@ app.controller('CaseLogCtrl',
       });
       // Students.create($scope.netId, {name: 'me'});
     } // end else (creating new student)
-    var caseTypes = Students.getCaseStats($scope.netId);
-    console.log(caseTypes);
-    // $scope.chartConfig.series[0].data = [caseTypes.numNewCases, caseTypes.numRechecks, 6, 6, 6, 6];
-    console.log('diagnosis stats array');
-    Students.refreshCaseStats($scope.netId);
-    var caseStats = Students.getCaseStats($scope.netId);
-    $scope.chartConfig.series[0].data = caseStats.caseStats;
 
 
   }; // end login
