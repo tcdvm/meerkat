@@ -29,6 +29,7 @@
             <th>Diagnoses</th>
             <th>Clinicians</th>
             <th>Student</th>
+            <th>Case Type</th>
             <!-- <th></th> -->
           </tr> 
           <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" dir-paginate="studentcase in caseArray | filter:search | orderBy:'date' |itemsPerPage: 25">
@@ -40,6 +41,7 @@
             <td>{{studentcase.diagnoses | prettyArrayOutput}}</td> 
             <td>{{studentcase.clinicians | prettyArrayOutput }}</td> 
             <td>{{studentcase.studentName}}</td>
+            <td>{{studentcase.caseType | capitalize}}</td>
             <!-- <td><button type="button" class="btn btn-default btn-xs" ng-click="deleteCase(studentcase)"> -->
             <!-- <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete </button></td> -->
           </tr>

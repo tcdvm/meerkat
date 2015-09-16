@@ -92,12 +92,12 @@ app.controller('CaseLogCtrl',
       patientSpecies : 'Equine',
       caseType: 'new',
       surgeryProcedure: '',
-      diagnoses : ['Glaucoma', 'Cataracts', ''],
+      diagnoses : ['Anterior uveitis', 'Progressive retinal atrophy', ''],
       // treatment : 'Enucleation',
       // outcome : 'No more issues',
       // followup : 'None',
-      summary : 'Blah blah blah',
-      clinicians : ['chen']
+      summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto. Efficiendi reformidans qui ea, mel mucius iisque inimicus ea. Tale vocibus maiestatis ad qui. Et scripta accusata indoctum sit, habemus aliquando usu ex. Vel et appareat efficiendi, nobis eligendi an mea, usu an tota erat tacimates. Diam pericula ei pro. Ipsum etiam cotidieque nam ad, eum eu neglegentur vituperatoribus.',
+      clinicians : ['Hendrix']
     };
   }; // end logout
  
@@ -112,8 +112,8 @@ app.controller('CaseLogCtrl',
     caseType: 'new',
     surgeryProcedure: '',
     diagnoses : ['Glaucoma', 'Cataracts', ''],
-    summary: 'hi there',
-    clinicians : ['chen']
+    summary: 'Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed, per ex sale justo habemus, ei vix utamur delenit. No eam postulant appellantur, at omnesque copiosae qui. Quo nemore albucius prodesset at. In tale urbanitas maiestatis his, dolore mandamus senserit cum an. Melius pertinax has eu, vis at eros solet oratio, pro ea natum solet mollis.',
+    clinicians : ['Ward']
   };
 
   /**
@@ -179,12 +179,12 @@ app.controller('CaseLogCtrl',
         patientSpecies : 'Canine',
         caseType: 'new',
         surgeryProcedure: '',
-        diagnoses : ['Glaucoma', 'Cataracts', ''],
+        diagnoses : ['Anterior uveitis', 'Progressive retinal atrophy', ''],
         // treatment : 'Enucleation',
         // outcome : 'No more issues',
         // followup : 'None',
-        summary : 'None',
-        clinicians : ['chen']
+        summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto. Efficiendi reformidans qui ea, mel mucius iisque inimicus ea. Tale vocibus maiestatis ad qui. Et scripta accusata indoctum sit, habemus aliquando usu ex. Vel et appareat efficiendi, nobis eligendi an mea, usu an tota erat tacimates. Diam pericula ei pro. Ipsum etiam cotidieque nam ad, eum eu neglegentur vituperatoribus.',
+        clinicians : ['Newbold']
         // studentId: '',
         // studentName: '',
         // date: '',
