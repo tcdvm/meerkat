@@ -11,7 +11,7 @@
   </div>
 </script>
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-lg-3">
     <div class="row">
       <div class="col-sm-9 form-group form-inline">
         <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" ng-disabled="user">
@@ -72,16 +72,16 @@
         <input type="radio" name="case-type" ng-model="case.caseType" value="procedure" ng-disabled="!user">Procedure/Surgery
       </label>
     </form>
-    <form class="form-group" ng-show="case.caseType == 'procedure'">
+    <form class="form-group animate-show" ng-show="case.caseType == 'procedure'">
       <h5>What was your level of involvement?</h5>
-      <label class="radio-inline">
+      <label class="radio">
         <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="all" ng-disabled="!user">Did all of it!
       </label>
-      <label class="radio-inline">
+      <label class="radio">
         <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="some" ng-disabled="!user">Did some of the procedure!
       </label>
-      <label class="radio-inline">
-        <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="none" ng-disabled="!user">Mostly just a paperwork monkey...
+      <label class="radio">
+        <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="none" ng-disabled="!user">Helped with paperwork!!
       </label>
     </form>
     <h5>Diagnoses</h5>
@@ -94,7 +94,7 @@
 </button>
     </div>
     <h5>Case Summary</h5>
-    <textarea class="form-control" placeholder="" ng-model="case.summary" rows="6" ng-disabled="!user"></textarea>
+    <textarea class="form-control" placeholder="" ng-model="case.summary" rows="7" ng-disabled="!user"></textarea>
     <h4>Clinician (hold Ctrl to select more than 1)</h4>
     <select multiple class="form-control" ng-model="case.clinicians" ng-change="changedClinicians()" ng-disabled="!user"> 
       <option value="Ward">Dr. Ward</option>
