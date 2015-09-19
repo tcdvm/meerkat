@@ -58,11 +58,21 @@ app.controller('CaseLogCtrl',
         newStudent.numCats = 0;
         newStudent.numHorses = 0;
         newStudent.numOther = 0;
+        newStudent.caseStats = {
+          AnteriorUveitis: 0,
+          Cataracts: 0,
+          CornealUlcers: 0,
+          Glaucoma: 0,
+          KCS: 0,
+          RetinalDisease: 0
+        };
         $scope.user = $firebaseObject(Students.create(newStudent.netId, newStudent));
         // userObject = $firebaseObject(Students.create(newStudent.netId, newStudent));
         // userObject.$bindTo($scope, 'user');
         $scope.userCases = $firebaseArray(Students.getCasesRef($scope.netId));
         $scope.cases = $scope.userCases;
+        var caseStats = Students.getCaseStats($scope.netId);
+        $scope.chartConfig.series[0].data = caseStats.caseStats;
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
       });

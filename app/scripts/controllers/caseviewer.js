@@ -114,6 +114,11 @@ app.controller('CaseViewerCtrl',
         },
         exporting: {
           enabled: false
+        },
+        tooltip: {
+					formatter: function () {
+						return this.y;
+					}
         }
 	    }, // end options
 	    series: [
