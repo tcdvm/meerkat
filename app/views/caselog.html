@@ -216,10 +216,9 @@
         </div>
       </div>
     </div> 
-    <div>
-      <h3 ng-hide="user"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> 
-        Please enter your NetId (e.g. jsmith3) to the left to add cases to your caselog!</h3>
-      <br>  
+    <div class="row">
+      <h3 ng-hide="user" class="hidden-xs hidden-sm hidden-md"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Please enter your NetId (e.g. jsmith3) to the left to add cases to your caselog!</h3> 
+      <h5 ng-hide="user" class="visble-xs visble-sm visble-md hidden-lg"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true" style="padding:10px"></span> Please enter your NetId (e.g. jsmith3) above to add cases to your caselog!</h5> 
     </div>
  
    <div class="row">
@@ -236,7 +235,7 @@
               <th>Case Type</th>
               <th ng-show="user"></th>
             </tr> 
-            <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date' |limitTo:20">
+            <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date' |limitTo:25">
               <td>{{studentcase.studentName}}</td>
               <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
               <td>{{studentcase.patientId}}</td>
