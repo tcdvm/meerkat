@@ -262,11 +262,21 @@ app.controller('CaseLogCtrl',
             enabled: false
           }
         }, // end options
+        size: {
+          height: '300'
+        },
 
         title: {
-          text: 'Cases:',
-          x: -160,
-          y: 60
+          text: '',
+          style: {
+            display: 'none'
+          }
+        },
+        subtitle: {
+          text: '',
+          style: {
+            display: 'none'
+          }
         },
       
         pane: {

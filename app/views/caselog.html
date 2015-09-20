@@ -10,118 +10,133 @@
     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
   </div>
 </script>
-<div class="container">
+<div class="container case-log-container">
 <div class="row">
-  <div class="col-lg-3">
-    <div class="row">
-      <div class="col-sm-9 form-group form-inline">
-        <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" style="width:200px" ng-disabled="user">
+  <div class="col-lg-4">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="form-group form-inline">
+        <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" ng-disabled="user">
         <input type="submit" class="btn-success form-control" value="Login" ng-click="login()" ng-hide="user" >
         <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()" ng-show="user" >
       </div>
     </div>
-    <div class="row" ng-show="newUser">
-      <div class="col-lg-4">
-        <input type="text" class="form-control" placeholder="What's your name?" ng-model="newStudentName" style="width:200px">
-        <input type="submit" class="form-control" value="Create new user" ng-click="createUser()">
-      </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h4>Date case was seen</h4>
+      <p class="input-group">
+        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-disabled="!user"   />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open($event)" ng-disabled="!user"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
     </div>
-    <h4>Date case was seen</h4>
-    <div class="row">
-        <div class="col-lg-7 col-md-3">
-            <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-disabled="!user"   />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)" ng-disabled="!user"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>
-        </div>
-    </div>
-  <h4>Patient Info</h4>
-  <form class="form-group form-inline">
-    <div class="form-group">
-        <label for="patientID" class="sr-only">Patient ID</label>
-        <input type="text" class="form-control" placeholder="Patient ID" ng-model="case.patientId" ng-disabled="!user">
-      </div>
-    <select class="form-control" ng-model="case.patientSpecies" ng-disabled="!user"> 
-      <option value="" >Pick a species</option>
-      <option value="Canine">Canine</option>
-      <option value="Feline">Feline</option>
-      <option value="Equine">Equine </option>
-      <option value="Other">Other</option>
-    </select>
-    <br>
-      <div class="form-group">
-        <label for="Patient Name" class="sr-only">Patient name</label>
-        <input type="text" class="form-control" placeholder="Patient name" ng-model="case.patientName" value="Fluffy" ng-disabled="!user">
-      </div>
-      <div class="form-group">
-        <label for="Patient Surname" class="sr-only">Patient last name</label>
-        <input type="text" class="form-control" placeholder="Patient last name" ng-model="case.patientSurname" value="Smith" ng-disabled="!user">
-      </div>
-    </form>
+  </div>
 
-    <h4>Case info</h4>
-    <form class="form-group">
-      <label class="radio-inline">
-        <input type="radio" name="case-type" ng-model="case.caseType" value="new" ng-disabled="!user">New case
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="case-type" ng-model="case.caseType" value="recheck" ng-disabled="!user">Recheck
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="case-type" ng-model="case.caseType" value="procedure" ng-disabled="!user">Procedure/Surgery
-      </label>
-    </form>
-    <form class="form-group animate-show" ng-show="case.caseType == 'procedure'">
-      <h5>What was your level of involvement?</h5>
-      <label class="radio">
-        <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="all" ng-disabled="!user">Did all of it!
-      </label>
-      <label class="radio">
-        <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="some" ng-disabled="!user">Did some of the procedure!
-      </label>
-      <label class="radio">
-        <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="none" ng-disabled="!user">Helped with paperwork!!
-      </label>
-    </form>
-    <h5>Diagnoses</h5>
-    <div class="form-group">
-      <div ng-repeat="diagnosis in case.diagnoses track by $index">
-        <input type="text" typeahead="diagnosis for diagnosis in diagnoses | filter:$viewValue | limitTo:8" class="form-control" ng-model="case.diagnoses[$index]" placeholder="Diagnosis" ng-disabled="!user">
-      </div>
-      <button ng-disabled="!user" ng-click="addDiagnosis()" type="button" class="btn btn-default" aria-label="Left Align">
-  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>  Add diagnosis
-</button>
+  <div class="row">
+    <div class="col-lg-12">
+      <h4>Patient Info</h4>
+      <form class="form-group form-inline">
+        <div class="form-group">
+            <label for="patientID" class="sr-only">Patient ID</label>
+            <input type="text" class="form-control" placeholder="Patient ID" ng-model="case.patientId" ng-disabled="!user">
+          </div>
+        <select class="form-control" ng-model="case.patientSpecies" ng-disabled="!user"> 
+          <option value="" >Pick a species</option>
+          <option value="Canine">Canine</option>
+          <option value="Feline">Feline</option>
+          <option value="Equine">Equine </option>
+          <option value="Other">Other</option>
+        </select>
+        <br>
+        <div class="form-group">
+          <label for="Patient Name" class="sr-only">Patient name</label>
+          <input type="text" class="form-control" placeholder="Patient name" ng-model="case.patientName" value="Fluffy" ng-disabled="!user">
+        </div>
+        <div class="form-group">
+          <label for="Patient Surname" class="sr-only">Patient last name</label>
+          <input type="text" class="form-control" placeholder="Patient last name" ng-model="case.patientSurname" value="Smith" ng-disabled="!user">
+        </div>
+      </form>
     </div>
-    <h5>Case Summary</h5>
-    <textarea class="form-control" placeholder="" ng-model="case.summary" rows="7" ng-disabled="!user"></textarea>
-    <h4>Clinician (hold Ctrl to select more than 1)</h4>
-    <select multiple class="form-control" ng-model="case.clinicians" ng-change="changedClinicians()" ng-disabled="!user"> 
-      <option value="Ward">Dr. Ward</option>
-      <option value="Hendrix">Dr. Hendrix</option>
-      <option value="Chen">Dr. Chen</option>
-      <option value="Best">Dr. Best</option>
-      <option value="Newbold">Dr. Newbold</option>
-      <option value="Other">Other</option>
-    </select>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h4>Case info</h4>
+      <form class="form-group">
+        <label class="radio-inline">
+          <input type="radio" name="case-type" ng-model="case.caseType" value="new" ng-disabled="!user">New case
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="case-type" ng-model="case.caseType" value="recheck" ng-disabled="!user">Recheck
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="case-type" ng-model="case.caseType" value="procedure" ng-disabled="!user">Procedure/Surgery
+        </label>
+      </form>
+      <form class="form-group animate-show" ng-show="case.caseType == 'procedure'">
+        <h5>What was your level of involvement?</h5>
+        <label class="radio">
+          <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="all" ng-disabled="!user">Did all of it!
+        </label>
+        <label class="radio">
+          <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="some" ng-disabled="!user">Did some of the procedure!
+        </label>
+        <label class="radio">
+          <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="none" ng-disabled="!user">Helped with paperwork!!
+        </label>
+      </form>
+      <h5>Diagnoses</h5>
+      <div class="form-group">
+        <div ng-repeat="diagnosis in case.diagnoses track by $index">
+          <input type="text" typeahead="diagnosis for diagnosis in diagnoses | filter:$viewValue | limitTo:8" class="form-control" ng-model="case.diagnoses[$index]" placeholder="Diagnosis" ng-disabled="!user">
+        </div>
+        <button ng-disabled="!user" ng-click="addDiagnosis()" type="button" class="btn btn-default" aria-label="Left Align">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>  Add diagnosis </button>
+      </div>
+
+      <h5>Case Summary</h5>
+      <textarea class="form-control" placeholder="" ng-model="case.summary" rows="7" ng-disabled="!user"></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h4>Clinician (hold Ctrl to select more than 1)</h4>
+      <select multiple class="form-control" ng-model="case.clinicians" ng-change="changedClinicians()" ng-disabled="!user"> 
+        <option value="Ward">Dr. Ward</option>
+        <option value="Hendrix">Dr. Hendrix</option>
+        <option value="Chen">Dr. Chen</option>
+        <option value="Best">Dr. Best</option>
+        <option value="Newbold">Dr. Newbold</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+  </div>
+
     <br>
-    <button class="btn btn-success" ng-click="submitCase()" ng-disabled="!user">Add case</button>
-  </div> <!-- End first column --> 
+    <button class="btn btn-success" ng-click="submitCase()" ng-disabled="!user">Add case</button> 
+  </div> 
+
+
   <div class="col-lg-8">
-    <div class="row animate-show" ng-show="user">
+     <div class="row animate-show" ng-show="user">
       <div class="panel panel-default">
         <div class="panel-body">
-          <div class="col-lg-3">
+          <div class="col-lg-12">
             <h1>{{user.name}}</h1>
+          </div>
+          <div class="col-lg-3">
             <ul class="list-group">
               <li class="list-group-item">
                 <span class="badge">{{user.numNewCases}}</span>
-                <i class="flaticon-badges1"></i> New cases seen:
+                <i class="flaticon-badges1"></i> New cases:
               </li>
               <li class="list-group-item">
                 <span class="badge">{{user.numRechecks}}</span>
-                <i class="flaticon-checked21"></i> Rechecks seen:
+                <i class="flaticon-checked21"></i> Rechecks:
               </li>
               <li class="list-group-item">
                 <span class="badge">{{user.numProcedures}}</span>
@@ -144,9 +159,18 @@
               </li>
             </ul>
           </div>
+
           <div class="col-lg-5">
-            <highchart id="chart1" config="chartConfig"></highchart>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Cases seen:</h3>
+              </div>
+              <div class="panel-body">
+                <highchart id="chart1" config="chartConfig"></highchart>
+              </div>
+            </div>
           </div>
+
           <div class="col-lg-4">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -191,41 +215,42 @@
           </div>
         </div>
       </div>
-    </div> <!-- End row for user -->
+    </div> 
     <div>
       <h3 ng-hide="user"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> 
         Please enter your NetId (e.g. jsmith3) to the left to add cases to your caselog!</h3>
       <br>  
     </div>
-  <div class="row">
-    <div class="col-lg-12 col-md-7">
-       <table class="table table-condensed table-hover">
-          <tr>
-            <th>Student</th>
-            <th>Date</th>
-            <th>PatientID</th>
-            <th>Name</th>
-            <th>Species</th>
-            <th>Diagnoses</th>
-            <th>Clinicians</th>
-            <th>Case Type</th>
-            <th ng-show="user"></th>
-          </tr> 
-          <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date' |limitTo:20">
-            <td>{{studentcase.studentName}}</td>
-            <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
-            <td>{{studentcase.patientId}}</td>
-            <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>
-            <td>{{studentcase.patientSpecies}}</td> 
-            <td>{{studentcase.diagnoses | prettyArrayOutput}}</td> 
-            <td>{{studentcase.clinicians | prettyArrayOutput }}</td> 
-            <td>{{studentcase.caseType | capitalize}}</td>
-            <td ng-show="user"><button type="button" class="btn btn-default btn-xs" ng-click="deleteCase(studentcase)">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete </button></td>
-          </tr>
-      </table> 
-    </div>
-  </div>
+ 
+   <div class="row">
+      <div class="col-lg-12 col-md-7">
+         <table class="table table-condensed table-hover">
+            <tr>
+              <th>Student</th>
+              <th>Date</th>
+              <th>PatientID</th>
+              <th>Name</th>
+              <th>Species</th>
+              <th>Diagnoses</th>
+              <th>Clinicians</th>
+              <th>Case Type</th>
+              <th ng-show="user"></th>
+            </tr> 
+            <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date' |limitTo:20">
+              <td>{{studentcase.studentName}}</td>
+              <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
+              <td>{{studentcase.patientId}}</td>
+              <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>
+              <td>{{studentcase.patientSpecies}}</td> 
+              <td>{{studentcase.diagnoses | prettyArrayOutput}}</td> 
+              <td>{{studentcase.clinicians | prettyArrayOutput }}</td> 
+              <td>{{studentcase.caseType | capitalize}}</td>
+              <td ng-show="user"><button type="button" class="btn btn-default btn-xs" ng-click="deleteCase(studentcase)">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete </button></td>
+            </tr>
+        </table> 
+      </div>
+    </div> 
   </div> <!-- End second column -->
 </div> <!-- end row -->
 </div>

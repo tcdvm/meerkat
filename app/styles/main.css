@@ -195,7 +195,18 @@ label {
     margin-right:-4px;
 }
 
-/*.case-container {
+@media (min-width: 1600px) {
+  .case-log-container {
+      width: 1580px;
+  }
+}
+
+/*@media (min-width: 1200px) {
+  .container {
+      width: 1170px;
+  }
+}
+*//*.case-container {
   margin-right: auto;
   margin-left: auto;
 }*/
