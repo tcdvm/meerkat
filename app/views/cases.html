@@ -1,13 +1,13 @@
-<div class="row">
-  <div class="col-lg-8 col-lg-offset-2">
-    <div class="col-lg-6">
+<div class="container case-container">
+  <div class="row row-centered">
+    <div class="col-lg-6 col-centered">
         <div class="panel panel-default">
           <div class="panel-body">
             <highchart id="chart1" config="caseDistChartConfig"></highchart>
           </div>
         </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-centered">
         <div class="panel panel-default">
           <div class="panel-body">
             <highchart id="chart2" config="speciesChartConfig"></highchart>
@@ -15,13 +15,11 @@
         </div>
     </div>
   </div>
-</div>
- <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
+ <div class="row row-centered">
+    <div class="col-lg-12 col-centered">
           <input type="text" class="form-control" placeholder="Search by anything" ng-model="search"><br>
        <table class="table table-condensed table-hover">
           <tr>
-            <!-- <th>Student</th> -->
             <th>Date</th>
             <th>PatientID</th>
             <th>Name</th>
@@ -30,10 +28,8 @@
             <th>Clinicians</th>
             <th>Student</th>
             <th>Case Type</th>
-            <!-- <th></th> -->
           </tr> 
           <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" dir-paginate="studentcase in caseArray | filter:search | orderBy:'date' |itemsPerPage: 15">
-            <!-- <td>{{studentcase.studentName}}</td> -->
             <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
             <td>{{studentcase.patientId}}</td>
             <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>
@@ -42,17 +38,14 @@
             <td>{{studentcase.clinicians | prettyArrayOutput }}</td> 
             <td>{{studentcase.studentName}}</td>
             <td>{{studentcase.caseType | capitalize}}</td>
-            <!-- <td><button type="button" class="btn btn-default btn-xs" ng-click="deleteCase(studentcase)"> -->
-            <!-- <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete </button></td> -->
           </tr>
       </table> 
 
       <dir-pagination-controls></dir-pagination-controls>
     </div>
   </div>
-    <!-- <button ng-click="debug()"></button> -->
-  </div> <!-- End second column -->
-</div> <!-- end row -->
+</div> 
+
 <!--           <div class="panel panel-default">
             <div class="panel-body">
 
