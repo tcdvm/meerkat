@@ -45,10 +45,10 @@ var app = angular
       .otherwise({
         redirectTo: '/'
       });
-  })
-  .config(['$animateProvider', function($animateProvider) {
-    $animateProvider.classNameFilter(/animate/);
-  }]);
+  });
+  // .config(['$animateProvider', function($animateProvider) {
+  //   $animateProvider.classNameFilter(/animate/);
+  // }]);
 
 app.directive('datepickerPopup', ['datepickerPopupConfig', 'dateParser', 'dateFilter', function (datepickerPopupConfig, dateParser, dateFilter) {
     return {
