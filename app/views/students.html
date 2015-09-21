@@ -24,7 +24,7 @@
                         <i class="flaticon-badges1-dashboard"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">{{avgNewCases}}</div>
+                        <div class="huge">{{avgNewCases |number:2}}</div>
                         <div>Avg new cases/student</div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         <i class="flaticon-checked21-dashboard"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">{{avgRechecks}}</div>
+                        <div class="huge">{{avgRechecks | number:2}}</div>
                         <div>Avg rechecks/student</div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                         <i class="flaticon-scalpel1-dashboard"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">{{avgProcedures}}</div>
+                        <div class="huge">{{avgProcedures | number:2}}</div>
                         <div>Avg procedures/student</div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
   	<div class="col-lg-12 col-centered">
   		<input type="text" class="form-control" placeholder="Search student name" ng-model="search.name"><br>
   		<accordion close-others="true">
-  			<accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks}} (New: {{student.numNewCases}} Rechecks: {{student.numRechecks}})" class="animate-show" ng-repeat="student in students | filter:search| orderBy:'date'">
+  			<accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks + student.numProcedures}} (New: {{student.numNewCases}}, Rechecks: {{student.numRechecks}}, Procedures: {{student.numProcedures}})" class="animate-show" ng-repeat="student in students | filter:search| orderBy:'date'">
   			<h4>Cases seen:</h4>
   			<table class="table table-condensed table-hover">
   				<tr>
