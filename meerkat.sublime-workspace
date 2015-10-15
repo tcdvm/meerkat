@@ -4,6 +4,102 @@
 		"selected_items":
 		[
 			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"margin-",
+				"margin-right"
+			],
+			[
+				"pro",
+				"procedureCasesArray"
+			],
+			[
+				"rec",
+				"recheckCasesArray"
+			],
+			[
+				"newC",
+				"newCasesSeries"
+			],
+			[
+				"newCases",
+				"newCasesArray"
+			],
+			[
+				"date",
+				"dateKey"
+			],
+			[
+				"procedure",
+				"procedureCases"
+			],
+			[
+				"caseStat",
+				"caseStatsArray"
+			],
+			[
+				"get",
+				"getCaseStats"
+			],
+			[
+				"arra",
+				"arrayDiagnoses"
+			],
+			[
+				"Diagnosis",
+				"diagnosisStats"
+			],
+			[
+				"rech",
+				"recheckCaseCount"
+			],
+			[
+				"new",
+				"newCaseCount"
+			],
+			[
+				"num",
+				"numNewCases"
+			],
+			[
+				"case",
+				"caseSnapshot"
+			],
+			[
+				"student",
+				"studentStats"
+			],
+			[
+				"chart",
+				"chartConfig"
+			],
+			[
+				"pa",
+				"patientsRef"
+			],
+			[
+				"patients",
+				"patientsList"
+			],
+			[
+				"fire",
+				"firebaseArray"
+			],
+			[
+				"firebase",
+				"firebaseObject"
+			],
+			[
+				"ca",
+				"caseType"
+			],
+			[
+				"selected",
+				"selectedStudent"
+			],
+			[
 				"ba",
 				"background-repeat"
 			],
@@ -32,15 +128,7 @@
 				"margin-left"
 			],
 			[
-				"margin",
-				"margin-right"
-			],
-			[
 				"ma",
-				"margin-left"
-			],
-			[
-				"margin-",
 				"margin-left"
 			],
 			[
@@ -60,10 +148,42 @@
 	"buffers":
 	[
 		{
-			"file": "app/index.html",
+			"file": "app/scripts/controllers/caselog.js",
 			"settings":
 			{
-				"buffer_size": 3608,
+				"buffer_size": 11192,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/students.js",
+			"settings":
+			{
+				"buffer_size": 1375,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/app.js",
+			"settings":
+			{
+				"buffer_size": 1980,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/caselog.html",
+			"settings":
+			{
+				"buffer_size": 11393,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/students.html",
+			"settings":
+			{
+				"buffer_size": 4044,
 				"line_ending": "Unix"
 			}
 		}
@@ -71,16 +191,28 @@
 	"build_system": "Packages/SASS Build/SASS.sublime-build",
 	"command_palette":
 	{
-		"height": 137.0,
+		"height": 375.0,
 		"selected_items":
 		[
+			[
+				":w",
+				":w - Save"
+			],
 			[
 				":0",
 				":0 - BOF"
 			],
 			[
-				":w",
-				":w - Save"
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: List Packages"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
 			],
 			[
 				"",
@@ -107,10 +239,6 @@
 				"Tidy HTML"
 			],
 			[
-				"pack",
-				"Package Control: Install Package"
-			],
-			[
 				"sftp",
 				"SFTP: Browse Server…"
 			],
@@ -135,19 +263,11 @@
 				"Set Syntax: JavaScript"
 			],
 			[
-				"pa",
-				"Package Control: Install Package"
-			],
-			[
 				":n",
 				"File: New View into File"
 			],
 			[
 				"packin",
-				"Package Control: Install Package"
-			],
-			[
-				"package",
 				"Package Control: Install Package"
 			],
 			[
@@ -179,7 +299,7 @@
 				"View: Toggle Side Bar"
 			]
 		],
-		"width": 579.0
+		"width": 453.0
 	},
 	"console":
 	{
@@ -196,6 +316,42 @@
 	},
 	"file_history":
 	[
+		"/Users/thomas/dev/meerkat/app/views/students.html",
+		"/Users/thomas/dev/meerkat/app/styles/animations.css",
+		"/Users/thomas/dev/meerkat/app/styles/main.css",
+		"/Users/thomas/dev/meerkat/app/views/cases.html",
+		"/Users/thomas/dev/meerkat/app/views/caselog.html",
+		"/Users/thomas/dev/meerkat/bower.json",
+		"/Users/thomas/Desktop/test.html",
+		"/Users/thomas/Desktop/test.js",
+		"/Users/thomas/dev/meerkat/bower_components/angular-animate/angular-animate.js",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/thomas/dev/meerkat/app/index.html",
+		"/Users/thomas/dev/meerkat/app/scripts/services/diagnoses.js",
+		"/Users/thomas/dev/meerkat/app/scripts/services/students.js",
+		"/Users/thomas/dev/meerkat/app/scripts/app.js",
+		"/Users/thomas/dev/meerkat/app/scripts/controllers/caseviewer.js",
+		"/Users/thomas/dev/meerkat/app/scripts/controllers/students.js",
+		"/Users/thomas/dev/meerkat/app/styles/flaticon.css",
+		"/Users/thomas/dev/meerkat/Gruntfile.js",
+		"/Users/thomas/dev/meerkat/README.md",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/thomas/dev/meerkat/app/scripts/services/cases.js",
+		"/Users/thomas/dev/meerkat/app/scripts/controllers/caselog.js",
+		"/Users/thomas/dev/meerkat/.jshintrc",
+		"/Users/thomas/dev/meerkat/node_modules/grunt-google-cdn/node_modules/bower/node_modules/fstream-ignore/test/ignore-most.js",
+		"/Users/thomas/dev/meerkat/app/views/nav.html",
+		"/Users/thomas/dev/meerkat/app/scripts/controllers/nav.js",
+		"/Users/thomas/dev/meerkat/app/scripts/services/patients.js",
+		"/Users/thomas/dev/meerkat/.bowerrc",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/thomas/dev/meerkat/node_modules/grunt-autoprefixer/node_modules/autoprefixer-core/lib/hacks/fill-available.js",
+		"/Users/thomas/dev/meerkat/app/views/studentblocks.html",
+		"/Users/thomas/dev/meerkat/app/scripts/services/blocks.js",
+		"/Users/thomas/dev/meerkat/app/scripts/controllers/studentblocks.js",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/User/SublimeLinter.sublime-settings",
 		"/Users/thomas/dev/thomasdvm/File dependencies",
 		"/Users/thomas/dev/thomasdvm/gulpfile.js",
 		"/Users/thomas/dev/thomasdvm/builds/development/navbar.html",
@@ -204,8 +360,6 @@
 		"/Users/thomas/dev/thomasdvm/builds/development/index.html",
 		"/Users/thomas/dev/thomasdvm/builds/development/header.html",
 		"/Users/thomas/dev/thomasdvm/components/scripts/scripts.js",
-		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/Users/thomas/dev/thomasdvm/.gitignore",
 		"/Users/thomas/dev/thomasdvm/gulp.js",
 		"/Users/thomas/dev/thomasdvm/package.json",
@@ -230,8 +384,6 @@
 		"/Users/thomas/dev/thomasdvm/_posts/2013-08-30-first-post.md",
 		"/Users/thomas/dev/thomasdvm/_layouts/post.html",
 		"/Users/thomas/dev/thomasdvm/css/post.css",
-		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
-		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
 		"/Users/thomas/dev/thomasdvm/_posts/2013-08-29-blah-blah.md",
 		"/Users/thomas/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
 		"/Users/thomas/dev/thomasdvm/_posts/2013-08-29-blah.md",
@@ -251,9 +403,12 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 95.0,
 		"where_history":
 		[
+			"/Users/thomas/dev/meerkat/app,/Users/thomas/dev/meerkat",
+			"/Users/thomas/dev/meerkat/app",
+			""
 		]
 	},
 	"find_state":
@@ -261,6 +416,52 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"col-md",
+			"class",
+			"col-lg-offset-2",
+			"col",
+			"copy",
+			"'copy:dist'",
+			"\n  ",
+			"diagnoses",
+			".tooltip-inner",
+			".tooltip",
+			"tooltip",
+			"build",
+			"cancel",
+			"recheckCasesArray",
+			"recheckCases",
+			"			  console.log(newCasesArray.length);\n",
+			"today",
+			"getTime",
+			"                        <a href=\"#\">\n                            <div class=\"panel-footer\">\n                                <span class=\"pull-left\">View Details</span>\n                                <span class=\"pull-right\"><i class=\"fa fa-arrow-circle-right\"></i></span>\n                                <div class=\"clearfix\"></div>\n                            </div>\n                        </a>\n",
+			"student stats",
+			"arrayDia",
+			"refresh",
+			"refreshCaseSTats",
+			"refresh",
+			"getCasesRef",
+			"existingStudentSelected",
+			"tab",
+			"getTime",
+			"container",
+			"col-md",
+			"navigation",
+			"col",
+			"=[\"",
+			"studentcase",
+			"delete",
+			"userCases",
+			"input",
+			"sync",
+			"newUser",
+			"snames",
+			"items",
+			"itemsnnn",
+			"netId",
+			"netID",
+			"selectedSTudent",
+			"selectedStudent",
 			"source",
 			"hover-dropdown",
 			"hover",
@@ -303,8 +504,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			""
 		],
-		"reverse": false,
+		"reverse": true,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
@@ -313,23 +515,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/index.html",
+					"file": "app/scripts/controllers/caselog.js",
 					"settings":
 					{
-						"buffer_size": 3608,
+						"buffer_size": 11192,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2170,
-								2170
+								9580,
+								9580
 							]
 						],
 						"settings":
@@ -381,11 +583,11 @@
 							"gjslint_options":
 							[
 							],
-							"incomplete_sync": null,
 							"javascript_linter": "jshint",
 							"jshint_options":
 							{
 								"browser": true,
+								"devel": true,
 								"evil": true,
 								"regexdash": true,
 								"sub": true,
@@ -402,8 +604,7 @@
 							[
 							],
 							"pyflakes_ignore_import_*": true,
-							"remote_loading": false,
-							"sublimelinter": true,
+							"sublimelinter": "load-save",
 							"sublimelinter_delay": 2.0,
 							"sublimelinter_disable":
 							[
@@ -425,13 +626,483 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4133.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/scripts/controllers/students.js",
+					"settings":
+					{
+						"buffer_size": 1375,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								826,
+								826
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/scripts/app.js",
+					"settings":
+					{
+						"buffer_size": 1980,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1052,
+								1052
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/caselog.html",
+					"settings":
+					{
+						"buffer_size": 11393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1081,
+								1081
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 245.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/students.html",
+					"settings":
+					{
+						"buffer_size": 4044,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2942,
+								2942
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 486.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -472,7 +1143,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 100.0
+		"height": 243.0
 	},
 	"output.sftp":
 	{
@@ -488,6 +1159,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"im",
+				"node_modules/grunt-google-cdn/node_modules/bower/node_modules/fstream-ignore/test/ignore-most.js"
+			],
+			[
+				"fa",
+				"node_modules/grunt-autoprefixer/node_modules/autoprefixer-core/lib/hacks/fill-available.js"
+			],
 			[
 				"style",
 				"css/style.scss"
