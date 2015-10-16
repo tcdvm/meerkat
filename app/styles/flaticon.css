@@ -29,9 +29,20 @@
 .flaticon-dog77:before {
 	content: "\e004";
 }
-.flaticon-scalpel1:before {
+.flaticon-hare:before {
 	content: "\e005";
 }
+.flaticon-print48:before {
+	content: "\e006";
+}
+.flaticon-scalpel1:before {
+	content: "\e007";
+}
+.flaticon-users6:before {
+	content: "\e008";
+}
+
+
 /*
 .flaticon-badges1-panel {
 	font-family: Flaticon;
@@ -52,5 +63,5 @@
 
 .flaticon-scalpel1-dashboard:before {
 	font-size: 50px;
-	content: "\e005";
+	content: "\e007";
 }

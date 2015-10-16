@@ -201,6 +201,10 @@ label {
   }
 }
 
+.h4-no-bottom-padding {
+  margin-bottom: 0;
+}
+
 /*@media (min-width: 1200px) {
   .container {
       width: 1170px;

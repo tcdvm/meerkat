@@ -25,7 +25,7 @@
             <th>Name</th>
             <th>Species</th>
             <th>Diagnoses</th>
-            <th>Clinicians</th>
+            <th>Clinician</th>
             <th>Student</th>
             <th>Case Type</th>
           </tr> 
@@ -35,7 +35,7 @@
             <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>
             <td>{{studentcase.patientSpecies}}</td> 
             <td>{{studentcase.diagnoses | prettyArrayOutput}}</td> 
-            <td>{{studentcase.clinicians | prettyArrayOutput }}</td> 
+            <td>{{studentcase.clinician}}</td> 
             <td>{{studentcase.studentName}}</td>
             <td>{{studentcase.caseType | capitalize}}</td>
           </tr>

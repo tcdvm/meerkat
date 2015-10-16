@@ -15,6 +15,21 @@ app.controller('CaseLogCtrl',
   $scope.userCases = undefined;
   $scope.cases = Cases.all;
 
+  $scope.case =  {
+    studentId : '',
+    studentName : '',
+    date: '',
+    patientId : '1234' + Math.floor(Math.random()*100),
+    patientName : 'Fluffy' + Math.floor(Math.random()*10),
+    patientSurname : 'Smith' + Math.floor(Math.random()*10),
+    patientSpecies : 'Equine',
+    caseType: 'new',
+    surgeryProcedure: '',
+    diagnoses : ['Glaucoma', 'Cataracts', ''],
+    summary: 'Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed, per ex sale justo habemus, ei vix utamur delenit. No eam postulant appellantur, at omnesque copiosae qui. Quo nemore albucius prodesset at. In tale urbanitas maiestatis his, dolore mandamus senserit cum an. Melius pertinax has eu, vis at eros solet oratio, pro ea natum solet mollis.',
+    clinician : 'Chen'
+  };
+
   /**
    * Logs in user - creates student if necessary, updates chart
    */
@@ -107,25 +122,10 @@ app.controller('CaseLogCtrl',
       // outcome : 'No more issues',
       // followup : 'None',
       summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto. Efficiendi reformidans qui ea, mel mucius iisque inimicus ea. Tale vocibus maiestatis ad qui. Et scripta accusata indoctum sit, habemus aliquando usu ex. Vel et appareat efficiendi, nobis eligendi an mea, usu an tota erat tacimates. Diam pericula ei pro. Ipsum etiam cotidieque nam ad, eum eu neglegentur vituperatoribus.',
-      clinicians : ['Hendrix']
+      clinicians : 'Hendrix'
     };
   }; // end logout
  
-  $scope.case =  {
-    studentId : '',
-    studentName : '',
-    date: '',
-    patientId : '1234' + Math.floor(Math.random()*100),
-    patientName : 'Fluffy' + Math.floor(Math.random()*10),
-    patientSurname : 'Smith' + Math.floor(Math.random()*10),
-    patientSpecies : 'Equine',
-    caseType: 'new',
-    surgeryProcedure: '',
-    diagnoses : ['Glaucoma', 'Cataracts', ''],
-    summary: 'Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed, per ex sale justo habemus, ei vix utamur delenit. No eam postulant appellantur, at omnesque copiosae qui. Quo nemore albucius prodesset at. In tale urbanitas maiestatis his, dolore mandamus senserit cum an. Melius pertinax has eu, vis at eros solet oratio, pro ea natum solet mollis.',
-    clinicians : ['Ward']
-  };
-
   /**
    * Submits a case
    */
@@ -194,7 +194,7 @@ app.controller('CaseLogCtrl',
         // outcome : 'No more issues',
         // followup : 'None',
         summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto. Efficiendi reformidans qui ea, mel mucius iisque inimicus ea. Tale vocibus maiestatis ad qui. Et scripta accusata indoctum sit, habemus aliquando usu ex. Vel et appareat efficiendi, nobis eligendi an mea, usu an tota erat tacimates. Diam pericula ei pro. Ipsum etiam cotidieque nam ad, eum eu neglegentur vituperatoribus.',
-        clinicians : ['Newbold']
+        clinician : 'Newbold'
         // studentId: '',
         // studentName: '',
         // date: '',
