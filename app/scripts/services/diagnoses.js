@@ -30,6 +30,9 @@ app.factory('Diagnoses', function() {
 			case retinaldisease.test(diagnosis):
 				category = 'RetinalDisease';
 				break;
+			default:
+				category = 'Other';
+				break;
 			} // end switch statement
 			console.log('Diagnosis is: ' + diagnosis + ' - Category is: ' + category);
 

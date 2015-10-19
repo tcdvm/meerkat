@@ -89,7 +89,8 @@ app.controller('CaseLogCtrl',
           CornealUlcers: 0,
           Glaucoma: 0,
           KCS: 0,
-          RetinalDisease: 0
+          RetinalDisease: 0,
+          Other: 0
         };
         $scope.user = $firebaseObject(Students.create(newStudent.netId, newStudent));
         // userObject = $firebaseObject(Students.create(newStudent.netId, newStudent));
@@ -312,7 +313,7 @@ app.controller('CaseLogCtrl',
         },
 
         xAxis: {
-          categories: ['KCS', 'Corneal Ulcers', 'Glaucoma', 'Cataracts', 'Anterior Uveitis', 'Retinal Disease'],
+          categories: ['KCS', 'Corneal Ulcers', 'Glaucoma', 'Cataracts', 'Anterior Uveitis', 'Retinal Disease', 'Other'],
           tickmarkPlacement: 'on',
           lineWidth: 0
         },
@@ -347,7 +348,6 @@ app.filter('prettyArrayOutput', function() {
     for (var i = 0; i < input.length; i++) {
       diagnoses.push(input[i].diagnosis);
     }
-    console.log(diagnoses);
     var output = diagnoses.join(', ');
     return output;
   };

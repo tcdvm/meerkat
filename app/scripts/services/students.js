@@ -60,9 +60,9 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
         caseTypes.numNewCases = studentStats.numNewCases;
         caseTypes.numRechecks = studentStats.numRechecks;
         var caseStatsObj = studentStats.caseStats;
-        // Order of array: KCS', 'Corneal Ulcers', 'Glaucoma', 'Cataracts', 'Anterior Uveitis', 'Retinal Disease'
+        // Order of array: KCS', 'Corneal Ulcers', 'Glaucoma', 'Cataracts', 'Anterior Uveitis', 'Retinal Disease', 'Other'
         var caseStatsArray = [caseStatsObj.KCS, caseStatsObj.CornealUlcers, caseStatsObj.Glaucoma,
-          caseStatsObj.Cataracts, caseStatsObj.AnteriorUveitis, caseStatsObj.RetinalDisease];
+          caseStatsObj.Cataracts, caseStatsObj.AnteriorUveitis, caseStatsObj.RetinalDisease, caseStatsObj.Other];
         caseTypes.caseStats = caseStatsArray;
       }, function(errorObject) {
         console.log('Error in getting stats' + errorObject.code);
@@ -83,7 +83,8 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
         Glaucoma: 0,
         Cataracts: 0,
         AnteriorUveitis: 0,
-        RetinalDisease: 0
+        RetinalDisease: 0,
+        Other: 0
       };
       // var diagnosisStats = [];
 

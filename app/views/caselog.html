@@ -277,7 +277,7 @@
       <div class="col-lg-12">
          <table class="table table-condensed table-hover">
             <tr>
-              <th>Student</th>
+              <th ng-hide="user">Student</th>
               <th>Date</th>
               <th>PatientID</th>
               <th>Name</th>
@@ -288,7 +288,7 @@
               <th ng-show="user"></th>
             </tr> 
             <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date' |limitTo:25">
-              <td>{{studentcase.studentName}}</td>
+              <td ng-hide="user">{{studentcase.studentName}}</td>
               <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
               <td>{{studentcase.patientId}}</td>
               <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>
