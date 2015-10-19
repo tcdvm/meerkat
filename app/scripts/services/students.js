@@ -106,7 +106,7 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
 
           // Compile case type stats
           scase.diagnoses.forEach(function(diagnosis) {
-            var category = Diagnoses.category(diagnosis);
+            var category = Diagnoses.category(diagnosis.diagnosis);
             if(category !== '') {
               diagnosisCount[category] += 1;
             } else {

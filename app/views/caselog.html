@@ -88,10 +88,29 @@
           <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="none" ng-disabled="!user">Helped with paperwork!!
         </label>
       </form>
+
       <h5>Diagnoses</h5>
       <div class="form-group">
         <div ng-repeat="diagnosis in case.diagnoses track by $index">
-          <input type="text" typeahead="diagnosis for diagnosis in diagnoses | filter:$viewValue | limitTo:8" class="form-control" ng-model="case.diagnoses[$index]" placeholder="Diagnosis" ng-disabled="!user">
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="diagnosisExample" class="sr-only">Diagnosis here</label>
+                <input type="text" typeahead="diagnosis for diagnosis in diagnoses | filter:$viewValue | limitTo:8" class="form-control" ng-model="case.diagnoses[$index].diagnosis" placeholder="Diagnosis" ng-disabled="!user">
+                <label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-model="case.diagnoses[$index].location" value="OD">OD 
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" ng-model="case.diagnoses[$index].location" value="OS">OS 
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="case.diagnoses[$index].location" value="OU">OU 
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="case.diagnoses[$index].location" value="NA">N/A 
+</label>
+            </div>
+          
+          </form>
         </div>
         <button ng-disabled="!user" ng-click="addDiagnosis()" type="button" class="btn btn-default" aria-label="Left Align">
         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>  Add diagnosis </button>

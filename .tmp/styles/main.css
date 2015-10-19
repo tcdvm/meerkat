@@ -205,6 +205,10 @@ label {
   margin-bottom: 0;
 }
 
+.form-inline .form-group input {
+    width:230px;
+}
+
 /*@media (min-width: 1200px) {
   .container {
       width: 1170px;

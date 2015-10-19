@@ -14,6 +14,7 @@ app.controller('CaseLogCtrl',
   $scope.user = undefined;
   $scope.userCases = undefined;
   $scope.cases = Cases.all;
+  $scope.radioModel = 'OD';
 
   $scope.case =  {
     studentId : '',
@@ -25,7 +26,16 @@ app.controller('CaseLogCtrl',
     patientSpecies : 'Equine',
     caseType: 'new',
     surgeryProcedure: '',
-    diagnoses : ['Glaucoma', 'Cataracts', ''],
+    diagnoses : [
+      {
+        diagnosis:'Glaucoma',
+        location: 'OS'
+      },
+      {
+        diagnosis:'Cataracts',
+        location: 'OD'
+      }
+    ],
     summary: 'Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed, per ex sale justo habemus, ei vix utamur delenit. No eam postulant appellantur, at omnesque copiosae qui. Quo nemore albucius prodesset at. In tale urbanitas maiestatis his, dolore mandamus senserit cum an. Melius pertinax has eu, vis at eros solet oratio, pro ea natum solet mollis.',
     clinician : 'Chen'
   };
@@ -117,7 +127,16 @@ app.controller('CaseLogCtrl',
       patientSpecies : 'Equine',
       caseType: 'new',
       surgeryProcedure: '',
-      diagnoses : ['Anterior uveitis', 'Progressive retinal atrophy', ''],
+      diagnoses : [
+        {
+          diagnosis:'Anterior Uveitis',
+          location: 'OS'
+        },
+        {
+          diagnosis:'Progressive retinal atrophy',
+          location: 'OD'
+        }
+      ],
       // treatment : 'Enucleation',
       // outcome : 'No more issues',
       // followup : 'None',
@@ -130,7 +149,7 @@ app.controller('CaseLogCtrl',
    * Submits a case
    */
   $scope.addDiagnosis = function() {
-    $scope.case.diagnoses.push('');
+    $scope.case.diagnoses.push({});
   };
 
   /**
@@ -144,7 +163,7 @@ app.controller('CaseLogCtrl',
 
     // Delete all empty diagnoses
     for (var i=$scope.case.diagnoses.length-1; i >= 0; i--) {
-      if ($scope.case.diagnoses[i] === null || $scope.case.diagnoses[i] === '') {
+      if ($scope.case.diagnoses[i].diagnosis === null || $scope.case.diagnoses[i].diagnosis === '') {
         $scope.case.diagnoses.splice(i, 1);
       }
     }
@@ -189,7 +208,16 @@ app.controller('CaseLogCtrl',
         patientSpecies : 'Canine',
         caseType: 'new',
         surgeryProcedure: '',
-        diagnoses : ['Anterior uveitis', 'Progressive retinal atrophy', ''],
+        diagnoses : [
+          {
+            diagnosis:'Anterior uveitis',
+            location: 'OS'
+          },
+          {
+            diagnosis:'Progressive retinal atrophy',
+            location: 'OU'
+          }
+        ],
         // treatment : 'Enucleation',
         // outcome : 'No more issues',
         // followup : 'None',
@@ -315,7 +343,12 @@ app.controller('CaseLogCtrl',
 
 app.filter('prettyArrayOutput', function() {
   return function(input) {
-    var output = input.join(', ');
+    var diagnoses = [];
+    for (var i = 0; i < input.length; i++) {
+      diagnoses.push(input[i].diagnosis);
+    }
+    console.log(diagnoses);
+    var output = diagnoses.join(', ');
     return output;
   };
 });
