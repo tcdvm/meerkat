@@ -138,6 +138,6 @@ app.controller('CaseViewerCtrl',
 	    },
 	    loading: false
     };
+    
 	}); // end controller
-
 

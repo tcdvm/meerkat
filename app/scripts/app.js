@@ -42,6 +42,10 @@ var app = angular
         templateUrl: 'views/cases.html',
         controller: 'CaseViewerCtrl'
       })
+      .when('/clinicians/', {
+        templateUrl: 'views/clinicians.html',
+        controller: 'ClinicianCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -69,3 +73,11 @@ app.directive('datepickerPopup', ['datepickerPopupConfig', 'dateParser', 'dateFi
           }
       };
   }]);
+
+// angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
+//     .controller('CarouselController', ['$scope', '$timeout', '$transition', '$q', function        ($scope, $timeout, $transition, $q) {
+// }]).directive('carousel', [function() {
+//     return {
+
+//     }
+// }]);

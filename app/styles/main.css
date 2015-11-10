@@ -199,6 +199,9 @@ label {
   .case-log-container {
       width: 1580px;
   }
+  .navbar-container {
+    width: 1580px;
+  }
 }
 
 .h4-no-bottom-padding {
@@ -224,3 +227,17 @@ Color Scheme
 
 https://coolors.co/ffffff-007ea7-00a8e8-003459-00171f
 **/ 
+
+
+/*@media (min-width: 1200px) {
+  .carousel-container {
+    width: 1470px;
+  }
+}
+*/
+/*
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}*/
