@@ -1,13 +1,19 @@
 'use strict';
 
 app.controller('CaseLogCtrl',
-  function ($scope, $modal, $firebaseObject, $firebaseArray, Cases, Students, Patients) {
+  function ($scope, $uibModal, $firebaseObject, $firebaseArray, Cases, Students, Patients, Clinicians) {
 
   $scope.diagnoses = ['Primary glaucoma', 'Secondary glaucoma', 'Cataract',
   'Anterior uveitis', 'Keratoconjunctivitis sicca', 'Indolent ulcer', 'Ulcerative keratitis',
   'Post-op cataract sx', 'Anterior lens luxation', 'Progressive retinal atrophy',
   'Sudden acquired retinal degeneration', 'Corneal dystrophy', 'Lipid keratopathy',
   'Calcific keratopathy', 'Uveal dermatologic syndrome'];
+
+  $scope.procedures = ['Phacoemulsification (cataract sx)', 'Enucleation', 'Conjunctival graft', 'Biopsy',
+  'Third eyelid removal', 'Debridement/Diamond Burr/Grid keratotomy', 'Thermokeratoplasty',
+  'Entropion/Ectropion correction', 'Contact lens placement', 'Eyelid mass removal (any technique)'];
+
+  $scope.summaryInstructions = '<b>Type a brief summary of the case.</b> <br>E.g. Indolent ulcer OS, 4th visit, previous debridements failed, today re-debrided, diamond burred, and placed contact lens.';
 
   // $scope.netId = '';
   $scope.netId = 'tchen';
@@ -36,7 +42,14 @@ app.controller('CaseLogCtrl',
         location: 'OD'
       }
     ],
-    summary: 'Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed, per ex sale justo habemus, ei vix utamur delenit. No eam postulant appellantur, at omnesque copiosae qui. Quo nemore albucius prodesset at. In tale urbanitas maiestatis his, dolore mandamus senserit cum an. Melius pertinax has eu, vis at eros solet oratio, pro ea natum solet mollis.',
+    procedures: [
+      {
+        procedure: 'Enucleation',
+        location: 'OD'
+      }
+    ],
+    studentInvolvement: '2',
+    summary: 'Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed.',
     clinician : 'Chen'
   };
 
@@ -63,7 +76,7 @@ app.controller('CaseLogCtrl',
       $scope.chartConfig.series[0].data = caseStats.caseStats;
     } else {
       console.log('No such user! Creating...');
-      var modalInstance = $modal.open({
+      var modalInstance = $uibModal.open({
         templateUrl: 'newUser.html',
         controller: 'ModalInstanceCtrl',
         resolve: {
@@ -138,21 +151,28 @@ app.controller('CaseLogCtrl',
           location: 'OD'
         }
       ],
+      procedures: [
+        {
+          procedure: 'Enucleation',
+          location: 'OD'
+        }
+      ],
+      studentInvolvement: '2',
       // treatment : 'Enucleation',
       // outcome : 'No more issues',
       // followup : 'None',
-      summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto. Efficiendi reformidans qui ea, mel mucius iisque inimicus ea. Tale vocibus maiestatis ad qui. Et scripta accusata indoctum sit, habemus aliquando usu ex. Vel et appareat efficiendi, nobis eligendi an mea, usu an tota erat tacimates. Diam pericula ei pro. Ipsum etiam cotidieque nam ad, eum eu neglegentur vituperatoribus.',
+      summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto.',
       clinicians : 'Hendrix'
     };
   }; // end logout
  
-  /**
-   * Submits a case
-   */
   $scope.addDiagnosis = function() {
     $scope.case.diagnoses.push({});
   };
 
+  $scope.addProcedure = function() {
+    $scope.case.procedures.push({procedure:'', location:'N/A'});
+  };
   /**
    * Submits a case
    */
@@ -162,10 +182,15 @@ app.controller('CaseLogCtrl',
     $scope.case.studentId = $scope.user.netId;
     $scope.case.studentName = $scope.user.name;
 
-    // Delete all empty diagnoses
+    // Delete all empty diagnoses & procedures
     for (var i=$scope.case.diagnoses.length-1; i >= 0; i--) {
       if ($scope.case.diagnoses[i].diagnosis === null || $scope.case.diagnoses[i].diagnosis === '') {
         $scope.case.diagnoses.splice(i, 1);
+      }
+    }
+    for (var j=$scope.case.procedures.length-1; j >= 0; j--) {
+      if ($scope.case.procedures[j] === null || $scope.case.procedures[j] === '') {
+        $scope.case.procedures.splice(j, 1);
       }
     }
 
@@ -198,6 +223,8 @@ app.controller('CaseLogCtrl',
       var caseStats = Students.getCaseStats($scope.netId);
       $scope.chartConfig.series[0].data = caseStats.caseStats;
       Patients.addCase($scope.case.patientId, id, $scope.case);
+      Clinicians.addCase($scope.case.clinician, id, $scope.case);
+      Clinicians.refreshCaseStats($scope.case.clinician);
 
       $scope.case =  {
         studentId : '',
@@ -219,10 +246,17 @@ app.controller('CaseLogCtrl',
             location: 'OU'
           }
         ],
+        procedures: [
+          {
+            procedure: 'Enucleation',
+            location: 'OD'
+          }
+        ],
+        studentInvolvement: '2',
         // treatment : 'Enucleation',
         // outcome : 'No more issues',
         // followup : 'None',
-        summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto. Efficiendi reformidans qui ea, mel mucius iisque inimicus ea. Tale vocibus maiestatis ad qui. Et scripta accusata indoctum sit, habemus aliquando usu ex. Vel et appareat efficiendi, nobis eligendi an mea, usu an tota erat tacimates. Diam pericula ei pro. Ipsum etiam cotidieque nam ad, eum eu neglegentur vituperatoribus.',
+        summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto.',
         clinician : 'Newbold'
         // studentId: '',
         // studentName: '',
@@ -251,6 +285,8 @@ app.controller('CaseLogCtrl',
     Patients.deleteCase(scase.patientId, scase);
     Students.deleteCase(scase.studentId, scase);
     Students.refreshCaseStats($scope.netId);
+    Clinicians.deleteCase(scase.clinician, scase);
+    Clinicians.refreshCaseStats(scase.clinician);
     var caseStats = Students.getCaseStats($scope.netId);
     $scope.chartConfig.series[0].data = caseStats.caseStats;
   };

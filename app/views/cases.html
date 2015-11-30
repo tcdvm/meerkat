@@ -29,7 +29,7 @@
             <th>Student</th>
             <th>Case Type</th>
           </tr> 
-          <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" dir-paginate="studentcase in caseArray | filter:search | orderBy:'date' |itemsPerPage: 15">
+          <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" uib-tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" dir-paginate="studentcase in caseArray | filter:search | orderBy:'date' |itemsPerPage: 15">
             <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
             <td>{{studentcase.patientId}}</td>
             <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>

@@ -212,6 +212,14 @@ label {
     width:230px;
 }
 
+.btn-group {
+  margin-top: -5px;
+}
+
+.divider {
+  margin-left: 20px;
+  margin-right: 20px;
+}
 /*@media (min-width: 1200px) {
   .container {
       width: 1170px;

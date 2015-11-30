@@ -3,21 +3,80 @@
 app.controller('CliniciansCtrl',
   function ($scope, $firebaseObject, $firebaseArray, Clinicians) {
     $scope.clinicians = Clinicians.all;
-    $scope.clinicians.$loaded().then(function() {
-      $scope.numClinicians = $scope.clinicians.length;
-      var totalNewCases = 0;
-      var totalRechecks = 0;
-      var totalProcedures = 0;
-      // console.log(clinicians.length); // data is loaded here
-      angular.forEach($scope.clinicians, function(clinician) {
-        totalNewCases += clinician.numNewCases;
-        totalRechecks += clinician.numRechecks;
-        totalProcedures += clinician.numProcedures;
-        // console.log(clinician);
-      });
-      $scope.avgNewCases = totalNewCases/$scope.numClinicians;
-      $scope.avgRechecks = totalRechecks/$scope.numClinicians;
-      $scope.avgProcedures = totalProcedures/$scope.numClinicians;
-    });
+    $scope.orderedClinicians = Clinicians.orderedAll;
+    $scope.charts = [];
+    $scope.recentPatients = [];
+    $scope.orderedClinicians.$loaded().then(function() {
+      for(var i = 0; i < 6; i++) {
+        var caseStats = Clinicians.getCaseStats($scope.orderedClinicians[i].$id);
+        $scope.charts.push(
+        {
+          options: {
+            chart: {
+                polar: true,
+                type: 'line'
+              },
+              exporting: {
+                enabled: false
+              }
+            }, // end options
+            size: {
+              height: '300'
+            },
+
+            title: {
+              text: '',
+              style: {
+                display: 'none'
+              }
+            },
+            subtitle: {
+              text: '',
+              style: {
+                display: 'none'
+              }
+            },
+          
+            pane: {
+              size: '80%'
+            },
+
+            xAxis: {
+              categories: ['KCS', 'Corneal Ulcers', 'Glaucoma', 'Cataracts', 'Anterior Uveitis', 'Retinal Disease', 'Other'],
+              tickmarkPlacement: 'on',
+              lineWidth: 0
+            },
+              
+            yAxis: {
+              gridLineInterpolation: 'polygon',
+              lineWidth: 0,
+              min: 0
+            },
+          
+            tooltip: {
+              shared: true,
+              pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+            },
+          
+            legend: {
+              enabled: false,
+            },
+          
+            series: [{
+              name: 'cases',
+              pointPlacement: 'on',
+              showInLegend: false,
+              data: caseStats.caseStats
+            }]
+          }
+       );
+        var casesRef = Clinicians.getCasesRef($scope.orderedClinicians[i].$id);
+        var query = casesRef.orderByChild('date').limitToLast(10);
+        var blah = $firebaseArray(query);
+        $scope.recentPatients.push($firebaseArray(query));
+      } // end for-loop
+      console.log($scope.recentPatients);
+
+    }); // once clinicians loaded
 
   }); // end controller

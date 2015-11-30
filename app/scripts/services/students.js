@@ -100,9 +100,10 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
           case 'recheck':
             recheckCaseCount += 1;
             break;
-          case 'procedure':
-            procedureCount += 1;
-            break;
+          }
+
+          if(scase.surgeryProcedure) {
+            procedureCount +=1;
           }
 
           // Compile case type stats

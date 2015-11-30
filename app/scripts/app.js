@@ -44,7 +44,7 @@ var app = angular
       })
       .when('/clinicians/', {
         templateUrl: 'views/clinicians.html',
-        controller: 'ClinicianCtrl'
+        controller: 'CliniciansCtrl'
       })
       .otherwise({
         redirectTo: '/'

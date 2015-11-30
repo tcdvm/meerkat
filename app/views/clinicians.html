@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row" ng-repeat="clinician in clinicians | orderBy: 'vieworder'">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-lg-12">
+          <h1>{{clinician.name}}</h1>
+        </div>
+        <div class="col-lg-3">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span class="badge">{{clinician.numNewCases}}</span>
+              <i class="flaticon-badges1"></i> New cases:
+            </li>
+            <li class="list-group-item">
+              <span class="badge">{{clinician.numRechecks}}</span>
+              <i class="flaticon-checked21"></i> Rechecks:
+            </li>
+            <li class="list-group-item">
+              <span class="badge">{{clinician.numProcedures}}</span>
+              <span class="flaticon-scalpel1"></span> Procedures: 
+            </li>
+          </ul>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span class="badge">{{clinician.numDogs}}</span>
+              <i class="flaticon-dog77"></i> Dogs:
+            </li>
+            <li class="list-group-item">
+              <span class="badge">{{clinician.numCats}}</span>
+              <i class="flaticon-cat19"></i> Cats:
+            </li>
+            <li class="list-group-item">
+              <span class="badge">{{clinician.numHorses}}</span>
+              <i class="flaticon-black200"></i> Horses:
+            </li>
+            <li class="list-group-item">
+              <span class="badge">{{clinician.numOther}}</span>
+              <i class="flaticon-hare"></i> Other:
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Cases seen:</h3>
+            </div>
+            <div class="panel-body">
+              <highchart id="chart1" config="charts[$index]"></highchart>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Most Recent Patients</h3>
+            </div>
+            <div class="panel-body">
+              <ol>
+                <li ng-repeat="patient in recentPatients[$index]">
+                 {{patient.patientName}} {{patient.patientSurname}} ({{patient.patientId}}) 
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- end container -->

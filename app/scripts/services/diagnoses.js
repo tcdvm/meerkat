@@ -34,7 +34,7 @@ app.factory('Diagnoses', function() {
 				category = 'Other';
 				break;
 			} // end switch statement
-			console.log('Diagnosis is: ' + diagnosis + ' - Category is: ' + category);
+			// console.log('Diagnosis is: ' + diagnosis + ' - Category is: ' + category);
 
 			return category;
 

@@ -26,7 +26,7 @@
     <div class="col-lg-7">
       <h4>Date case was seen</h4>
       <p class="input-group">
-        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-disabled="!user"   />
+        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-disabled="!user"   />
         <span class="input-group-btn">
           <button type="button" class="btn btn-default" ng-click="open($event)" ng-disabled="!user"><i class="glyphicon glyphicon-calendar"></i></button>
         </span>
@@ -42,7 +42,7 @@
             <label for="patientID" class="sr-only">Patient ID</label>
             <input type="text" class="form-control" placeholder="Patient ID" ng-model="case.patientId" ng-disabled="!user">
           </div>
-        <select class="form-control" ng-model="case.patientSpecies" ng-disabled="!user"> 
+        <select class="form-control" ng-model="case.patientSpecies" ng-disabled="!user" style="margin-top: -5px;">
           <option value="" >Pick a species</option>
           <option value="Canine">Canine</option>
           <option value="Feline">Feline</option>
@@ -71,23 +71,43 @@
         </label>
         <label class="radio-inline">
           <input type="radio" name="case-type" ng-model="case.caseType" value="recheck" ng-disabled="!user">Recheck
+        </label> 
+        <label class="divider"><b>|</b>
         </label>
-        <label class="radio-inline">
-          <input type="radio" name="case-type" ng-model="case.caseType" value="procedure" ng-disabled="!user">Procedure/Surgery
+        <label class="checkbox-inline">
+          <input type="checkbox" name="case-type" ng-model="case.surgeryProcedure" value="procedure" ng-disabled="!user">Procedure performed?
         </label>
       </form>
-      <form class="form-group animate-show" ng-show="case.caseType == 'procedure'">
+
+      <div class="form-group animate-show" ng-show="case.surgeryProcedure">
+        <div ng-repeat="procedure in case.procedures track by $index">
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="text" class="form-control" uib-typeahead="procedure for procedure in procedures | filter:$viewValue | limitTo:8" ng-model="case.procedures[$index].procedure" placeholder="Name of procedure" ng-disabled="!user">
+              <div class="btn-group">
+                  <label class="btn btn-default" ng-model="case.procedures[$index].location" uib-btn-radio="'OD'">OD</label>
+                  <label class="btn btn-default" ng-model="case.procedures[$index].location" uib-btn-radio="'OS'">OS</label>
+                  <label class="btn btn-default" ng-model="case.procedures[$index].location" uib-btn-radio="'OU'">OU</label>
+                  <label class="btn btn-default" ng-model="case.procedures[$index].location" uib-btn-radio="'N/A'">N/A</label>
+              </div>
+            </div>            
+          </form>
+        </div>
+        <button ng-disabled="!user" ng-click="addProcedure()" type="button" class="btn btn-default" aria-label="Left Align" ng-show="case.surgeryProcedure">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>  Add procedure </button>
+
         <h5>What was your level of involvement?</h5>
         <label class="radio">
-          <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="all" ng-disabled="!user">Did all of it!
+          <input type="radio" name="case-involvement" ng-model="case.studentInvolvement" value="1" ng-disabled="!user">Did most of the procedure.
         </label>
         <label class="radio">
-          <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="some" ng-disabled="!user">Did some of the procedure!
+          <input type="radio" name="case-involvement" ng-model="case.studentInvolvement" value="2" ng-disabled="!user">Did some of the procedure.
         </label>
         <label class="radio">
-          <input type="radio" name="case-involvement" ng-model="studentInvolvement" value="none" ng-disabled="!user">Helped with paperwork!!
+          <input type="radio" name="case-involvement" ng-model="case.studentInvolvement" value="3" ng-disabled="!user">Provided necessary pre/post-procedural care &amp; patient care
         </label>
-      </form>
+
+      </div>
 
       <h5>Diagnoses</h5>
       <div class="form-group">
@@ -95,29 +115,22 @@
           <form class="form-inline">
             <div class="form-group">
               <label for="diagnosisExample" class="sr-only">Diagnosis here</label>
-                <input type="text" typeahead="diagnosis for diagnosis in diagnoses | filter:$viewValue | limitTo:8" class="form-control" ng-model="case.diagnoses[$index].diagnosis" placeholder="Diagnosis" ng-disabled="!user">
-                <label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-model="case.diagnoses[$index].location" value="OD">OD 
-</label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" ng-model="case.diagnoses[$index].location" value="OS">OS 
-</label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="case.diagnoses[$index].location" value="OU">OU 
-</label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="case.diagnoses[$index].location" value="NA">N/A 
-</label>
+              <input type="text" uib-typeahead="diagnosis for diagnosis in diagnoses | filter:$viewValue | limitTo:8" class="form-control" ng-model="case.diagnoses[$index].diagnosis" placeholder="Diagnosis" ng-disabled="!user">
+            <div class="btn-group">
+                <label class="btn btn-default" ng-model="case.diagnoses[$index].location" uib-btn-radio="'OD'">OD</label>
+                <label class="btn btn-default" ng-model="case.diagnoses[$index].location" uib-btn-radio="'OS'">OS</label>
+                <label class="btn btn-default" ng-model="case.diagnoses[$index].location" uib-btn-radio="'OU'">OU</label>
+                <label class="btn btn-default" ng-model="case.diagnoses[$index].location" uib-btn-radio="'N/A'">N/A</label>
             </div>
-          
+            </div>
           </form>
         </div>
         <button ng-disabled="!user" ng-click="addDiagnosis()" type="button" class="btn btn-default" aria-label="Left Align">
         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>  Add diagnosis </button>
       </div>
 
-      <h5>Case Summary</h5>
-      <textarea class="form-control" placeholder="" ng-model="case.summary" rows="7" ng-disabled="!user"></textarea>
+      <h5>Case Summary (200 character limit) <i class="fa fa-question-circle" uib-popover-html="summaryInstructions" popover-trigger="mouseenter" popover-placement="top"></i></h5>
+      <textarea class="form-control" placeholder="" ng-model="case.summary" rows="3" maxlength="200" ng-disabled="!user"></textarea>
     </div>
   </div>
 
@@ -186,7 +199,7 @@
               </li>
               <li class="list-group-item">
                 <span class="badge">{{user.numProcedures}}</span>
-                <span class="flaticon-scalpel1"></span> Surgeries: 
+                <span class="flaticon-scalpel1"></span> Procedures: 
               </li>
             </ul>
 
@@ -274,7 +287,7 @@
     </div>
  
    <div class="row">
-      <div class="col-lg-12">
+      <div>
          <table class="table table-condensed table-hover">
             <tr>
               <th ng-hide="user">Student</th>
@@ -287,7 +300,7 @@
               <th>Case Type</th>
               <th ng-show="user"></th>
             </tr> 
-            <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date' |limitTo:25">
+            <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" uib-tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date' |limitTo:25">
               <td ng-hide="user">{{studentcase.studentName}}</td>
               <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
               <td>{{studentcase.patientId}}</td>
