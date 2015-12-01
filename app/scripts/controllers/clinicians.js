@@ -72,7 +72,6 @@ app.controller('CliniciansCtrl',
        );
         var casesRef = Clinicians.getCasesRef($scope.orderedClinicians[i].$id);
         var query = casesRef.orderByChild('date').limitToLast(10);
-        var blah = $firebaseArray(query);
         $scope.recentPatients.push($firebaseArray(query));
       } // end for-loop
       console.log($scope.recentPatients);

@@ -46,6 +46,10 @@ var app = angular
         templateUrl: 'views/clinicians.html',
         controller: 'CliniciansCtrl'
       })
+      .when('/patients/', {
+        templateUrl: 'views/patients.html',
+        controller: 'PatientsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
