@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{patientName}} {{patientSurname}} ({{patientId}})</h3>
+</div>
+<div class="modal-body">
+    <ul>
+        <li ng-repeat="case in patientCases">
+            {{case.date | date:'yyyy-MM-dd'}}
+        </li>
+    </ul>
+<timeline>
+  <timeline-event ng-repeat="event in events">
+    <timeline-badge class="{{event.badgeClass}}">
+      <i class="glyphicon {{event.badgeIconClass}}"></i>
+    </timeline-badge>
+    <timeline-panel class="{{event.badgeClass}}">
+      <timeline-heading>
+        <h4>{{event.title}}</h4>
+      </timeline-heading>
+      <p>{{event.content}}</p>
+    </timeline-panel>
+  </timeline-event>
+</timeline>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

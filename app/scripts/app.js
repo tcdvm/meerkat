@@ -21,7 +21,8 @@ var app = angular
     'firebase',
     'ui.bootstrap',
     'highcharts-ng',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'angular-timeline'
   ])
   .constant('FIREBASE_URL', 'https://meerkat-test.firebaseio.com/')
   .config(function ($routeProvider) {

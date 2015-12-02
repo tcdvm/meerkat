@@ -11,9 +11,10 @@ app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, FIR
     //   newPatientRef.set(patientInfo);
     //   return newPatientRef;
     // },
-    // getRef: function(patientId) {
-    //   return patientsRef.child(patientId);
-    // },
+    getRef: function(patientId) {
+      console.log('getref: ' + patientId);
+      return patientsRef.child(patientId);
+    },
     // delete: function(patientId) {
     //   return patientsList.$remove(patientId);
     // },
@@ -31,9 +32,9 @@ app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, FIR
     //   console.log(patientsList.$getRecord(patientId));
     //   return patientsList.$getRecord(patientId);
     // },
-    // getCasesRef: function(patientId) {
-    //   return patientsRef.child(patientId).child('cases');
-    // },
+    getCasesRef: function(patientId) {
+      return patientsRef.child(patientId).child('cases');
+    },
     addCase: function(patientId, id, scase) {
       var c = {};
       c[id] = scase;
