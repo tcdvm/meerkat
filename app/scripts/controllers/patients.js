@@ -48,10 +48,15 @@ app.controller('PatientsCtrl',
 
 app.controller('PatientModalCtrl', function($scope, $uibModalInstance, $firebase, $firebaseObject, $firebaseArray, Patients, patientId) {
   $scope.patientId = patientId;
+  $scope.patientName = '';
+  $scope.patientSurname = '';
+  $scope.patientSpecies = '';
+  $scope.casesArray = [];
+
   var patientRef = Patients.getRef(patientId);
   var patientInfo = {};
   patientRef.on('value', function(snapshot) {
-    console.log(snapshot.val());
+    // console.log(snapshot.val());
     patientInfo = snapshot.val();
     $scope.patientName = patientInfo.name;
     $scope.patientSurname = patientInfo.surname;
@@ -62,8 +67,23 @@ app.controller('PatientModalCtrl', function($scope, $uibModalInstance, $firebase
 
   var patientCasesRef = Patients.getCasesRef(patientId);
   patientCasesRef.on('value', function(snapshot) {
-    console.log(snapshot.val());
-    $scope.patientCases = snapshot.val();
+    // console.log(snapshot.val());
+    var patientCases = snapshot.val();
+    // Iterate over each case (data will be in "value", key is firebase key)
+    angular.forEach(patientCases, function (value, key) {
+      console.log('Key' + key);
+      console.log(value);
+      var caseObject = value;
+      if(caseObject.caseType === 'new') {
+        caseObject.badgeClass = 'primary';
+      } else {
+        caseObject.badgeClass = 'success';
+      }
+      if(caseObject.surgeryProcedure) {
+        caseObject.badgeClass = 'danger';
+      }
+      $scope.casesArray.push(caseObject);
+    });
   }, function(errorObject) {
     console.log('The read failed: ' + errorObject.code);
   });
@@ -74,10 +94,10 @@ app.controller('PatientModalCtrl', function($scope, $uibModalInstance, $firebase
     title: 'First heading',
     content: 'Some awesome content.'
   }, {
-    badgeClass: 'warning',
+    badgeClass: 'danger',
     badgeIconClass: 'glyphicon-credit-card',
     title: 'Second heading',
-    content: 'More awesome content.'
+    content: 'More awesome content. Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed.'
   }];
 
 
