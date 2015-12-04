@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('CaseViewerCtrl',
-	function ($scope, $firebaseObject, $firebaseArray, Cases) {
+	function ($scope, $firebaseObject, $firebaseArray, Cases, Patients) {
 		var newCases = {};
 		var recheckCases = {};
 		var procedureCases = {};
@@ -138,6 +138,9 @@ app.controller('CaseViewerCtrl',
 	    },
 	    loading: false
     };
-    
+
+    $scope.openPatientModal = function(patientId) {
+      Patients.openPatientModal(patientId);
+    };
 	}); // end controller
 

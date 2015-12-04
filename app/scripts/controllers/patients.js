@@ -18,6 +18,8 @@ app.controller('PatientsCtrl',
     //   $scope.avgRechecks = totalRechecks/$scope.numStudents;
     //   $scope.avgProcedures = totalProcedures/$scope.numStudents;
     // });
+    $scope.patientId = 12344;
+
     $scope.getPatientCasesRef = function(patientId) {
       Patients.getCasesRef(patientId);
     };
@@ -30,7 +32,7 @@ app.controller('PatientsCtrl',
         size: 'lg',
         resolve: {
           patientId: function() {
-            return patientId;
+            return $scope.patientId;
           }
         }
       });

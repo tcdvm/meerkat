@@ -1,3 +1,5 @@
+html { overflow-y: scroll; }
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -64,30 +66,6 @@ body {
   margin-top: 28px;
 }
 
-/* Responsive: Portrait tablets and up */
-/*@media screen and (min-width: 768px) {
-  .container {
-    max-width: none;
-    width: 1800px;
-  }
-*/
-  /* Remove the padding we set earlier */
-/*  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-*/  /* Space out the masthead */
-/*  .header {
-    margin-bottom: 30px;
-  }
-*/  /* Remove the bottom border on the jumbotron for visual effect */
-/*  .jumbotron {
-    border-bottom: 0;
-  }
-}
-*/
 input {
   margin-bottom: 5px;
 }
@@ -118,12 +96,6 @@ h1, h3 {
   font-size: 40px;
 }
 
-/*.panel-green {
-  border-color: #5cb85c;
-  color: #fff;
-  background-color: #5cb85c;
-}
-*/
 .panel-black {
   border-color: #00171F;
   color: #efefef;
@@ -146,9 +118,6 @@ h1, h3 {
   border-color: #003459;
   color: #ededed;
   background-color: #003459;
-}
-/*.panel-primary {
-  background-color: #337ab7;
 }
 
 */.navbar-inverse {
@@ -220,32 +189,10 @@ label {
   margin-left: 20px;
   margin-right: 20px;
 }
-/*@media (min-width: 1200px) {
-  .container {
-      width: 1170px;
-  }
-}
-*//*.case-container {
-  margin-right: auto;
-  margin-left: auto;
-}*/
+
 /**
 
 Color Scheme
 
 https://coolors.co/ffffff-007ea7-00a8e8-003459-00171f
 **/ 
-
-
-/*@media (min-width: 1200px) {
-  .carousel-container {
-    width: 1470px;
-  }
-}
-*/
-/*
-.carousel-inner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}*/

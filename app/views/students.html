@@ -84,8 +84,8 @@
   				</tr>
   				<tr tooltip-popup-delay='500' tooltip-trigger="mouseenter" uib-tooltip="{{case.summary}}" tooltip-append-to-body="true"  ng-repeat="case in student.cases | orderBy:'patientName'">
             <td>{{case.date | date:'MMM dd, yyyy'}}</td>
-  					<td>{{case.patientId}}</td>
-  					<td>{{case.patientName}} {{case.patientSurname}}</td>
+  					<td><a href="" ng-click="openPatientModal(case.patientId)">{{case.patientId}}</a></td>
+  					<td><a href="" ng-click="openPatientModal(case.patientId)">{{case.patientName}} {{case.patientSurname}}</a></td>
   					<td>{{case.patientSpecies}}</td>
   					<td>{{case.diagnoses | prettyDiagnosisArrayOutput}}</td>
             <td>{{case.clinician }}</td>

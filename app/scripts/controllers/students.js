@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('StudentsCtrl',
-	function ($scope, $firebaseObject, $firebaseArray, Students) {
+	function ($scope, $firebaseObject, $firebaseArray, Students, Patients) {
 		$scope.students = Students.all;
 		$scope.students.$loaded().then(function() {
 			$scope.numStudents = $scope.students.length;
@@ -19,5 +19,8 @@ app.controller('StudentsCtrl',
 	    $scope.avgRechecks = totalRechecks/$scope.numStudents;
 	    $scope.avgProcedures = totalProcedures/$scope.numStudents;
 		});
-
+		
+    $scope.openPatientModal = function(patientId) {
+      Patients.openPatientModal(patientId);
+    };
 	}); // end controller

@@ -31,8 +31,8 @@
           </tr> 
           <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" uib-tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" dir-paginate="studentcase in caseArray | filter:search | orderBy:'date' |itemsPerPage: 15">
             <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
-            <td>{{studentcase.patientId}}</td>
-            <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>
+            <td><a href="" ng-click="openPatientModal(studentcase.patientId)">{{studentcase.patientId}}</a></td>
+            <td><a href="" ng-click="openPatientModal(studentcase.patientId)">{{studentcase.patientName}} {{studentcase.patientSurname}}</a></td>
             <td>{{studentcase.patientSpecies}}</td> 
             <td>{{studentcase.diagnoses | prettyDiagnosisArrayOutput}}</td> 
             <td>{{studentcase.clinician}}</td> 

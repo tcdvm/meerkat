@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('CliniciansCtrl',
-  function ($scope, $firebaseObject, $firebaseArray, Clinicians) {
+  function ($scope, $firebaseObject, $firebaseArray, Clinicians, Patients) {
     $scope.clinicians = Clinicians.all;
     $scope.orderedClinicians = Clinicians.orderedAll;
     $scope.charts = [];
@@ -74,7 +74,11 @@ app.controller('CliniciansCtrl',
         var query = casesRef.orderByChild('date').limitToLast(10);
         $scope.recentPatients.push($firebaseArray(query));
       } // end for-loop
-      console.log($scope.recentPatients);
+      // console.log($scope.recentPatients);
+
+      $scope.openPatientModal = function(patientId) {
+        Patients.openPatientModal(patientId);
+      };
 
     }); // once clinicians loaded
 

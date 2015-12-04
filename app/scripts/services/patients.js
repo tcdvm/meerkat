@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, FIREBASE_URL) {
+app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, $uibModal, FIREBASE_URL) {
   var patientsRef = new Firebase(FIREBASE_URL + 'patients');
   // var patientsList = $firebaseArray(patientsRef);
 
@@ -77,6 +77,25 @@ app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, FIR
         }
       }, function(errorObject) {
         console.log('The read failed: ' + errorObject.code);
+      });
+    },
+    openPatientModal: function(patientId) {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: '../views/patientModal.html',
+        controller: 'PatientModalCtrl',
+        size: 'lg',
+        resolve: {
+          patientId: function() {
+            return patientId;
+          }
+        }
+      });
+
+      modalInstance.result.then(function() {
+        console.log('clicked ok');
+      }, function() {
+        console.log('clicked cancel');
       });
     }
   };

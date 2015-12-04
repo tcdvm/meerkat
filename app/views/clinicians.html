@@ -58,8 +58,7 @@
             </div>
             <div class="panel-body">
               <ol>
-                <li ng-repeat="patient in recentPatients[$index]">
-                 {{patient.patientName}} {{patient.patientSurname}} ({{patient.patientId}}) 
+                <li ng-repeat="patient in recentPatients[$index]"><a href="" ng-click="openPatientModal(patient.patientId)">{{patient.patientName}} {{patient.patientSurname}} ({{patient.patientId}})</a>
                 </li>
               </ol>
             </div>

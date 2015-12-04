@@ -10,7 +10,7 @@
     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
   </div>
 </script>
-<div class="container case-log-container">
+<div class="container">
 <div class="row">
   <div class="col-lg-4">
   <div class="row">
@@ -303,8 +303,8 @@
             <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" uib-tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date' |limitTo:25">
               <td ng-hide="user">{{studentcase.studentName}}</td>
               <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
-              <td>{{studentcase.patientId}}</td>
-              <td>{{studentcase.patientName}} {{studentcase.patientSurname}}</td>
+              <td><a href="" ng-click="openPatientModal(studentcase.patientId)">{{studentcase.patientId}}</a></td>
+              <td><a href="" ng-click="openPatientModal(studentcase.patientId)">{{studentcase.patientName}} {{studentcase.patientSurname}}</a></td>
               <td>{{studentcase.patientSpecies}}</td> 
               <td>{{studentcase.diagnoses | prettyDiagnosisArrayOutput}}</td> 
               <td>{{studentcase.clinician }}</td> 

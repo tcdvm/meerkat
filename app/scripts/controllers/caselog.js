@@ -376,6 +376,10 @@ app.controller('CaseLogCtrl',
           }]
         };
 
+  $scope.openPatientModal = function(patientId) {
+    console.log('opening patient modal with ' + patientId);
+    Patients.openPatientModal(patientId);
+  };
 }); // end controller
 
 app.filter('prettyDiagnosisArrayOutput', function() {
