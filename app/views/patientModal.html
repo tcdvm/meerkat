@@ -2,24 +2,28 @@
     <h3 class="modal-title">{{patientName}} {{patientSurname}} ({{patientId}})</h3>
 </div>
 <div class="modal-body">
-    <ul>
-        <li ng-repeat="case in patientCases">
-            {{case.date | date:'yyyy-MM-dd'}}
-        </li>
-    </ul>
-<timeline>
-  <timeline-event ng-repeat="event in events">
-    <timeline-badge class="{{event.badgeClass}}">
-      <i class="glyphicon {{event.badgeIconClass}}"></i>
-    </timeline-badge>
-    <timeline-panel class="{{event.badgeClass}}">
-      <timeline-heading>
-        <h4>{{event.title}}</h4>
-      </timeline-heading>
-      <p>{{event.content}}</p>
-    </timeline-panel>
-  </timeline-event>
-</timeline>
+  <timeline>
+    <timeline-event ng-repeat="case in patientCases">
+      <timeline-badge class="{{case.badgeClass}}">
+        <i class="glyphicon {{case.badgeIconClass}}"></i>
+      </timeline-badge>
+      <timeline-panel class="{{case.badgeClass}}">
+        <timeline-heading>
+          <h4>{{case.date | date:'MMMM dd, yyyy'}} - ({{case.caseType | capitalize }})</h4>
+          <small class="text-muted"><i class="glyphicon glyphicon-time"></i>About {{case.when}} days ago</small>
+        </timeline-heading>
+        <br>
+        <p>{{case.summary}}</p>
+        <b>Diagnoses:</b> {{case.diagnoses | prettyDiagnosisArrayOutput}}
+        <div ng-if="case.surgeryProcedure">
+          <b>Procedure(s):</b> {{case.procedures | prettyProcedureArrayOutput}}
+        </div>
+      <timeline-footer>
+        Seen by <b>Dr. {{case.clinician}}</b> with {{case.studentName}} (student)
+      </timeline-footer>
+      </timeline-panel>
+    </timeline-event>
+  </timeline>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>

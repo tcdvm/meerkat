@@ -18,13 +18,11 @@ app.controller('PatientsCtrl',
     //   $scope.avgRechecks = totalRechecks/$scope.numStudents;
     //   $scope.avgProcedures = totalProcedures/$scope.numStudents;
     // });
-    $scope.patientId = 12344;
-
     $scope.getPatientCasesRef = function(patientId) {
       Patients.getCasesRef(patientId);
     };
 
-    $scope.open = function() {
+    $scope.open = function(patientId) {
       var modalInstance = $uibModal.open({
         animation: true,
         templateUrl: '../views/patientModal.html',
@@ -32,7 +30,7 @@ app.controller('PatientsCtrl',
         size: 'lg',
         resolve: {
           patientId: function() {
-            return $scope.patientId;
+            return patientId;
           }
         }
       });
@@ -51,7 +49,7 @@ app.controller('PatientModalCtrl', function($scope, $uibModalInstance, $firebase
   $scope.patientName = '';
   $scope.patientSurname = '';
   $scope.patientSpecies = '';
-  $scope.casesArray = [];
+  $scope.patientCases = [];
 
   var patientRef = Patients.getRef(patientId);
   var patientInfo = {};
@@ -76,13 +74,20 @@ app.controller('PatientModalCtrl', function($scope, $uibModalInstance, $firebase
       var caseObject = value;
       if(caseObject.caseType === 'new') {
         caseObject.badgeClass = 'primary';
-      } else {
+        caseObject.badgeIconClass ='glyphicon-star';
+      } else { // caseType is recheck
         caseObject.badgeClass = 'success';
+        caseObject.badgeIconClass = 'glyphicon-ok';
       }
       if(caseObject.surgeryProcedure) {
         caseObject.badgeClass = 'danger';
+        caseObject.badgeIconClass = 'glyphicon-flash';
       }
-      $scope.casesArray.push(caseObject);
+      var now = new Date();
+      var timeDiff = Math.abs(now - caseObject.date);
+      caseObject.when = Math.floor(timeDiff / (1000 * 3600 * 24));
+
+      $scope.patientCases.push(caseObject);
     });
   }, function(errorObject) {
     console.log('The read failed: ' + errorObject.code);
@@ -90,12 +95,12 @@ app.controller('PatientModalCtrl', function($scope, $uibModalInstance, $firebase
 
   $scope.events = [{
     badgeClass: 'info',
-    badgeIconClass: 'glyphicon-check',
+    badgeIconClass: 'glyphicon-star',
     title: 'First heading',
     content: 'Some awesome content.'
   }, {
     badgeClass: 'danger',
-    badgeIconClass: 'glyphicon-credit-card',
+    badgeIconClass: 'glyphicon-flash',
     title: 'Second heading',
     content: 'More awesome content. Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed.'
   }];

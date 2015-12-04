@@ -378,11 +378,22 @@ app.controller('CaseLogCtrl',
 
 }); // end controller
 
-app.filter('prettyArrayOutput', function() {
+app.filter('prettyDiagnosisArrayOutput', function() {
   return function(input) {
     var diagnoses = [];
     for (var i = 0; i < input.length; i++) {
-      diagnoses.push(input[i].diagnosis);
+      diagnoses.push(input[i].diagnosis + ' ' + input[i].location);
+    }
+    var output = diagnoses.join(', ');
+    return output;
+  };
+});
+
+app.filter('prettyProcedureArrayOutput', function() {
+  return function(input) {
+    var diagnoses = [];
+    for (var i = 0; i < input.length; i++) {
+      diagnoses.push(input[i].procedure + ' ' + input[i].location);
     }
     var output = diagnoses.join(', ');
     return output;
