@@ -128,7 +128,7 @@ h1, h3 {
   background-color: #003459;
 }
 
-*/.navbar-inverse {
+/.navbar-inverse {
   background-color: #00171F;
   border-color: #00171F;
 }
@@ -186,8 +186,9 @@ label {
 }
 
 .form-inline .form-group input {
-    width:230px;
+    width:180px;
 }
+
 
 .btn-group {
   margin-top: -5px;
@@ -202,6 +203,9 @@ label {
   margin-right: 20px;
 }
 
+.summary-text {
+  width: 370px;
+}
 /**
 
 Color Scheme
