@@ -172,7 +172,7 @@ label {
     margin-right:-4px;
 }
 
-@media (min-width: 1600px) {
+/*@media (min-width: 1600px) {
   .case-log-container {
       width: 1580px;
   }
@@ -180,7 +180,7 @@ label {
     width: 1580px;
   }
 }
-
+*/
 .h4-no-bottom-padding {
   margin-bottom: 0;
 }
@@ -205,6 +205,15 @@ label {
 
 .summary-text {
   width: 370px;
+}
+
+@media (min-width: 1200px) {
+  .col-lg-4 {
+    width: 28%;
+  }
+  .col-lg-8 {
+    width: 72%;
+  }
 }
 /**
 
