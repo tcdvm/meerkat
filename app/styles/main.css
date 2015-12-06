@@ -34,7 +34,15 @@ body {
 
 .navbar {
   border-radius: 0px;
-  /*display: inline-block;*/
+}
+
+
+.navbar-brand {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
 }
 
 /* Custom page footer */
@@ -183,6 +191,10 @@ label {
 
 .btn-group {
   margin-top: -5px;
+}
+
+.btn-species {
+  padding: 2px 12px;
 }
 
 .divider {

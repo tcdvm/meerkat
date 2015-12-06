@@ -42,13 +42,12 @@
             <label for="patientID" class="sr-only">Patient ID</label>
             <input type="text" class="form-control" placeholder="Patient ID" ng-model="case.patientId" ng-disabled="!user">
           </div>
-        <select class="form-control" ng-model="case.patientSpecies" ng-disabled="!user" style="margin-top: -5px;">
-          <option value="" >Pick a species</option>
-          <option value="Canine">Canine</option>
-          <option value="Feline">Feline</option>
-          <option value="Equine">Equine </option>
-          <option value="Other">Other</option>
-        </select>
+        <div class="btn-group" ng-disabled="!user">
+            <label class="btn btn-default btn-species" ng-model="case.patientSpecies" uib-btn-radio="'Canine'"><i class="flaticon-dog77"></i> </label>
+            <label class="btn btn-default btn-species" ng-model="case.patientSpecies" uib-btn-radio="'Feline'"><i class="flaticon-cat19"></i></label>
+            <label class="btn btn-default btn-species" ng-model="case.patientSpecies" uib-btn-radio="'Equine'"><i class="flaticon-black200"></i></label>
+            <label class="btn btn-default btn-species" ng-model="case.patientSpecies" uib-btn-radio="'Other'"><i class="flaticon-hare"></i></label>
+        </div>
         <br>
         <div class="form-group">
           <label for="Patient Name" class="sr-only">Patient name</label>
