@@ -276,10 +276,6 @@ app.controller('CaseLogCtrl',
     });
   }; // end submitCase()
 
-  /**
-   * Submits a case
-   */
-
   $scope.deleteCase = function(scase) {
     Cases.deleteCase(scase.$id);
     Patients.deleteCase(scase.patientId, scase);
@@ -380,13 +376,32 @@ app.controller('CaseLogCtrl',
     console.log('opening patient modal with ' + patientId);
     Patients.openPatientModal(patientId);
   };
+
+  $scope.alerts = [
+    { type: 'danger', msg: 'Nope. Most carbonic anhydrase usually end with the suffix -amide.'},
+    { type: 'success', msg: 'Correct! Most prostaglandins end with the suffix -prost.'},
+    { type: 'danger', msg: 'Nope. Beta blockers usually end with the suffix -olol.'},
+    { type: 'danger', msg: 'Nope. Examples of osmotic agents would be mannitol and oral glycerin.'}
+  ];
+
+  $scope.activeAlert = undefined;
+
+  $scope.answer = function(index) {
+    // console.log('hi ' + index);
+    $scope.activeAlert = $scope.alerts[index];
+  };
+
 }); // end controller
 
 app.filter('prettyDiagnosisArrayOutput', function() {
   return function(input) {
     var diagnoses = [];
     for (var i = 0; i < input.length; i++) {
-      diagnoses.push(input[i].diagnosis + ' ' + input[i].location);
+      if (input[i].location !== 'N/A') {
+        diagnoses.push(input[i].diagnosis + ' ' + input[i].location);
+      } else {
+        diagnoses.push(input[i].diagnosis);
+      }
     }
     var output = diagnoses.join(', ');
     return output;

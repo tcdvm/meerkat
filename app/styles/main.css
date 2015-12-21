@@ -199,8 +199,8 @@ label {
 }
 
 .divider {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .summary-text {
@@ -209,11 +209,27 @@ label {
 
 @media (min-width: 1200px) {
   .col-lg-4 {
-    width: 28%;
+    width: 29%;
   }
   .col-lg-8 {
-    width: 72%;
+    width: 71%;
   }
+}
+
+.ellipsis {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+/*    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+*/}
+
+.navbar-inverse .navbar-brand {
+  color: #FFB500;
 }
 /**
 

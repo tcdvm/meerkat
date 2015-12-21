@@ -41,10 +41,11 @@ app.controller('CaseViewerCtrl',
         case 'recheck':
           recheckCases[dateKey] = (recheckCases[dateKey] || 0) + 1;
           break;
-        case 'procedure':
-					procedureCases[dateKey] = (procedureCases[dateKey] || 0) + 1;
-          break;
 			  }
+
+        if ($scope.cases[i].surgeryProcedure) {
+          procedureCases[dateKey] = (procedureCases[dateKey] || 0) + 1;
+        }
 			}
 		  for (var date in newCases) {
 				newCasesArray.push([parseInt(date, 10), newCases[date]]);

@@ -236,43 +236,38 @@
           <div class="col-lg-4">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">Ophtho wisdom</h3>
+                <h3 class="panel-title">Quizlet <i class="fa fa-question-circle" uib-popover="This will NOT affect your grade." popover-trigger="mouseenter" popover-placement="top"></i></h3>
               </div>
               <div class="panel-body">
-                Blah blah blah eye stuff.
+                What class of drug is <b>latanoprost</b>?
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" ng-click="answer(0)" value="option1">
+                    Carbonic anhydrase inhibitor
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" ng-click="answer(1)" value="option2">
+                    Prostaglandin analogue
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" ng-click="answer(2)" value="option3">
+                    Beta blocker
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" ng-click="answer(3)" value="option3">
+                    Osmotic agent
+                  </label>
+                </div>
               </div>
             </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Poll</h3>
-              </div>
-              <div class="panel-body">
-                How much do you love ophthalmology?
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                    More than life itself.
-                  </label>
-                </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                    I would die for ophthalmology.
-                  </label>
-                </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                    It's cool I guess.
-                  </label>
-                </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                    I would marry it if it were legal.
-                  </label>
-                </div>
-              </div>
+            <div class='animate-show' ng-show="activeAlert.msg">
+              <uib-alert type="{{activeAlert.type}}">{{activeAlert.msg}}</uib-alert>
             </div>
           </div>
         </div>
@@ -305,7 +300,7 @@
               <td><a href="" ng-click="openPatientModal(studentcase.patientId)">{{studentcase.patientId}}</a></td>
               <td><a href="" ng-click="openPatientModal(studentcase.patientId)">{{studentcase.patientName}} {{studentcase.patientSurname}}</a></td>
               <td>{{studentcase.patientSpecies}}</td> 
-              <td>{{studentcase.diagnoses | prettyDiagnosisArrayOutput}}</td> 
+              <td class="ellipsis">{{studentcase.diagnoses | prettyDiagnosisArrayOutput}}</td> 
               <td>{{studentcase.clinician }}</td> 
               <td>{{studentcase.caseType | capitalize}}</td>
               <td ng-show="user"><button type="button" class="btn btn-default btn-xs" ng-click="deleteCase(studentcase)">

@@ -51,6 +51,10 @@ var app = angular
         templateUrl: 'views/patients.html',
         controller: 'PatientsCtrl'
       })
+      .when('/quizadmin/', {
+        templateUrl: 'views/quizAdmin.html',
+        controller: 'QuizCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

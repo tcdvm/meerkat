@@ -34,7 +34,7 @@
             <td><a href="" ng-click="openPatientModal(studentcase.patientId)">{{studentcase.patientId}}</a></td>
             <td><a href="" ng-click="openPatientModal(studentcase.patientId)">{{studentcase.patientName}} {{studentcase.patientSurname}}</a></td>
             <td>{{studentcase.patientSpecies}}</td> 
-            <td>{{studentcase.diagnoses | prettyDiagnosisArrayOutput}}</td> 
+            <td class="ellipsis">{{studentcase.diagnoses | prettyDiagnosisArrayOutput}}</td> 
             <td>{{studentcase.clinician}}</td> 
             <td>{{studentcase.studentName}}</td>
             <td>{{studentcase.caseType | capitalize}}</td>
