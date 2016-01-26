@@ -7,13 +7,7 @@ app.factory('Quizzes', function($firebase, $firebaseArray, FIREBASE_URL) {
 
   var Quiz = {
     all: quizzes,
-    create: function(studentcase) {
-      // console.log(studentcase);
-      // cases.$add(studentcase).then(function(ref) {
-      //   var id = ref.key();
-      //   console.log('added record with id ' + id);
-      //   // Students.addCase(studentNetId, id);
-      // });
+    add: function(category, quiz) {
       return cases.$add(studentcase);
     },
     get: function(caseId) {

@@ -231,6 +231,14 @@ label {
 .navbar-inverse .navbar-brand {
   color: #FFB500;
 }
+
+.form-inline .form-control {
+  width: 280px;
+}
+
+.form-inline .btn {
+  margin-bottom: 5px;
+}
 /**
 
 Color Scheme

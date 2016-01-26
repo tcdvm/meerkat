@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row row-centered">
+    <div class="col-lg-5 col-centered">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Category</label>
+          <div class="col-sm-10">
+            <select class="form-control" ng-model="category">
+              <option value="cornea">Cornea</option>
+              <option value="kcs">KCS</option>
+              <option value="uveitis">Uveitis</option>
+              <option value="cataracts">Cataracts</option>
+              <option value="glaucoma">Glaucoma</option>
+              <option value="retinaldisease">Retinal disease</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">Question</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="question">
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">Answers</label>
+          <div class="col-sm-10" >
+            <div class="form-inline" ng-repeat="answer in answers track by $index">
+                <input class="form-control answer-text" ng-model="answer">
+                <button type="submit" class="btn btn-danger" ng-show="$last" ng-click="removeAnswer()">
+                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </button>
+                <button type="submit" class="btn btn-success" ng-show="$last" ng-click="addAnswer()">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" class="btn btn-success" ng-click="addAnswer()">Add answer</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -53,7 +53,7 @@ var app = angular
       })
       .when('/quizadmin/', {
         templateUrl: 'views/quizAdmin.html',
-        controller: 'QuizCtrl'
+        controller: 'QuizAdminCtrl'
       })
       .otherwise({
         redirectTo: '/'
