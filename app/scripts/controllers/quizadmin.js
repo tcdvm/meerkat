@@ -1,18 +1,24 @@
 'use strict';
 
 app.controller('QuizAdminCtrl',
-  function ($scope, $firebaseObject, $firebaseArray) {
-    $scope.category = 'kcs';
-    $scope.question = 'What is the second letter of the alphabet?';
-    $scope.answers = ['a', 'b', 'c', 'd'];
-    $scope.correctAnswer = null;
+  function ($scope, $firebaseObject, $firebaseArray, Quizzes) {
+    $scope.quizlet ={
+      category: 'cornea',
+      question: 'What is the third letter of the alphabet?',
+      answers: ['a', 'b', 'c'],
+      correctAnswer: '2'
+    } ;
 
     $scope.addAnswer = function() {
-      $scope.answers.push('a');
+      $scope.quizlet.answers.push('a');
     };
 
     $scope.removeAnswer = function() {
-      $scope.answers.splice($scope.answers.length-1);
+      $scope.quizlet.answers.splice($scope.quizlet.answers.length-1);
+    };
+
+    $scope.addQuizlet = function() {
+      Quizzes.add($scope.quizlet);
     };
 
   });

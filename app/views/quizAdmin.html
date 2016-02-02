@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row row-centered">
-    <div class="col-lg-5 col-centered">
+    <div class="col-lg-6 col-centered">
       <form class="form-horizontal">
         <div class="form-group">
           <label class="col-sm-2 control-label">Category</label>
           <div class="col-sm-10">
-            <select class="form-control" ng-model="category">
+            <select class="form-control" ng-model="quizlet.category">
               <option value="cornea">Cornea</option>
               <option value="kcs">KCS</option>
               <option value="uveitis">Uveitis</option>
@@ -19,26 +19,41 @@
         <div class="form-group">
           <label  class="col-sm-2 control-label">Question</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" ng-model="question">
+            <input type="text" class="form-control" ng-model="quizlet.question">
           </div>
         </div>
         <div class="form-group">
-          <label  class="col-sm-2 control-label">Answers</label>
+          <label  class="col-sm-2 control-label">Answers <i>Click the button on the right for the correct answer</i></label>
           <div class="col-sm-10" >
-            <div class="form-inline" ng-repeat="answer in answers track by $index">
-                <input class="form-control answer-text" ng-model="answer">
-                <button type="submit" class="btn btn-danger" ng-show="$last" ng-click="removeAnswer()">
-                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                </button>
-                <button type="submit" class="btn btn-success" ng-show="$last" ng-click="addAnswer()">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
+            <div ng-repeat="answer in quizlet.answers track by $index"  class="no-gutter">
+              <div class="col-sm-10">
+                  <input class="form-control answer-text" ng-model="quizlet.answers[$index]">
+              </div>
+              <div class="col-sm-2">
+                 <div class="radio">
+                  <label>
+                    <input ng-model="quizlet.correctAnswer" name="correct-answer" ng-value="{{$index}}" type="radio">
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="button" class="btn btn-success" ng-click="addAnswer()">Add answer</button>
+          <label class="col-sm-2 control-label"></label>
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-danger" ng-click="removeAnswer()">
+              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </button>
+            <button type="submit" class="btn btn-success" ng-click="addAnswer()">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+            
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10 text-center">
+            <button type="button" class="btn btn-primary" ng-click="addQuizlet()">Add quizlet</button>
           </div>
         </div>
       </form>

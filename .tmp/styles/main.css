@@ -239,6 +239,11 @@ label {
 .form-inline .btn {
   margin-bottom: 5px;
 }
+
+.no-gutter > [class*='col-'] {
+    /*padding-right:0;*/
+    padding-left:0;
+}
 /**
 
 Color Scheme
