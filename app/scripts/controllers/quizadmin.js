@@ -9,6 +9,8 @@ app.controller('QuizAdminCtrl',
       correctAnswer: '2'
     } ;
 
+    $scope.quizzes = Quizzes.all;
+
     $scope.addAnswer = function() {
       $scope.quizlet.answers.push('a');
     };

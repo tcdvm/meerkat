@@ -16,6 +16,14 @@ app.factory('Quizzes', function($firebase, $firebaseArray, FIREBASE_URL) {
     },
     getQuestion: function(index) {
       return quizlets[index];
+    },
+    answerSubmitted: function(questionIndex, answerIndex) {
+      var question = quizlets[questionIndex];
+      if(answerIndex === question.correctAnswer) {
+        question.correctTries++;
+      } else{
+        question.totalTries++;
+      }
     }
 
     // get: function(caseId) {

@@ -59,4 +59,20 @@
       </form>
     </div>
   </div>
+        <!-- Example row of columns -->
+      <div class="row row-centered">
+        <div class="col-lg-4 col-centered" ng-repeat="quiz in quizzes">
+          <h5>{{quiz.question}} 
+            <br>
+            <small>Category: {{quiz.category}}</small>
+          </h5>
+          <ul>
+            <li ng-repeat="ans in quiz.answers">
+              {{ans}}
+            </li>
+          </ul>
+          <p><h6>Answered correctly / Total Tries:</h6></p>
+          <uib-progressbar class="progress-striped active" max="200" value="166" type="success"><i>166 / 200</i></uib-progressbar>
+        </div>
+      </div>
 </div>
