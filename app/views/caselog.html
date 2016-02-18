@@ -238,32 +238,21 @@
               <div class="panel-heading">
                 <h3 class="panel-title">Quizlet <i class="fa fa-question-circle" uib-popover="This will NOT affect your grade." popover-trigger="mouseenter" popover-placement="top"></i></h3>
               </div>
-              <div class="panel-body">
-                What class of drug is <b>latanoprost</b>?
-                <div class="radio">
+              <div class="panel-body" ng-hide="quizlet.noMore">
+                {{quizlet.quiz.question}}
+                <!-- What class of drug is <b>latanoprost</b>? -->
+                <div class="radio" ng-repeat="answer in quizlet.quiz.answers track by $index">
                   <label>
-                    <input type="radio" name="optionsRadios" ng-click="answer(0)" value="option1">
-                    Carbonic anhydrase inhibitor
+                    <input type="radio" name="answers" ng-model="$parent.quizlet.userAnswer" ng-value="{{$index}}" ng-disabled="!quizlet.answersOn">
+                    {{answer}}
                   </label>
                 </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" ng-click="answer(1)" value="option2">
-                    Prostaglandin analogue
-                  </label>
+                <div class="text-right">
+                <button type="button" class="btn btn-primary btn-xs text-right" ng-click="submitAnswer()">{{quizlet.buttonPrompt}}</button>
                 </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" ng-click="answer(2)" value="option3">
-                    Beta blocker
-                  </label>
-                </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" ng-click="answer(3)" value="option3">
-                    Osmotic agent
-                  </label>
-                </div>
+              </div>
+              <div class="panel-body" ng-show="quizlet.noMore">
+                You finished all the quiz questions! Nice job!
               </div>
             </div>
             <div class='animate-show' ng-show="activeAlert.msg">

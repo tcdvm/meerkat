@@ -236,9 +236,9 @@ label {
   width: 280px;
 }
 
-.form-inline .btn {
+/*.form-inline .btn {
   margin-bottom: 5px;
-}
+}*/
 
 .no-gutter > [class*='col-'] {
     /*padding-right:0;*/

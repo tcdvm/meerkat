@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('CaseLogCtrl',
-  function ($scope, $uibModal, $firebaseObject, $firebaseArray, Cases, Students, Patients, Clinicians) {
+  function ($scope, $uibModal, $firebaseObject, $firebaseArray, Cases, Students, Patients, Clinicians, Quizzes, StudentQuizzes) {
 
   $scope.diagnoses = ['Primary glaucoma', 'Secondary glaucoma', 'Cataract',
   'Anterior uveitis', 'Keratoconjunctivitis sicca', 'Indolent ulcer', 'Ulcerative keratitis',
@@ -21,6 +21,16 @@ app.controller('CaseLogCtrl',
   $scope.userCases = undefined;
   $scope.cases = Cases.all;
   $scope.radioModel = 'OD';
+  $scope.quizAnswer = undefined;
+  $scope.quizlet = {
+    quiz: undefined,
+    quizIndex: undefined,
+    userAnswer: undefined,
+    buttonPrompt: 'Answer',
+    answersOn: true,
+    noMore: false
+  };
+  $scope.studentquiz = undefined;
 
   $scope.case =  {
     studentId : '',
@@ -74,6 +84,16 @@ app.controller('CaseLogCtrl',
       Students.refreshCaseStats($scope.netId);
       var caseStats = Students.getCaseStats($scope.netId);
       $scope.chartConfig.series[0].data = caseStats.caseStats;
+      StudentQuizzes.getStudent($scope.netId);
+      $firebaseObject(StudentQuizzes.getStudentQuizIndexRef($scope.netId)).$bindTo($scope, 'quizlet.quizIndex').then(function(){
+        $scope.quizlet.quiz = Quizzes.getQuestion($scope.quizlet.quizIndex.$value);
+        if(!$scope.quizlet.quiz) {
+          $scope.quizlet.noMore = true;
+        }
+        console.log($scope.quizlet.quiz);
+        console.log('Called bind');
+      });
+      // studentquizindex.$bindTo($scope, 'quizlet.quizIndex');
     } else {
       console.log('No such user! Creating...');
       var modalInstance = $uibModal.open({
@@ -112,11 +132,14 @@ app.controller('CaseLogCtrl',
         $scope.cases = $scope.userCases;
         var caseStats = Students.getCaseStats($scope.netId);
         $scope.chartConfig.series[0].data = caseStats.caseStats;
+        StudentQuizzes.addStudent(newStudent.netId);
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
       });
       // Students.create($scope.netId, {name: 'me'});
     } // end else (creating new student)
+
+    // Get question for quiz
 
 
   }; // end login
@@ -378,17 +401,47 @@ app.controller('CaseLogCtrl',
   };
 
   $scope.alerts = [
-    { type: 'danger', msg: 'Nope. Most carbonic anhydrase usually end with the suffix -amide.'},
-    { type: 'success', msg: 'Correct! Most prostaglandins end with the suffix -prost.'},
-    { type: 'danger', msg: 'Nope. Beta blockers usually end with the suffix -olol.'},
-    { type: 'danger', msg: 'Nope. Examples of osmotic agents would be mannitol and oral glycerin.'}
+    { type: 'danger', msg: 'Wrong. So..so..wrong.'},
+    { type: 'success', msg: 'Correct!'}
   ];
 
   $scope.activeAlert = undefined;
 
-  $scope.answer = function(index) {
-    // console.log('hi ' + index);
-    $scope.activeAlert = $scope.alerts[index];
+  $scope.submitAnswer = function() {
+    if($scope.quizlet.buttonPrompt === 'Next Question') {
+      // Increase index, turn on answers, reset answer, change prompt, get question
+      console.log($scope.quizlet.quizIndex);
+      $scope.quizlet.quizIndex.$value++;
+      console.log($scope.quizlet.quizIndex);
+      if($scope.quizlet.quizIndex.$value === Quizzes.all.length) {
+        $scope.quizlet.noMore = true;
+        $scope.activeAlert = undefined;
+        StudentQuizzes.setQuizComplete($scope.netId);
+      } else {
+        $scope.quizlet.answersOn = true;
+        $scope.quizlet.buttonPrompt = 'Answer';
+        $scope.quizlet.userAnswer = undefined;
+        $scope.activeAlert = undefined;
+        $scope.quizlet.quiz = Quizzes.getQuestion($scope.quizlet.quizIndex.$value);
+      }
+    } else if($scope.quizlet.buttonPrompt === 'Answer') {
+      if ($scope.quizlet.userAnswer === $scope.quizlet.quiz.correctAnswer) {
+        $scope.activeAlert = $scope.alerts[1];
+        $scope.quizlet.buttonPrompt = 'Next Question';
+        $scope.quizlet.answersOn = false;
+      } else {
+        $scope.activeAlert = $scope.alerts[0];
+        $scope.quizlet.buttonPrompt = 'Try Again?';
+        $scope.quizlet.answersOn = false;
+        console.log('incorrect');
+      }
+    } else if($scope.quizlet.buttonPrompt === 'Try Again?') {
+      $scope.activeAlert = undefined;
+      $scope.quizlet.answersOn = true;
+      $scope.quizlet.userAnswer = undefined;
+      $scope.activeAlert = undefined;
+      $scope.quizlet.buttonPrompt = 'Answer';
+    }
   };
 
 }); // end controller
