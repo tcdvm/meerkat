@@ -5,8 +5,10 @@ app.controller('QuizAdminCtrl',
     $scope.quizlet ={
       category: 'cornea',
       question: 'What is the third letter of the alphabet?',
-      answers: ['a', 'b', 'c'],
-      correctAnswer: '2'
+      answers: ['a', 'b', 'c', 'd'],
+      correctAnswer: undefined,
+      totalTries: 0,
+      correctTries: 0
     } ;
 
     $scope.quizzes = Quizzes.all;

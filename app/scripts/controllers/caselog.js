@@ -429,10 +429,13 @@ app.controller('CaseLogCtrl',
         $scope.activeAlert = $scope.alerts[1];
         $scope.quizlet.buttonPrompt = 'Next Question';
         $scope.quizlet.answersOn = false;
+        Quizzes.answerSubmitted($scope.quizlet.quizIndex.$value, $scope.quizlet.userAnswer);
+        console.log('incorrect');
       } else {
         $scope.activeAlert = $scope.alerts[0];
         $scope.quizlet.buttonPrompt = 'Try Again?';
         $scope.quizlet.answersOn = false;
+        Quizzes.answerSubmitted($scope.quizlet.quizIndex.$value, $scope.quizlet.userAnswer);
         console.log('incorrect');
       }
     } else if($scope.quizlet.buttonPrompt === 'Try Again?') {

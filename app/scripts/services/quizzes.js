@@ -20,10 +20,11 @@ app.factory('Quizzes', function($firebase, $firebaseArray, FIREBASE_URL) {
     answerSubmitted: function(questionIndex, answerIndex) {
       var question = quizlets[questionIndex];
       if(answerIndex === question.correctAnswer) {
-        question.correctTries++;
-      } else{
-        question.totalTries++;
+        question.correctTries = (question.correctTries || 0) + 1;
       }
+      question.totalTries = (question.totalTries || 0) + 1;
+      quizlets.$save(questionIndex);
+      console.log('question saved');
     }
 
     // get: function(caseId) {

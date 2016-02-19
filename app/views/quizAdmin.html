@@ -32,7 +32,7 @@
               <div class="col-sm-2">
                  <div class="radio">
                   <label>
-                    <input ng-model="quizlet.correctAnswer" name="correct-answer" ng-value="{{$index}}" type="radio">
+                    <input ng-model="quizlet.correctAnswer" name="correct-answer" ng-value="{{$index}}" type="radio" required>
                   </label>
                 </div>
               </div>
@@ -72,7 +72,7 @@
             </li>
           </ul>
           <p><h6>Answered correctly / Total Tries:</h6></p>
-          <uib-progressbar class="progress-striped active" max="200" value="166" type="success"><i>166 / 200</i></uib-progressbar>
+          <uib-progressbar class="progress-striped active" max="quiz.totalTries" value="quiz.correctTries" type="success"><i>{{quiz.correctTries}} / {{quiz.totalTries}}</i></uib-progressbar>
         </div>
       </div>
 </div>
