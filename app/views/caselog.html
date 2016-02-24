@@ -17,8 +17,9 @@
     <div class="col-lg-12">
       <div class="form-group form-inline">
         <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" ng-disabled="user">
-        <input type="submit" class="btn-success form-control" value="Login" ng-click="login()" ng-hide="user" >
-        <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()" ng-show="user" >
+<!--         <input type="submit" class="btn-success form-control" value="Login" ng-click="login()"  >
+        <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()"  >
+ -->        <input type="submit" ng-class="{'btn-success': !loggedIn, 'btn-danger': loggedIn}" class="form-control" value="{{loginText}}" ng-click="loginOrOut()">
       </div>
     </div>
   </div>

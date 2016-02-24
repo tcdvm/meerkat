@@ -79,6 +79,33 @@ app.factory('StudentQuizzes', function($firebase, $firebaseArray, FIREBASE_URL){
       studentRef.transaction(function() {
         return true;
       });
+    },
+    addAnswer: function(quizlet, netId) {
+      console.log('In add Answer');
+      console.log(quizlet.quiz.question);
+      var quizletId = quizlet.quiz.$id;
+      console.log(quizlet.quiz.$id);
+      var studentquizref = ref.child(netId).child('questionsAnswered');
+
+      studentquizref.child(quizletId).once('value', function(snapshot) {
+        if(snapshot.exists()) {
+          console.log('It exists!');
+        } else {
+          console.log('It doesnt exist!');
+          studentquizref.child(quizletId).set({
+            'question': quizlet.quiz.question,
+            'answers': quizlet.quiz.answers,
+            'category': quizlet.quiz.category,
+            'correctAnswer': quizlet.quiz.correctAnswer
+          });
+        }
+        studentquizref.child(quizletId).child('answerDetails').push({
+          'date': Date.now(),
+          'answer': quizlet.userAnswer
+        });
+
+      });
+
     }
   };
 

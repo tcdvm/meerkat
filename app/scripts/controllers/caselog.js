@@ -7,13 +7,15 @@ app.controller('CaseLogCtrl',
   'Anterior uveitis', 'Keratoconjunctivitis sicca', 'Indolent ulcer', 'Ulcerative keratitis',
   'Post-op cataract sx', 'Anterior lens luxation', 'Progressive retinal atrophy',
   'Sudden acquired retinal degeneration', 'Corneal dystrophy', 'Lipid keratopathy',
-  'Calcific keratopathy', 'Uveal dermatologic syndrome'];
+  'Calcific keratopathy', 'Uveodermatologic syndrome', 'Diabetes mellitus'];
 
   $scope.procedures = ['Phacoemulsification (cataract sx)', 'Enucleation', 'Conjunctival graft', 'Biopsy',
   'Third eyelid removal', 'Debridement/Diamond Burr/Grid keratotomy', 'Thermokeratoplasty',
   'Entropion/Ectropion correction', 'Contact lens placement', 'Eyelid mass removal (any technique)'];
 
   $scope.summaryInstructions = '<b>Type a brief summary of the case.</b> <br>E.g. Indolent ulcer OS, 4th visit, previous debridements failed, today re-debrided, diamond burred, and placed contact lens.';
+  $scope.loggedIn = false;
+  $scope.loginText = 'Login';
 
   // $scope.netId = '';
   $scope.netId = 'tchen';
@@ -63,24 +65,34 @@ app.controller('CaseLogCtrl',
     clinician : 'Chen'
   };
 
+  $scope.loginOrOut = function() {
+    if($scope.loggedIn) {
+      $scope.logout();
+      $scope.loginText = 'Login';
+    } else if(!$scope.loggedIn) {
+      $scope.login();
+      $scope.loginText = 'Logout';
+    }
+  };
+
   /**
    * Logs in user - creates student if necessary, updates chart
    */
 
   $scope.login = function () {
-    console.log('in login!');
+    // console.log('in login!');
     // Check if netID (student) exists
     if (Students.checkIfUserExists($scope.netId) !== null) {
-      console.log('NetID exists!');
+      // console.log('NetID exists!');
       $scope.user = $firebaseObject(Students.getRef($scope.netId));
       // userObject = $firebaseObject(Students.getRef($scope.netId));
       // userObject.$bindTo($scope, 'user');
       $scope.userCases = $firebaseArray(Students.getCasesRef($scope.netId));
       $scope.cases = $scope.userCases;
-      var caseTypes = Students.getCaseStats($scope.netId);
-      console.log(caseTypes);
+      // var caseTypes = Students.getCaseStats($scope.netId);
+      // console.log(caseTypes);
       // $scope.chartConfig.series[0].data = [caseTypes.numNewCases, caseTypes.numRechecks, 6, 6, 6, 6];
-      console.log('diagnosis stats array');
+      // console.log('diagnosis stats array');
       Students.refreshCaseStats($scope.netId);
       var caseStats = Students.getCaseStats($scope.netId);
       $scope.chartConfig.series[0].data = caseStats.caseStats;
@@ -88,12 +100,14 @@ app.controller('CaseLogCtrl',
       $firebaseObject(StudentQuizzes.getStudentQuizIndexRef($scope.netId)).$bindTo($scope, 'quizlet.quizIndex').then(function(){
         $scope.quizlet.quiz = Quizzes.getQuestion($scope.quizlet.quizIndex.$value);
         if(!$scope.quizlet.quiz) {
+          console.log(StudentQuizzes.getStudentQuizIndexRef($scope.netId));
           $scope.quizlet.noMore = true;
         }
-        console.log($scope.quizlet.quiz);
-        console.log('Called bind');
+        // console.log($scope.quizlet.quiz);
+        // console.log('Called bind');
       });
       // studentquizindex.$bindTo($scope, 'quizlet.quizIndex');
+      $scope.loggedIn = true;
     } else {
       console.log('No such user! Creating...');
       var modalInstance = $uibModal.open({
@@ -133,6 +147,7 @@ app.controller('CaseLogCtrl',
         var caseStats = Students.getCaseStats($scope.netId);
         $scope.chartConfig.series[0].data = caseStats.caseStats;
         StudentQuizzes.addStudent(newStudent.netId);
+        $scope.loggedIn = true;
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
       });
@@ -187,6 +202,7 @@ app.controller('CaseLogCtrl',
       summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto.',
       clinicians : 'Hendrix'
     };
+    $scope.loggedIn = false;
   }; // end logout
  
   $scope.addDiagnosis = function() {
@@ -430,12 +446,14 @@ app.controller('CaseLogCtrl',
         $scope.quizlet.buttonPrompt = 'Next Question';
         $scope.quizlet.answersOn = false;
         Quizzes.answerSubmitted($scope.quizlet.quizIndex.$value, $scope.quizlet.userAnswer);
-        console.log('incorrect');
+        StudentQuizzes.addAnswer($scope.quizlet, $scope.netId);
+        console.log('Correct answer');
       } else {
         $scope.activeAlert = $scope.alerts[0];
         $scope.quizlet.buttonPrompt = 'Try Again?';
         $scope.quizlet.answersOn = false;
         Quizzes.answerSubmitted($scope.quizlet.quizIndex.$value, $scope.quizlet.userAnswer);
+        StudentQuizzes.addAnswer($scope.quizlet, $scope.netId);
         console.log('incorrect');
       }
     } else if($scope.quizlet.buttonPrompt === 'Try Again?') {

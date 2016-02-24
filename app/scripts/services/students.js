@@ -27,8 +27,8 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
       return studentNamesArray;
     },
     checkIfUserExists: function(studentId) {
-      console.log('Checking if ' + studentId + ' exists...');
-      console.log(studentList.$getRecord(studentId));
+      // console.log('Checking if ' + studentId + ' exists...');
+      // console.log(studentList.$getRecord(studentId));
       return studentList.$getRecord(studentId);
     },
     getCasesRef: function(studentId) {
@@ -133,7 +133,7 @@ app.factory('Students', function($firebase, $firebaseObject, $firebaseArray, FIR
 
         }); // end forEach
 
-        console.log('refreshing cases - new, rechecks, procedures:' + newCaseCount + recheckCaseCount + procedureCount);
+        // console.log('refreshing cases - new, rechecks, procedures:' + newCaseCount + recheckCaseCount + procedureCount);
         studentsRef.child(studentId).child('numNewCases').set(newCaseCount);
         studentsRef.child(studentId).child('numRechecks').set(recheckCaseCount);
         studentsRef.child(studentId).child('numProcedures').set(procedureCount);
