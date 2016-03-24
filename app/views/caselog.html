@@ -15,11 +15,17 @@
   <div class="col-lg-4">
   <div class="row">
     <div class="col-lg-12">
-      <div class="form-group form-inline">
-        <input type="text" class="form-control form-inline" placeholder="Enter your NetId" ng-model="netId" ng-disabled="user">
+      <div class="form-group form-inline" name="netIdform" novalidate>
+        <input type="text" 
+               name="netidInput"
+               class="form-control form-inline" 
+               placeholder="Enter your NetId" 
+               ng-model="netId" 
+               ng-disabled="user" 
+               required>
 <!--         <input type="submit" class="btn-success form-control" value="Login" ng-click="login()"  >
         <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()"  >
- -->        <input type="submit" ng-class="{'btn-success': !loggedIn, 'btn-danger': loggedIn}" class="form-control" value="{{loginText}}" ng-click="loginOrOut()">
+ -->        <input type="submit" ng-class="{'btn-success': !loggedIn, 'btn-danger': loggedIn}" class="form-control" value="{{loginText}}" ng-click="loginOrOut()" ng-disabled="!netId">
       </div>
     </div>
   </div>

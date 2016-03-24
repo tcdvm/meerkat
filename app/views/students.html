@@ -68,7 +68,7 @@
   	<div class="col-lg-12 col-centered">
   		<input type="text" class="form-control" placeholder="Search student name" ng-model="search.name"><br>
   		<uib-accordion close-others="true">
-  			<uib-accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks + student.numProcedures}} (New: {{student.numNewCases}}, Rechecks: {{student.numRechecks}}, Procedures: {{student.numProcedures}})" class="animate-show" ng-repeat="student in students | filter:search| orderBy:'date'">
+  			<uib-accordion-group heading="{{student.name}} ({{student.netId}}) - &thinsp; Cases seen: {{student.numNewCases + student.numRechecks}} (New: {{student.numNewCases}}, Rechecks: {{student.numRechecks}}, Procedures: {{student.numProcedures}})" class="animate-show" ng-repeat="student in students | filter:search| orderBy:'date'">
   			<h4>Cases seen:</h4>
   			<table class="table table-condensed table-hover">
   				<tr>

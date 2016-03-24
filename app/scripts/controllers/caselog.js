@@ -18,10 +18,25 @@ app.controller('CaseLogCtrl',
   $scope.loginText = 'Login';
 
   // $scope.netId = '';
-  $scope.netId = 'tchen';
+  // $scope.netId = 'tchen';
+  // $scope.user = undefined;
+  // $scope.userCases = undefined;
+  // $scope.cases = Cases.all;
+  // $scope.radioModel = 'OD';
+  // $scope.quizAnswer = undefined;
+  // $scope.quizlet = {
+  //   quiz: undefined,
+  //   quizIndex: undefined,
+  //   userAnswer: undefined,
+  //   buttonPrompt: 'Answer',
+  //   answersOn: true,
+  //   noMore: false
+  // };
+
+  $scope.netId = '';
   $scope.user = undefined;
   $scope.userCases = undefined;
-  $scope.cases = Cases.all;
+  $scope.cases = [];
   $scope.radioModel = 'OD';
   $scope.quizAnswer = undefined;
   $scope.quizlet = {
@@ -32,37 +47,65 @@ app.controller('CaseLogCtrl',
     answersOn: true,
     noMore: false
   };
+
   $scope.studentquiz = undefined;
+
+  // $scope.case =  {
+  //   studentId : '',
+  //   studentName : '',
+  //   date: '',
+  //   patientId : '1234' + Math.floor(Math.random()*100),
+  //   patientName : 'Fluffy' + Math.floor(Math.random()*10),
+  //   patientSurname : 'Smith' + Math.floor(Math.random()*10),
+  //   patientSpecies : 'Equine',
+  //   caseType: 'new',
+  //   surgeryProcedure: '',
+  //   diagnoses : [
+  //     {
+  //       diagnosis:'Glaucoma',
+  //       location: 'OS'
+  //     },
+  //     {
+  //       diagnosis:'Cataracts',
+  //       location: 'OD'
+  //     }
+  //   ],
+  //   procedures: [
+  //     {
+  //       procedure: 'Enucleation',
+  //       location: 'OD'
+  //     }
+  //   ],
+  //   studentInvolvement: '2',
+  //   summary: 'Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed.',
+  //   clinician : 'Chen'
+  // };
 
   $scope.case =  {
     studentId : '',
     studentName : '',
     date: '',
-    patientId : '1234' + Math.floor(Math.random()*100),
-    patientName : 'Fluffy' + Math.floor(Math.random()*10),
-    patientSurname : 'Smith' + Math.floor(Math.random()*10),
-    patientSpecies : 'Equine',
-    caseType: 'new',
+    patientId : '',
+    patientName : '',
+    patientSurname : '',
+    patientSpecies : '',
+    caseType: '',
     surgeryProcedure: '',
     diagnoses : [
       {
-        diagnosis:'Glaucoma',
-        location: 'OS'
+        diagnosis:'',
+        location: ''
       },
-      {
-        diagnosis:'Cataracts',
-        location: 'OD'
-      }
     ],
     procedures: [
       {
-        procedure: 'Enucleation',
-        location: 'OD'
+        procedure: '',
+        location: ''
       }
     ],
-    studentInvolvement: '2',
-    summary: 'Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed.',
-    clinician : 'Chen'
+    studentInvolvement: '',
+    summary: '',
+    clinician : ''
   };
 
   $scope.loginOrOut = function() {
