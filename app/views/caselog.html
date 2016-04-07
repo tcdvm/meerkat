@@ -290,7 +290,7 @@
               <th>Case Type</th>
               <th ng-show="user"></th>
             </tr> 
-            <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" uib-tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date' |limitTo:25">
+            <tr class="animate-show" tooltip-popup-delay='500' tooltip-trigger="mouseenter" uib-tooltip="{{studentcase.summary}}" tooltip-append-to-body="true" ng-repeat="studentcase in cases | orderBy:'date'">
               <td ng-hide="user">{{studentcase.studentName}}</td>
               <td>{{studentcase.date | date:'MMM dd, yyyy'}}</td>
               <td><a href="" ng-click="openPatientModal(studentcase.patientId)">{{studentcase.patientId}}</a></td>
@@ -307,4 +307,5 @@
     </div> 
   </div> <!-- End second column -->
 </div> <!-- end row -->
+{{cases.length}}
 </div>

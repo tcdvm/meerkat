@@ -21,7 +21,10 @@ app.controller('CaseLogCtrl',
   // $scope.netId = 'tchen';
   // $scope.user = undefined;
   // $scope.userCases = undefined;
-  // $scope.cases = Cases.all;
+  $scope.cases = Cases.recentCases();
+
+  $scope.cases.$loaded();
+  console.log($scope.cases);
   // $scope.radioModel = 'OD';
   // $scope.quizAnswer = undefined;
   // $scope.quizlet = {
@@ -211,40 +214,68 @@ app.controller('CaseLogCtrl',
     $scope.user.$destroy();
     $scope.user = undefined;
     $scope.userCases.$destroy();
-    $scope.cases = Cases.all;
-    $scope.case =  {
+    $scope.cases = Cases.recentCases();
+    // $scope.case =  {
+    //   studentId : '',
+    //   studentName : '',
+    //   date: '',
+    //   patientId : '1234' + Math.floor(Math.random()*100),
+    //   patientName : 'Fluffy' + Math.floor(Math.random()*10),
+    //   patientSurname : 'Smith' + Math.floor(Math.random()*10),
+    //   patientSpecies : 'Equine',
+    //   caseType: 'new',
+    //   surgeryProcedure: '',
+    //   diagnoses : [
+    //     {
+    //       diagnosis:'Anterior Uveitis',
+    //       location: 'OS'
+    //     },
+    //     {
+    //       diagnosis:'Progressive retinal atrophy',
+    //       location: 'OD'
+    //     }
+    //   ],
+    //   procedures: [
+    //     {
+    //       procedure: 'Enucleation',
+    //       location: 'OD'
+    //     }
+    //   ],
+    //   studentInvolvement: '2',
+    //   // treatment : 'Enucleation',
+    //   // outcome : 'No more issues',
+    //   // followup : 'None',
+    //   summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto.',
+    //   clinicians : 'Hendrix'
+    // };
+
+    $scope.case = {
       studentId : '',
       studentName : '',
       date: '',
-      patientId : '1234' + Math.floor(Math.random()*100),
-      patientName : 'Fluffy' + Math.floor(Math.random()*10),
-      patientSurname : 'Smith' + Math.floor(Math.random()*10),
-      patientSpecies : 'Equine',
-      caseType: 'new',
+      patientId : '',
+      patientName : '',
+      patientSurname : '',
+      patientSpecies : '',
+      caseType: '',
       surgeryProcedure: '',
       diagnoses : [
         {
-          diagnosis:'Anterior Uveitis',
-          location: 'OS'
+          diagnosis:'',
+          location: ''
         },
-        {
-          diagnosis:'Progressive retinal atrophy',
-          location: 'OD'
-        }
       ],
       procedures: [
         {
-          procedure: 'Enucleation',
-          location: 'OD'
+          procedure: '',
+          location: ''
         }
       ],
-      studentInvolvement: '2',
-      // treatment : 'Enucleation',
-      // outcome : 'No more issues',
-      // followup : 'None',
-      summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto.',
-      clinicians : 'Hendrix'
+      studentInvolvement: '',
+      summary: '',
+      clinician : ''
     };
+
     $scope.loggedIn = false;
   }; // end logout
  
@@ -308,53 +339,81 @@ app.controller('CaseLogCtrl',
       Clinicians.addCase($scope.case.clinician, id, $scope.case);
       Clinicians.refreshCaseStats($scope.case.clinician);
 
+      // $scope.case =  {
+      //   studentId : '',
+      //   studentName : '',
+      //   date: '',
+      //   patientId : '1234' + Math.floor(Math.random()*100),
+      //   patientName : 'Fluffy' + Math.floor(Math.random()*10),
+      //   patientSurname : 'Smith' + Math.floor(Math.random()*10),
+      //   patientSpecies : 'Canine',
+      //   caseType: 'new',
+      //   surgeryProcedure: '',
+      //   diagnoses : [
+      //     {
+      //       diagnosis:'Anterior uveitis',
+      //       location: 'OS'
+      //     },
+      //     {
+      //       diagnosis:'Progressive retinal atrophy',
+      //       location: 'OU'
+      //     }
+      //   ],
+      //   procedures: [
+      //     {
+      //       procedure: 'Enucleation',
+      //       location: 'OD'
+      //     }
+      //   ],
+      //   studentInvolvement: '2',
+      //   // treatment : 'Enucleation',
+      //   // outcome : 'No more issues',
+      //   // followup : 'None',
+      //   summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto.',
+      //   clinician : 'Newbold'
+      //   // studentId: '',
+      //   // studentName: '',
+      //   // date: '',
+      //   // patientId : '',
+      //   // patientName : '',
+      //   // patientSurname : '',
+      //   // patientSpecies : '',
+      //   // caseType: '',
+      //   // surgeryProcedure: '',
+      //   // diagnoses : ['', '', ''],
+      //   // treatment : '',
+      //   // outcome : '',
+      //   // followup : '',
+      //   // clinicians : []
+      // };
       $scope.case =  {
         studentId : '',
         studentName : '',
         date: '',
-        patientId : '1234' + Math.floor(Math.random()*100),
-        patientName : 'Fluffy' + Math.floor(Math.random()*10),
-        patientSurname : 'Smith' + Math.floor(Math.random()*10),
-        patientSpecies : 'Canine',
-        caseType: 'new',
+        patientId : '',
+        patientName : '',
+        patientSurname : '',
+        patientSpecies : '',
+        caseType: '',
         surgeryProcedure: '',
         diagnoses : [
           {
-            diagnosis:'Anterior uveitis',
-            location: 'OS'
+            diagnosis:'',
+            location: ''
           },
-          {
-            diagnosis:'Progressive retinal atrophy',
-            location: 'OU'
-          }
         ],
         procedures: [
           {
-            procedure: 'Enucleation',
-            location: 'OD'
+            procedure: '',
+            location: ''
           }
         ],
-        studentInvolvement: '2',
-        // treatment : 'Enucleation',
-        // outcome : 'No more issues',
-        // followup : 'None',
-        summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto.',
-        clinician : 'Newbold'
-        // studentId: '',
-        // studentName: '',
-        // date: '',
-        // patientId : '',
-        // patientName : '',
-        // patientSurname : '',
-        // patientSpecies : '',
-        // caseType: '',
-        // surgeryProcedure: '',
-        // diagnoses : ['', '', ''],
-        // treatment : '',
-        // outcome : '',
-        // followup : '',
-        // clinicians : []
+        studentInvolvement: '',
+        summary: '',
+        clinician : ''
       };
+
+
     });
   }; // end submitCase()
 
