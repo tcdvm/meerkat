@@ -17,29 +17,14 @@ app.controller('CaseLogCtrl',
   $scope.loggedIn = false;
   $scope.loginText = 'Login';
 
-  // $scope.netId = '';
-  // $scope.netId = 'tchen';
-  // $scope.user = undefined;
-  // $scope.userCases = undefined;
   $scope.cases = Cases.recentCases();
 
   $scope.cases.$loaded();
   console.log($scope.cases);
-  // $scope.radioModel = 'OD';
-  // $scope.quizAnswer = undefined;
-  // $scope.quizlet = {
-  //   quiz: undefined,
-  //   quizIndex: undefined,
-  //   userAnswer: undefined,
-  //   buttonPrompt: 'Answer',
-  //   answersOn: true,
-  //   noMore: false
-  // };
 
   $scope.netId = '';
   $scope.user = undefined;
   $scope.userCases = undefined;
-  $scope.cases = [];
   $scope.radioModel = 'OD';
   $scope.quizAnswer = undefined;
   $scope.quizlet = {
@@ -52,37 +37,6 @@ app.controller('CaseLogCtrl',
   };
 
   $scope.studentquiz = undefined;
-
-  // $scope.case =  {
-  //   studentId : '',
-  //   studentName : '',
-  //   date: '',
-  //   patientId : '1234' + Math.floor(Math.random()*100),
-  //   patientName : 'Fluffy' + Math.floor(Math.random()*10),
-  //   patientSurname : 'Smith' + Math.floor(Math.random()*10),
-  //   patientSpecies : 'Equine',
-  //   caseType: 'new',
-  //   surgeryProcedure: '',
-  //   diagnoses : [
-  //     {
-  //       diagnosis:'Glaucoma',
-  //       location: 'OS'
-  //     },
-  //     {
-  //       diagnosis:'Cataracts',
-  //       location: 'OD'
-  //     }
-  //   ],
-  //   procedures: [
-  //     {
-  //       procedure: 'Enucleation',
-  //       location: 'OD'
-  //     }
-  //   ],
-  //   studentInvolvement: '2',
-  //   summary: 'Mel populo diceret sapientem at, usu omnis maiorum ut. Ei debet semper sed.',
-  //   clinician : 'Chen'
-  // };
 
   $scope.case =  {
     studentId : '',
@@ -126,19 +80,12 @@ app.controller('CaseLogCtrl',
    */
 
   $scope.login = function () {
-    // console.log('in login!');
-    // Check if netID (student) exists
     if (Students.checkIfUserExists($scope.netId) !== null) {
-      // console.log('NetID exists!');
       $scope.user = $firebaseObject(Students.getRef($scope.netId));
-      // userObject = $firebaseObject(Students.getRef($scope.netId));
-      // userObject.$bindTo($scope, 'user');
+
       $scope.userCases = $firebaseArray(Students.getCasesRef($scope.netId));
       $scope.cases = $scope.userCases;
-      // var caseTypes = Students.getCaseStats($scope.netId);
-      // console.log(caseTypes);
-      // $scope.chartConfig.series[0].data = [caseTypes.numNewCases, caseTypes.numRechecks, 6, 6, 6, 6];
-      // console.log('diagnosis stats array');
+
       Students.refreshCaseStats($scope.netId);
       var caseStats = Students.getCaseStats($scope.netId);
       $scope.chartConfig.series[0].data = caseStats.caseStats;
@@ -149,10 +96,7 @@ app.controller('CaseLogCtrl',
           console.log(StudentQuizzes.getStudentQuizIndexRef($scope.netId));
           $scope.quizlet.noMore = true;
         }
-        // console.log($scope.quizlet.quiz);
-        // console.log('Called bind');
       });
-      // studentquizindex.$bindTo($scope, 'quizlet.quizIndex');
       $scope.loggedIn = true;
     } else {
       console.log('No such user! Creating...');
@@ -167,7 +111,6 @@ app.controller('CaseLogCtrl',
       });
 
       modalInstance.result.then(function (newStudent) {
-        // $scope.selected = selectedItem;
         console.log('Net ID & Student Name: ' + newStudent.netId + ' ' + newStudent.name);
         newStudent.numNewCases = 0;
         newStudent.numRechecks = 0;
@@ -186,8 +129,6 @@ app.controller('CaseLogCtrl',
           Other: 0
         };
         $scope.user = $firebaseObject(Students.create(newStudent.netId, newStudent));
-        // userObject = $firebaseObject(Students.create(newStudent.netId, newStudent));
-        // userObject.$bindTo($scope, 'user');
         $scope.userCases = $firebaseArray(Students.getCasesRef($scope.netId));
         $scope.cases = $scope.userCases;
         var caseStats = Students.getCaseStats($scope.netId);
@@ -197,12 +138,9 @@ app.controller('CaseLogCtrl',
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
       });
-      // Students.create($scope.netId, {name: 'me'});
     } // end else (creating new student)
 
     // Get question for quiz
-
-
   }; // end login
 
   /**
@@ -215,39 +153,6 @@ app.controller('CaseLogCtrl',
     $scope.user = undefined;
     $scope.userCases.$destroy();
     $scope.cases = Cases.recentCases();
-    // $scope.case =  {
-    //   studentId : '',
-    //   studentName : '',
-    //   date: '',
-    //   patientId : '1234' + Math.floor(Math.random()*100),
-    //   patientName : 'Fluffy' + Math.floor(Math.random()*10),
-    //   patientSurname : 'Smith' + Math.floor(Math.random()*10),
-    //   patientSpecies : 'Equine',
-    //   caseType: 'new',
-    //   surgeryProcedure: '',
-    //   diagnoses : [
-    //     {
-    //       diagnosis:'Anterior Uveitis',
-    //       location: 'OS'
-    //     },
-    //     {
-    //       diagnosis:'Progressive retinal atrophy',
-    //       location: 'OD'
-    //     }
-    //   ],
-    //   procedures: [
-    //     {
-    //       procedure: 'Enucleation',
-    //       location: 'OD'
-    //     }
-    //   ],
-    //   studentInvolvement: '2',
-    //   // treatment : 'Enucleation',
-    //   // outcome : 'No more issues',
-    //   // followup : 'None',
-    //   summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto.',
-    //   clinicians : 'Hendrix'
-    // };
 
     $scope.case = {
       studentId : '',
@@ -314,22 +219,6 @@ app.controller('CaseLogCtrl',
       var id = ref.key();
       console.log('added record with id ' + id);
 
-      // Update counts for user
-      // switch($scope.case.caseType) {
-      // case 'new':
-      //   $scope.user.numNewCases += 1;
-      //   $scope.user.$save();
-      //   break;
-      // case 'recheck':
-      //   $scope.user.numRechecks += 1;
-      //   $scope.user.$save();
-      //   break;
-      // case 'recheck':
-      //   $scope.user.numSurgeries += 1;
-      //   $scope.user.$save();
-      //   break;
-      // }
-      
       // Add case to student's cases array & patient's
       Students.addCase($scope.case.studentId, id, $scope.case);
       Students.refreshCaseStats($scope.netId);
@@ -339,53 +228,6 @@ app.controller('CaseLogCtrl',
       Clinicians.addCase($scope.case.clinician, id, $scope.case);
       Clinicians.refreshCaseStats($scope.case.clinician);
 
-      // $scope.case =  {
-      //   studentId : '',
-      //   studentName : '',
-      //   date: '',
-      //   patientId : '1234' + Math.floor(Math.random()*100),
-      //   patientName : 'Fluffy' + Math.floor(Math.random()*10),
-      //   patientSurname : 'Smith' + Math.floor(Math.random()*10),
-      //   patientSpecies : 'Canine',
-      //   caseType: 'new',
-      //   surgeryProcedure: '',
-      //   diagnoses : [
-      //     {
-      //       diagnosis:'Anterior uveitis',
-      //       location: 'OS'
-      //     },
-      //     {
-      //       diagnosis:'Progressive retinal atrophy',
-      //       location: 'OU'
-      //     }
-      //   ],
-      //   procedures: [
-      //     {
-      //       procedure: 'Enucleation',
-      //       location: 'OD'
-      //     }
-      //   ],
-      //   studentInvolvement: '2',
-      //   // treatment : 'Enucleation',
-      //   // outcome : 'No more issues',
-      //   // followup : 'None',
-      //   summary : 'Lorem ipsum dolor sit amet, eu equidem fastidii salutandi quo, at quo esse purto.',
-      //   clinician : 'Newbold'
-      //   // studentId: '',
-      //   // studentName: '',
-      //   // date: '',
-      //   // patientId : '',
-      //   // patientName : '',
-      //   // patientSurname : '',
-      //   // patientSpecies : '',
-      //   // caseType: '',
-      //   // surgeryProcedure: '',
-      //   // diagnoses : ['', '', ''],
-      //   // treatment : '',
-      //   // outcome : '',
-      //   // followup : '',
-      //   // clinicians : []
-      // };
       $scope.case =  {
         studentId : '',
         studentName : '',
