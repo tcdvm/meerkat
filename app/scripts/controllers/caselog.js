@@ -20,7 +20,6 @@ app.controller('CaseLogCtrl',
   $scope.cases = Cases.recentCases();
 
   $scope.cases.$loaded();
-  console.log($scope.cases);
 
   $scope.netId = '';
   $scope.user = undefined;
@@ -38,32 +37,36 @@ app.controller('CaseLogCtrl',
 
   $scope.studentquiz = undefined;
 
-  $scope.case =  {
-    studentId : '',
-    studentName : '',
-    date: '',
-    patientId : '',
-    patientName : '',
-    patientSurname : '',
-    patientSpecies : '',
-    caseType: '',
-    surgeryProcedure: '',
-    diagnoses : [
-      {
-        diagnosis:'',
-        location: ''
-      },
-    ],
-    procedures: [
-      {
-        procedure: '',
-        location: ''
-      }
-    ],
-    studentInvolvement: '',
-    summary: '',
-    clinician : ''
-  };
+  function resetCase() {
+    $scope.case =  {
+      studentId : '',
+      studentName : '',
+      date: '',
+      patientId : '12345',
+      patientName : '',
+      patientSurname : '',
+      patientSpecies : '',
+      caseType: '',
+      surgeryProcedure: '',
+      diagnoses : [
+        {
+          diagnosis:'',
+          location: ''
+        },
+      ],
+      procedures: [
+        {
+          procedure: '',
+          location: ''
+        }
+      ],
+      studentInvolvement: '',
+      summary: '',
+      clinician : ''
+    };
+  }
+
+  resetCase();
 
   $scope.loginOrOut = function() {
     if($scope.loggedIn) {
@@ -154,32 +157,7 @@ app.controller('CaseLogCtrl',
     $scope.userCases.$destroy();
     $scope.cases = Cases.recentCases();
 
-    $scope.case = {
-      studentId : '',
-      studentName : '',
-      date: '',
-      patientId : '',
-      patientName : '',
-      patientSurname : '',
-      patientSpecies : '',
-      caseType: '',
-      surgeryProcedure: '',
-      diagnoses : [
-        {
-          diagnosis:'',
-          location: ''
-        },
-      ],
-      procedures: [
-        {
-          procedure: '',
-          location: ''
-        }
-      ],
-      studentInvolvement: '',
-      summary: '',
-      clinician : ''
-    };
+    resetCase();
 
     $scope.loggedIn = false;
   }; // end logout
@@ -228,33 +206,7 @@ app.controller('CaseLogCtrl',
       Clinicians.addCase($scope.case.clinician, id, $scope.case);
       Clinicians.refreshCaseStats($scope.case.clinician);
 
-      $scope.case =  {
-        studentId : '',
-        studentName : '',
-        date: '',
-        patientId : '',
-        patientName : '',
-        patientSurname : '',
-        patientSpecies : '',
-        caseType: '',
-        surgeryProcedure: '',
-        diagnoses : [
-          {
-            diagnosis:'',
-            location: ''
-          },
-        ],
-        procedures: [
-          {
-            procedure: '',
-            location: ''
-          }
-        ],
-        studentInvolvement: '',
-        summary: '',
-        clinician : ''
-      };
-
+      resetCase();
 
     });
   }; // end submitCase()

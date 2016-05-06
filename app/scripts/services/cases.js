@@ -9,7 +9,6 @@ app.factory('Cases', function($firebase, $firebaseArray, FIREBASE_URL) {
     all: cases,
     recentCases: function() {
       var query = ref.orderByChild('timestamp').limitToLast(25);
-      console.log('Recent cases?');
       return $firebaseArray(query);
     },
     create: function(studentcase) {
