@@ -42,7 +42,7 @@ app.controller('CaseLogCtrl',
       studentId : '',
       studentName : '',
       date: '',
-      patientId : '12345',
+      patientId : '',
       patientName : '',
       patientSurname : '',
       patientSpecies : '',
@@ -220,6 +220,12 @@ app.controller('CaseLogCtrl',
     Clinicians.refreshCaseStats(scase.clinician);
     var caseStats = Students.getCaseStats($scope.netId);
     $scope.chartConfig.series[0].data = caseStats.caseStats;
+  };
+
+  $scope.editCase = function(scase) {
+    var caseToEdit = Cases.get(scase.$id);
+
+    console.log(caseToEdit);
   };
 
 
