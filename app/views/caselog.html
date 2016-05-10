@@ -23,9 +23,7 @@
                ng-model="netId" 
                ng-disabled="user" 
                required>
-<!--         <input type="submit" class="btn-success form-control" value="Login" ng-click="login()"  >
-        <input type="submit" class="btn-danger form-control" value="Logout" ng-click="logout()"  >
- -->        <input type="submit" ng-class="{'btn-success': !loggedIn, 'btn-danger': loggedIn}" class="form-control" value="{{loginText}}" ng-click="loginOrOut()" ng-disabled="!netId">
+        <input type="submit" ng-class="{'btn-success': !loggedIn, 'btn-danger': loggedIn}" class="form-control" value="{{loginText}}" ng-click="loginOrOut()" ng-disabled="!netId">
       </div>
     </div>
   </div>
@@ -181,7 +179,9 @@
   </div>
 
     <br>
-    <button class="btn btn-success" ng-click="submitCase()" ng-disabled="!user">Add case</button> 
+    <button ng-hide="updateCaseFlag" class="btn btn-success" ng-click="submitCase()" ng-disabled="!user">Add case</button> 
+    <button ng-show="updateCaseFlag" class="btn btn-primary" ng-click="updateCase()">Update</button>
+    <button ng-show="updateCaseFlag" class="btn btn-warning" ng-click="cancelEdit()">Cancel</button>
   </div> 
 
 
@@ -313,5 +313,4 @@
     </div> 
   </div> <!-- End second column -->
 </div> <!-- end row -->
-{{cases.length}}
 </div>

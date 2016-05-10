@@ -59,7 +59,7 @@ app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, $ui
         console.log('The read failed: ' + errorObject.code);
       });
     },
-    deleteCase: function(patientId, scase) {
+    deleteCase: function(patientId, caseId) {
       var onComplete = function(error) {
         if (error) {
           console.log('Patient deleteCase synchronization failed');
@@ -67,7 +67,7 @@ app.factory('Patients', function($firebase, $firebaseObject, $firebaseArray, $ui
           console.log('Patient deleteCase synchronization succeeded');
         }
       };
-      var caseRef = patientsRef.child(patientId).child('cases').child(scase.$id);
+      var caseRef = patientsRef.child(patientId).child('cases').child(caseId);
       caseRef.remove(onComplete);
       // If no cases associated with patient, delete patient
       caseRef.parent().once('value', function(snapshot) {

@@ -21,6 +21,16 @@ app.controller('CaseLogCtrl',
 
   $scope.cases.$loaded();
 
+  $scope.updateCaseFlag = false;
+
+  // Store variables for the case (in case they are changed)
+  $scope.updateCaseInfo = {
+    caseId: '',
+    studentId: '',
+    patientId: '',
+    clinician: ''
+  };
+
   $scope.netId = '';
   $scope.user = undefined;
   $scope.userCases = undefined;
@@ -169,6 +179,7 @@ app.controller('CaseLogCtrl',
   $scope.addProcedure = function() {
     $scope.case.procedures.push({procedure:'', location:'N/A'});
   };
+
   /**
    * Submits a case
    */
@@ -213,10 +224,10 @@ app.controller('CaseLogCtrl',
 
   $scope.deleteCase = function(scase) {
     Cases.deleteCase(scase.$id);
-    Patients.deleteCase(scase.patientId, scase);
-    Students.deleteCase(scase.studentId, scase);
+    Patients.deleteCase(scase.patientId, scase.$id);
+    Students.deleteCase(scase.studentId, scase.$id);
     Students.refreshCaseStats($scope.netId);
-    Clinicians.deleteCase(scase.clinician, scase);
+    Clinicians.deleteCase(scase.clinician, scase.$id);
     Clinicians.refreshCaseStats(scase.clinician);
     var caseStats = Students.getCaseStats($scope.netId);
     $scope.chartConfig.series[0].data = caseStats.caseStats;
@@ -224,8 +235,47 @@ app.controller('CaseLogCtrl',
 
   $scope.editCase = function(scase) {
     var caseToEdit = Cases.get(scase.$id);
-
     console.log(caseToEdit);
+    $scope.case = caseToEdit;
+    $scope.dt = new Date(caseToEdit.date);
+    $scope.updateCaseFlag = true;
+
+    $scope.updateCaseInfo.caseId = scase.$id;
+    $scope.updateCaseInfo.studentId = caseToEdit.studentId;
+    $scope.updateCaseInfo.patientId = caseToEdit.patientId;
+    $scope.updateCaseInfo.clinician = caseToEdit.clinician;
+
+    // $scope.case.patientId = caseToEdit.patientId;
+    // console.log($scope.case.patientId);
+  };
+
+  $scope.updateCase = function() {
+    console.log($scope.updateCaseInfo);
+    // Basically, delete the case first
+    Cases.deleteCase($scope.updateCaseInfo.caseId);
+    Patients.deleteCase($scope.updateCaseInfo.patientId, $scope.updateCaseInfo.caseId);
+    Students.deleteCase($scope.updateCaseInfo.studentId, $scope.updateCaseInfo.caseId);
+    Students.refreshCaseStats($scope.updateCaseInfo.studentId);
+    Clinicians.deleteCase($scope.updateCaseInfo.clinician, $scope.updateCaseInfo.caseId);
+    Clinicians.refreshCaseStats($scope.updateCaseInfo.clinician);
+    var caseStats = Students.getCaseStats($scope.netId);
+    $scope.chartConfig.series[0].data = caseStats.caseStats;
+
+    // Then re-add the case
+    $scope.submitCase();
+
+  };
+
+  $scope.cancelEdit = function() {
+    resetCase();
+    $scope.updateCaseFlag = false;
+    $scope.today();
+    $scope.updateCaseInfo = {
+      caseId: '',
+      studentId: '',
+      patientId: '',
+      clinician: ''
+    };
   };
 
 

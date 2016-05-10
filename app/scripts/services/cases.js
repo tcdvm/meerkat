@@ -21,7 +21,14 @@ app.factory('Cases', function($firebase, $firebaseArray, $firebaseObject, FIREBA
       return cases.$add(studentcase);
     },
     get: function(caseId) {
-      return $firebaseObject(ref.child('studentcases').child(caseId));
+      var caseSnapshot = {};
+      ref.child(caseId).on('value', function(snapshot) {
+        caseSnapshot = snapshot.val();
+        // caseObject.patientId = caseSnapshot.patientId;
+      }, function(errorObject) {
+        console.log(errorObject.code + ': Read failed for Cases.get() on case id: ' + caseId);
+      });
+      return caseSnapshot;
     },
     delete: function(studentcase) {
       return cases.$remove(studentcase);
