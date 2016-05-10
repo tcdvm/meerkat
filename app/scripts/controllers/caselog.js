@@ -264,6 +264,13 @@ app.controller('CaseLogCtrl',
     // Then re-add the case
     $scope.submitCase();
 
+    $scope.updateCaseFlag = false;
+    $scope.updateCaseInfo = {
+      caseId: '',
+      studentId: '',
+      patientId: '',
+      clinician: ''
+    };
   };
 
   $scope.cancelEdit = function() {
