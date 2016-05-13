@@ -428,6 +428,9 @@ app.controller('CaseLogCtrl',
 
 app.filter('prettyDiagnosisArrayOutput', function() {
   return function(input) {
+    if (!input) {
+      return;
+    }
     var diagnoses = [];
     for (var i = 0; i < input.length; i++) {
       if (input[i].location !== 'N/A') {
