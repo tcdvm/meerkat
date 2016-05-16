@@ -244,6 +244,12 @@ label {
     /*padding-right:0;*/
     padding-left:0;
 }
+
+input.ng-invalid.ng-touched {
+  /*background-color: #FA787E;*/
+  border: 1px solid #F00;
+}
+
 /**
 
 Color Scheme
