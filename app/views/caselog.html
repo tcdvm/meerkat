@@ -46,7 +46,7 @@
             <label for="patientID" class="sr-only">Patient ID</label>
             <input type="text" class="form-control" placeholder="Patient ID" ng-model="case.patientId" ng-disabled="!user" required>
           </div>
-        <div class="form-group btn-group" ng-disabled="!user">
+        <div class="form-group btn-group" ng-disabled="!user" required>
             <label class="btn btn-default btn-species" ng-model="case.patientSpecies" uib-btn-radio="'Canine'"><i class="flaticon-dog77"></i> </label>
             <label class="btn btn-default btn-species" ng-model="case.patientSpecies" uib-btn-radio="'Feline'"><i class="flaticon-cat19"></i></label>
             <label class="btn btn-default btn-species" ng-model="case.patientSpecies" uib-btn-radio="'Equine'"><i class="flaticon-black200"></i></label>
@@ -55,11 +55,11 @@
         <br>
         <div class="form-group">
           <label for="Patient Name" class="sr-only">Patient name</label>
-          <input type="text" class="form-control name-input" placeholder="Patient name" ng-model="case.patientName" value="Fluffy" ng-disabled="!user">
+          <input type="text" class="form-control name-input" placeholder="Patient name" ng-model="case.patientName" value="Fluffy" ng-disabled="!user" required>
         </div>
         <div class="form-group">
           <label for="Patient Surname" class="sr-only">Patient last name</label>
-          <input type="text" class="form-control name-input" placeholder="Patient last name" ng-model="case.patientSurname" value="Smith" ng-disabled="!user">
+          <input type="text" class="form-control name-input" placeholder="Patient last name" ng-model="case.patientSurname" value="Smith" ng-disabled="!user" required>
         </div>
       </form>
     </div>
@@ -133,7 +133,7 @@
       </div>
 
       <h5>Case Summary (200 character limit) <i class="fa fa-question-circle" uib-popover-html="summaryInstructions" popover-trigger="mouseenter" popover-placement="top"></i></h5>
-      <textarea class="form-control summary-text" placeholder="" ng-model="case.summary" rows="3" maxlength="200" ng-disabled="!user"></textarea>
+      <textarea class="form-control summary-text" placeholder="" ng-model="case.summary" rows="3" maxlength="200" ng-disabled="!user" required></textarea>
     </div>
   </div>
 
